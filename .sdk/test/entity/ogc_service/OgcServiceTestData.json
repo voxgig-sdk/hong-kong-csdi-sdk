@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "ogc_service": {
+      "OGC_SERVICE00": {},
+      "OGC_SERVICE01": {},
+      "OGC_SERVICE02": {}
+    }
+  },
+  "new": {
+    "ogc_service": {
+      "ogc_service_ref01": {}
+    }
+  }
+}

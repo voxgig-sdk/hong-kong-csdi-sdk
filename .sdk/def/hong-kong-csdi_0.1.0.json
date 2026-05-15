@@ -1,0 +1,890 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Hong Kong CSDI API",
+    "description": "The Hong Kong Common Spatial Data Infrastructure (CSDI) Portal provides access to a range of geospatial data and applications aimed at supporting data sharing and government initiatives. It centralizes resources for spatial data, making it easier for users to find and utilize geographic information. The API provides access to over 1100+ datasets with support for various OGC standards including WFS, WMS, and ArcGIS REST API.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "CSDI Support",
+      "url": "https://portal.csdi.gov.hk/csdi-webpage/"
+    },
+    "termsOfService": "https://portal.csdi.gov.hk/csdi-webpage/"
+  },
+  "servers": [
+    {
+      "url": "https://portal.csdi.gov.hk/api",
+      "description": "Hong Kong CSDI Production Server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Datasets",
+      "description": "Operations related to geospatial datasets"
+    },
+    {
+      "name": "Map APIs",
+      "description": "Map-related API endpoints"
+    },
+    {
+      "name": "Dataset APIs",
+      "description": "Dataset query and retrieval endpoints"
+    },
+    {
+      "name": "OGC Services",
+      "description": "OGC WFS/WMS and ArcGIS REST API services"
+    }
+  ],
+  "paths": {
+    "/datasets": {
+      "get": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Retrieve available datasets",
+        "description": "Get a list of available geospatial datasets from the CSDI Portal. Supports filtering by category, theme, popularity, and other criteria.",
+        "operationId": "getDatasets",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Filter datasets by category (e.g., Climate and Weather, Commerce and Industry, Development, Education, Election, Environment, Geography, Health, Housing, Labour Community and Social Welfare, Land Information, Law and Security, Population, Recreation and Culture, Sports, Technology, Transportation, Utilities)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Climate and Weather",
+                "Commerce and Industry",
+                "Development",
+                "Education",
+                "Election",
+                "Environment",
+                "Geography",
+                "Health",
+                "Housing",
+                "Labour, Community and Social Welfare",
+                "Land Information",
+                "Law and Security",
+                "Population",
+                "Recreation and Culture",
+                "Sports",
+                "Technology",
+                "Transportation",
+                "Utilities"
+              ]
+            }
+          },
+          {
+            "name": "theme",
+            "in": "query",
+            "description": "Filter datasets by Framework Spatial Data Theme",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Address",
+                "Building",
+                "Coordinate Reference System",
+                "Elevation and Depth",
+                "Functional Area",
+                "Geographic Name",
+                "Land Parcel",
+                "Orthoimagery",
+                "Population Distribution",
+                "Slope and Geology",
+                "Transportation",
+                "Water"
+              ]
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort datasets by specified criteria",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "new",
+                "most_viewed",
+                "most_downloaded",
+                "most_popular_api"
+              ],
+              "default": "new"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search query for datasets",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "minimum": 1,
+              "maximum": 1000
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Number of results to skip for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of datasets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer",
+                      "description": "Total number of datasets available"
+                    },
+                    "count": {
+                      "type": "integer",
+                      "description": "Number of datasets returned in this response"
+                    },
+                    "offset": {
+                      "type": "integer",
+                      "description": "Current offset for pagination"
+                    },
+                    "datasets": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Dataset"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/datasets/{datasetId}": {
+      "get": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Get dataset details",
+        "description": "Retrieve detailed information about a specific dataset by its ID",
+        "operationId": "getDatasetById",
+        "parameters": [
+          {
+            "name": "datasetId",
+            "in": "path",
+            "description": "Unique identifier of the dataset",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with dataset details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dataset"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/datasets/{datasetId}/download": {
+      "get": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Download dataset",
+        "description": "Download the specified dataset in available formats",
+        "operationId": "downloadDataset",
+        "parameters": [
+          {
+            "name": "datasetId",
+            "in": "path",
+            "description": "Unique identifier of the dataset",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Desired format for the dataset download",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "geojson",
+                "shapefile",
+                "kml",
+                "csv",
+                "gml"
+              ],
+              "default": "json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful dataset download",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/geo+json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/zip": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dataset not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/map/wms": {
+      "get": {
+        "tags": [
+          "OGC Services",
+          "Map APIs"
+        ],
+        "summary": "OGC WMS endpoint",
+        "description": "Web Map Service (WMS) endpoint for retrieving map images based on OGC WMS standard",
+        "operationId": "getWMSMap",
+        "parameters": [
+          {
+            "name": "SERVICE",
+            "in": "query",
+            "description": "Service type (WMS)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "WMS"
+              ],
+              "default": "WMS"
+            }
+          },
+          {
+            "name": "VERSION",
+            "in": "query",
+            "description": "WMS version",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1.1.0",
+                "1.3.0"
+              ],
+              "default": "1.3.0"
+            }
+          },
+          {
+            "name": "REQUEST",
+            "in": "query",
+            "description": "Type of WMS request",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "GetCapabilities",
+                "GetMap",
+                "GetFeatureInfo"
+              ]
+            }
+          },
+          {
+            "name": "LAYERS",
+            "in": "query",
+            "description": "Comma-separated list of layer names",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "BBOX",
+            "in": "query",
+            "description": "Bounding box for map extent",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "WIDTH",
+            "in": "query",
+            "description": "Width of the output map in pixels",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "HEIGHT",
+            "in": "query",
+            "description": "Height of the output map in pixels",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "FORMAT",
+            "in": "query",
+            "description": "Output format for the map",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "image/png",
+                "image/jpeg",
+                "image/gif"
+              ]
+            }
+          },
+          {
+            "name": "CRS",
+            "in": "query",
+            "description": "Coordinate Reference System",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "EPSG:4326"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful WMS response",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/map/wfs": {
+      "get": {
+        "tags": [
+          "OGC Services",
+          "Dataset APIs"
+        ],
+        "summary": "OGC WFS endpoint",
+        "description": "Web Feature Service (WFS) endpoint for retrieving geospatial features based on OGC WFS standard",
+        "operationId": "getWFSFeatures",
+        "parameters": [
+          {
+            "name": "SERVICE",
+            "in": "query",
+            "description": "Service type (WFS)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "WFS"
+              ],
+              "default": "WFS"
+            }
+          },
+          {
+            "name": "VERSION",
+            "in": "query",
+            "description": "WFS version",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "1.0.0",
+                "1.1.0",
+                "2.0.0"
+              ],
+              "default": "2.0.0"
+            }
+          },
+          {
+            "name": "REQUEST",
+            "in": "query",
+            "description": "Type of WFS request",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "GetCapabilities",
+                "GetFeature",
+                "DescribeFeatureType"
+              ]
+            }
+          },
+          {
+            "name": "TYPENAME",
+            "in": "query",
+            "description": "Feature type name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "OUTPUTFORMAT",
+            "in": "query",
+            "description": "Output format for features",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json",
+                "text/xml",
+                "gml3"
+              ],
+              "default": "application/json"
+            }
+          },
+          {
+            "name": "COUNT",
+            "in": "query",
+            "description": "Maximum number of features to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "BBOX",
+            "in": "query",
+            "description": "Bounding box filter",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SRSNAME",
+            "in": "query",
+            "description": "Spatial Reference System name",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "EPSG:4326"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful WFS response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/statistics": {
+      "get": {
+        "tags": [
+          "Datasets"
+        ],
+        "summary": "Get CSDI Portal statistics",
+        "description": "Retrieve statistics about the CSDI Portal including number of datasets, downloads, and API service calls",
+        "operationId": "getStatistics",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Year for statistics",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 2025
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "year": {
+                      "type": "integer",
+                      "example": 2025
+                    },
+                    "totalDatasets": {
+                      "type": "integer",
+                      "description": "Total number of datasets available",
+                      "example": 1100
+                    },
+                    "datasetDownloads": {
+                      "type": "number",
+                      "description": "Total dataset downloads in the specified year",
+                      "example": 2050000
+                    },
+                    "apiServiceCalls": {
+                      "type": "number",
+                      "description": "Total API service calls in the specified year",
+                      "example": 9500000000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Dataset": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the dataset"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the dataset"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the dataset"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of the dataset",
+            "enum": [
+              "Climate and Weather",
+              "Commerce and Industry",
+              "Development",
+              "Education",
+              "Election",
+              "Environment",
+              "Geography",
+              "Health",
+              "Housing",
+              "Labour, Community and Social Welfare",
+              "Land Information",
+              "Law and Security",
+              "Population",
+              "Recreation and Culture",
+              "Sports",
+              "Technology",
+              "Transportation",
+              "Utilities"
+            ]
+          },
+          "theme": {
+            "type": "string",
+            "description": "Framework Spatial Data Theme",
+            "enum": [
+              "Address",
+              "Building",
+              "Coordinate Reference System",
+              "Elevation and Depth",
+              "Functional Area",
+              "Geographic Name",
+              "Land Parcel",
+              "Orthoimagery",
+              "Population Distribution",
+              "Slope and Geology",
+              "Transportation",
+              "Water"
+            ]
+          },
+          "provider": {
+            "type": "string",
+            "description": "Data provider organization"
+          },
+          "publishedDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date when the dataset was published"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date when the dataset was last updated"
+          },
+          "viewCount": {
+            "type": "integer",
+            "description": "Number of times the dataset has been viewed"
+          },
+          "downloadCount": {
+            "type": "integer",
+            "description": "Number of times the dataset has been downloaded"
+          },
+          "apiCallCount": {
+            "type": "integer",
+            "description": "Number of API calls made for this dataset"
+          },
+          "formats": {
+            "type": "array",
+            "description": "Available formats for the dataset",
+            "items": {
+              "type": "string",
+              "enum": [
+                "json",
+                "geojson",
+                "shapefile",
+                "kml",
+                "csv",
+                "gml",
+                "wms",
+                "wfs",
+                "rest"
+              ]
+            }
+          },
+          "spatialExtent": {
+            "type": "object",
+            "description": "Spatial extent of the dataset",
+            "properties": {
+              "bbox": {
+                "type": "array",
+                "description": "Bounding box coordinates [minLon, minLat, maxLon, maxLat]",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 4,
+                "maxItems": 4
+              },
+              "crs": {
+                "type": "string",
+                "description": "Coordinate Reference System",
+                "default": "EPSG:4326"
+              }
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "description": "Keywords associated with the dataset",
+            "items": {
+              "type": "string"
+            }
+          },
+          "license": {
+            "type": "string",
+            "description": "License information for the dataset"
+          },
+          "apiEndpoints": {
+            "type": "object",
+            "description": "Available API endpoints for this dataset",
+            "properties": {
+              "wms": {
+                "type": "string",
+                "format": "uri",
+                "description": "WMS endpoint URL"
+              },
+              "wfs": {
+                "type": "string",
+                "format": "uri",
+                "description": "WFS endpoint URL"
+              },
+              "rest": {
+                "type": "string",
+                "format": "uri",
+                "description": "ArcGIS REST API endpoint URL"
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "description"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error type or code"
+          },
+          "message": {
+            "type": "string",
+            "description": "Detailed error message"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when the error occurred"
+          }
+        },
+        "required": [
+          "error",
+          "message"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "API key for authentication (if required)"
+      }
+    }
+  }
+}

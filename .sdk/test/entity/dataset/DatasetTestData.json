@@ -1,0 +1,97 @@
+{
+  "existing": {
+    "dataset": {
+      "DATASET00": {
+        "api_call_count": "sc8",
+        "api_endpoint": {},
+        "api_service_call": 202,
+        "category": "scb",
+        "dataset_download": 204,
+        "description": "scd",
+        "download_count": "sce",
+        "format": [],
+        "id": "DATASET00",
+        "keyword": [],
+        "last_updated": "sd2",
+        "licenses": "sd3",
+        "provider": "sd4",
+        "published_date": "sd5",
+        "spatial_extent": {},
+        "theme": "sd7",
+        "title": "sd8",
+        "total_dataset": "sd9",
+        "view_count": "sda",
+        "year": "sdb"
+      },
+      "DATASET01": {
+        "api_call_count": "s190",
+        "api_endpoint": {},
+        "api_service_call": 402,
+        "category": "s193",
+        "dataset_download": 404,
+        "description": "s195",
+        "download_count": "s196",
+        "format": [],
+        "id": "DATASET01",
+        "keyword": [],
+        "last_updated": "s19a",
+        "licenses": "s19b",
+        "provider": "s19c",
+        "published_date": "s19d",
+        "spatial_extent": {},
+        "theme": "s19f",
+        "title": "s1a0",
+        "total_dataset": "s1a1",
+        "view_count": "s1a2",
+        "year": "s1a3"
+      },
+      "DATASET02": {
+        "api_call_count": "s258",
+        "api_endpoint": {},
+        "api_service_call": 602,
+        "category": "s25b",
+        "dataset_download": 604,
+        "description": "s25d",
+        "download_count": "s25e",
+        "format": [],
+        "id": "DATASET02",
+        "keyword": [],
+        "last_updated": "s262",
+        "licenses": "s263",
+        "provider": "s264",
+        "published_date": "s265",
+        "spatial_extent": {},
+        "theme": "s267",
+        "title": "s268",
+        "total_dataset": "s269",
+        "view_count": "s26a",
+        "year": "s26b"
+      }
+    }
+  },
+  "new": {
+    "dataset": {
+      "dataset_ref01": {
+        "api_call_count": "s320",
+        "api_endpoint": {},
+        "api_service_call": 802,
+        "category": "s323",
+        "dataset_download": 804,
+        "description": "s325",
+        "download_count": "s326",
+        "format": [],
+        "keyword": [],
+        "last_updated": "s32a",
+        "licenses": "s32b",
+        "provider": "s32c",
+        "published_date": "s32d",
+        "spatial_extent": {},
+        "theme": "s32f",
+        "title": "s330",
+        "total_dataset": "s331",
+        "view_count": "s332",
+        "year": "s333"
+      }
+    }
+  }
+}

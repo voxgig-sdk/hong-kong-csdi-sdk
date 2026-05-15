@@ -1,0 +1,35 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 6
+  metrics: count: method: 6
+
+  entity: dataset: {
+    path: "/datasets": {
+      op: list: method: *GET
+    }
+    path: "/datasets/{datasetId}": {
+      rename: param: "datasetId": *"id"
+      op: load: method: *GET
+    }
+    path: "/datasets/{datasetId}/download": {
+      action: "download": {}
+      rename: param: "datasetId": *"id"
+      op: load: method: *GET
+    }
+    path: "/statistics": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: ogc_service: {
+    path: "/map/wfs": {
+      op: load: method: *GET
+    }
+    path: "/map/wms": {
+      op: load: method: *GET
+    }
+  }
+
+}

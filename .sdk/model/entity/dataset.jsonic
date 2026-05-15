@@ -1,0 +1,308 @@
+# Entity: dataset
+
+main: kit: entity: dataset: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "api_call_count"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "api_endpoint"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "api_service_call"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "category"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "dataset_download"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "description"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "download_count"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "format"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "id"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "keyword"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "last_updated"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "licenses"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "provider"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "published_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "spatial_extent"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "theme"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "title"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "total_dataset"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "view_count"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "year"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "dataset"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "category"
+                orig: "category"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 50
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "search"
+                orig: "search"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "new"
+                kind: "query"
+                name: "sort_by"
+                orig: "sort_by"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "theme"
+                orig: "theme"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/datasets"
+          parts: [
+            "datasets"
+          ]
+          select: {
+            exist: [
+              "category"
+              "limit"
+              "offset"
+              "search"
+              "sort_by"
+              "theme"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "dataset_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: "json"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/datasets/{datasetId}/download"
+          parts: [
+            "datasets"
+            "{id}"
+            "download"
+          ]
+          rename: {
+            param: {
+              datasetId: "id"
+            }
+          }
+          select: {
+            "$action": "download"
+            exist: [
+              "format"
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "dataset_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/datasets/{datasetId}"
+          parts: [
+            "datasets"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              datasetId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: 2025
+                kind: "query"
+                name: "year"
+                orig: "year"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/statistics"
+          parts: [
+            "statistics"
+          ]
+          select: {
+            exist: [
+              "year"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
