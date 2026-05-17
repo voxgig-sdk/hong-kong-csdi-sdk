@@ -231,7 +231,7 @@ On error, `ok` is `false` and `err` contains the error value.
 | `id` |  |
 | `keyword` |  |
 | `last_updated` |  |
-| `licenses` |  |
+| `license` |  |
 | `provider` |  |
 | `published_date` |  |
 | `spatial_extent` |  |
@@ -285,7 +285,7 @@ Create an instance: `const dataset = client.Dataset()`
 | `id` | ``$STRING`` |  |
 | `keyword` | ``$ARRAY`` |  |
 | `last_updated` | ``$STRING`` |  |
-| `licenses` | ``$STRING`` |  |
+| `license` | ``$STRING`` |  |
 | `provider` | ``$STRING`` |  |
 | `published_date` | ``$STRING`` |  |
 | `spatial_extent` | ``$OBJECT`` |  |

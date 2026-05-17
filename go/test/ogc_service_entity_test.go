@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/hong-kong-csdi-sdk"
-	"github.com/voxgig-sdk/hong-kong-csdi-sdk/core"
+	sdk "github.com/voxgig-sdk/hong-kong-csdi-sdk/go"
+	"github.com/voxgig-sdk/hong-kong-csdi-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/hong-kong-csdi-sdk/go/utility/struct"
 )
 
 func TestOgcServiceEntity(t *testing.T) {

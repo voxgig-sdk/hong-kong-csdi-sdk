@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/hong-kong-csdi-sdk/core"
+import "github.com/voxgig-sdk/hong-kong-csdi-sdk/go/core"
 
 func featureAddUtil(ctx *core.Context, f core.Feature) {
 	client := ctx.Client

@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/hong-kong-csdi-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/hong-kong-csdi-sdk/core"
+	"github.com/voxgig-sdk/hong-kong-csdi-sdk/go/core"
 )
 
 func prepareQueryUtil(ctx *core.Context) map[string]any {

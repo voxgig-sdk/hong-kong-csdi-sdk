@@ -61,7 +61,7 @@ main: kit: entity: dataset: {
       type: "`$STRING`"
     }
     {
-      name: "licenses"
+      name: "license"
       req: false
       type: "`$STRING`"
     }

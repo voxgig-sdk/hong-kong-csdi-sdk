@@ -106,7 +106,7 @@ local function make_config()
             ["index$"] = 10,
           },
           {
-            ["name"] = "licenses",
+            ["name"] = "license",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["active"] = true,

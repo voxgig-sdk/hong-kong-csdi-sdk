@@ -107,7 +107,7 @@ def make_config():
             "index$": 10,
           },
           {
-            "name": "licenses",
+            "name": "license",
             "req": False,
             "type": "`$STRING`",
             "active": True,

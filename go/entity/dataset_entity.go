@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/hong-kong-csdi-sdk/core"
+	"github.com/voxgig-sdk/hong-kong-csdi-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/hong-kong-csdi-sdk/go/utility/struct"
 )
 
 type DatasetEntity struct {

@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/hong-kong-csdi-sdk/core"
+import "github.com/voxgig-sdk/hong-kong-csdi-sdk/go/core"
 
 func makeRequestUtil(ctx *core.Context) (*core.Response, error) {
 	if ctx.Out["request"] != nil {

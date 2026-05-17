@@ -106,7 +106,7 @@ func MakeConfig() map[string]any {
 						"index$": 10,
 					},
 					map[string]any{
-						"name": "licenses",
+						"name": "license",
 						"req": false,
 						"type": "`$STRING`",
 						"active": true,

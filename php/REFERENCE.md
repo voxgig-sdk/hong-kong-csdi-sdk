@@ -104,7 +104,7 @@ $dataset = $client->Dataset();
 | `id` | ``$STRING`` | Yes |  |
 | `keyword` | ``$ARRAY`` | No |  |
 | `last_updated` | ``$STRING`` | No |  |
-| `licenses` | ``$STRING`` | No |  |
+| `license` | ``$STRING`` | No |  |
 | `provider` | ``$STRING`` | No |  |
 | `published_date` | ``$STRING`` | No |  |
 | `spatial_extent` | ``$OBJECT`` | No |  |

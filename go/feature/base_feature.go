@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/hong-kong-csdi-sdk/core"
+	"github.com/voxgig-sdk/hong-kong-csdi-sdk/go/core"
 )
 
 type BaseFeature struct {

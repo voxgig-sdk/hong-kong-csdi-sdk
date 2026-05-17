@@ -101,7 +101,7 @@
               "active": true
             },
             {
-              "name": "licenses",
+              "name": "license",
               "req": false,
               "type": "`$STRING`",
               "active": true
@@ -674,6 +674,9 @@
             },
             "rb": {
               "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
             }
           }
         }
@@ -757,6 +760,33 @@
         }
       },
       "target": {
+        "go-cli": {
+          "title": "Go CLI",
+          "ext": "go",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "hong-kong-csdi"
+          },
+          "phase": {
+            "entity": {
+              "active": false
+            },
+            "feature": {
+              "active": false
+            },
+            "readme": {
+              "active": false
+            },
+            "test": {
+              "active": false
+            }
+          },
+          "deps": {},
+          "name": "go-cli",
+          "active": true
+        },
         "ts": {
           "title": "TypeScript",
           "ext": "ts",
@@ -797,14 +827,7 @@
             "name": "hong-kong-csdi"
           },
           "srcfeature": false,
-          "deps": {
-            "github.com/voxgig/struct": {
-              "active": true,
-              "version": "v0.0.0",
-              "replace": "./utility/struct",
-              "kind": "prod"
-            }
-          },
+          "deps": {},
           "name": "go",
           "active": true
         },
@@ -892,15 +915,6 @@
     },
     "def": {
       "desc": ""
-    },
-    "api": {
-      "guide": {},
-      "entity": {}
     }
-  },
-  "name__orig": "hong-kong-csdi",
-  "Name": "HongKongCsdi",
-  "name_": "hong_kong_csdi",
-  "name-": "hong-kong-csdi",
-  "NAME": "HONG-KONG-CSDI"
+  }
 }
