@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { HongKongCsdiSDK } from 'hong-kong-csdi'
 
-const client = new HongKongCsdiSDK({
-  apikey: process.env.HONG-KONG-CSDI_APIKEY,
-})
+const client = new HongKongCsdiSDK({})
 ```
 
 ### 2. List datasets
@@ -94,7 +92,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new HongKongCsdiSDK({ apikey: '...' })
+const client = new HongKongCsdiSDK()
 const testClient = client.tester()
 ```
 
@@ -130,7 +128,6 @@ const logger = {
 }
 
 const client = new HongKongCsdiSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -141,7 +138,6 @@ Create a `.env.local` file at the project root:
 
 ```
 HONG-KONG-CSDI_TEST_LIVE=TRUE
-HONG-KONG-CSDI_APIKEY=<your-key>
 ```
 
 Then run:
@@ -159,7 +155,6 @@ cd ts && npm test
 
 ```ts
 new HongKongCsdiSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -170,7 +165,6 @@ new HongKongCsdiSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

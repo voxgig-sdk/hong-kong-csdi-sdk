@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'HONG_KONG_CSDI_TEST_OGC_SERVICE_ENTID': idmap,
     'HONG_KONG_CSDI_TEST_LIVE': 'FALSE',
     'HONG_KONG_CSDI_TEST_EXPLAIN': 'FALSE',
-    'HONG_KONG_CSDI_APIKEY': 'NONE',
   })
 
   idmap = env['HONG_KONG_CSDI_TEST_OGC_SERVICE_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new HongKongCsdiSDK(merge([
       {
-        apikey: env.HONG_KONG_CSDI_APIKEY,
       },
       extra
     ]))

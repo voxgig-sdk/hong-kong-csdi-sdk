@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://portal.csdi.gov.hk/api",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },

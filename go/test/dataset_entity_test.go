@@ -135,7 +135,6 @@ func datasetBasicSetup(extra map[string]any) *entityTestSetup {
 		"HONGKONGCSDI_TEST_DATASET_ENTID": idmap,
 		"HONGKONGCSDI_TEST_LIVE":      "FALSE",
 		"HONGKONGCSDI_TEST_EXPLAIN":   "FALSE",
-		"HONGKONGCSDI_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["HONGKONGCSDI_TEST_DATASET_ENTID"])
@@ -146,7 +145,6 @@ func datasetBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["HONGKONGCSDI_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["HONGKONGCSDI_APIKEY"],
 			},
 			extra,
 		})

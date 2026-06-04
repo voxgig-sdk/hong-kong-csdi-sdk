@@ -1,9 +1,99 @@
 # HongKongCsdi SDK
 
+Hong Kong's spatial data hub: 1,100+ government datasets via OGC WFS, WMS and ArcGIS REST
 
+> TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-Available for [Golang](go/) and [Go CLI](go-cli/) and [Go MCP server](go-mcp/) and [Lua](lua/) and [PHP](php/) and [Python](py/) and [Ruby](rb/) and [TypeScript](ts/).
+## About Hong Kong CSDI API
 
+The [Common Spatial Data Infrastructure (CSDI) Portal](https://portal.csdi.gov.hk/) is Hong Kong's government-run geospatial data hub, aggregating more than 1,100 datasets contributed by departments across the HKSAR Government. It is designed to make geographic information from across the public sector discoverable and reusable through standard web protocols.
+
+What you can pull from the portal:
+
+- Datasets organised into 12 framework spatial data themes (Address, Building, Elevation, Transportation, Water, and others) and 17 thematic categories (Climate, Commerce, Development, Education, Environment, Health, Housing, Population, ...).
+- Vector and raster services exposed as **OGC WFS**, **OGC WMS**, and **ArcGIS REST** endpoints, so the same data can be consumed by any standards-compliant GIS client.
+- An **OGC Catalogue Service** for metadata discovery and a Dataset API Explorer for interactive queries.
+- Companion tools including GeoAddress Finder, GeoSpatialiser, GeoVisualiser, a Geo-tagging Tool, and Open3Dhk (3D mapping).
+
+The portal reports 9.5B+ API service calls and 2.05M+ dataset downloads in 2025, so the underlying services are intended for sustained machine access. Authentication and rate-limit policies vary per dataset and are not centrally documented on the portal landing page — check the metadata for each dataset before building against it.
+
+## Try it
+
+**TypeScript**
+```bash
+npm install hong-kong-csdi
+```
+
+**Python**
+```bash
+pip install hong-kong-csdi-sdk
+```
+
+**PHP**
+```bash
+composer require voxgig/hong-kong-csdi-sdk
+```
+
+**Golang**
+```bash
+go get github.com/voxgig-sdk/hong-kong-csdi-sdk/go
+```
+
+**Ruby**
+```bash
+gem install hong-kong-csdi-sdk
+```
+
+**Lua**
+```bash
+luarocks install hong-kong-csdi-sdk
+```
+
+## 30-second quickstart
+
+### TypeScript
+
+```ts
+import { HongKongCsdiSDK } from 'hong-kong-csdi'
+
+const client = new HongKongCsdiSDK({})
+
+// List all datasets
+const datasets = await client.Dataset().list()
+```
+
+See the [TypeScript README](ts/README.md) for the
+full guide, or scroll down for the same example in other languages.
+
+## What's in the box
+
+| Surface | Use it for | Path |
+| --- | --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
+| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+
+## Use it from an AI agent (MCP)
+
+The generated MCP server exposes every operation in this SDK as an
+[MCP](https://modelcontextprotocol.io) tool that Claude, Cursor or Cline
+can call directly. Build and register it:
+
+```bash
+cd go-mcp && go build -o hong-kong-csdi-mcp .
+```
+
+Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
+
+```json
+{
+  "mcpServers": {
+    "hong-kong-csdi": {
+      "command": "/abs/path/to/hong-kong-csdi-mcp"
+    }
+  }
+}
+```
 
 ## Entities
 
@@ -11,111 +101,20 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Dataset** |  | `/datasets` |
-| **OgcService** |  | `/map/wms` |
+| **Dataset** | An individual spatial dataset published through CSDI — for example an address layer, building footprint, transport network, or environmental measurement — discoverable via the portal's catalogue and downloadable in standard GIS formats. | `/datasets` |
+| **OgcService** | A live OGC-compliant web service (WFS for features, WMS for map tiles) or ArcGIS REST endpoint that streams a CSDI dataset directly into GIS tools and web maps. | `/map/wms` |
 
-Each entity supports the following operations where available: **load**, **list**, **create**,
-**update**, and **remove**.
+Each entity supports the following operations where available: **load**,
+**list**, **create**, **update**, and **remove**.
 
-
-## Architecture
-
-### Entity-operation model
-
-Every SDK call follows the same pipeline:
-
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
-
-At each stage a feature hook fires (e.g. `PrePoint`, `PreSpec`,
-`PreRequest`), allowing features to inspect or modify the pipeline.
-
-### Features
-
-Features are hook-based middleware that extend SDK behaviour.
-
-| Feature | Purpose |
-| --- | --- |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-
-You can add custom features by passing them in the `extend` option at
-construction time.
-
-### Direct and Prepare
-
-For endpoints not covered by the entity model, use the low-level methods:
-
-- **`direct(fetchargs)`** — build and send an HTTP request in one step.
-- **`prepare(fetchargs)`** — build the request without sending it.
-
-Both accept a map with `path`, `method`, `params`, `query`, `headers`,
-and `body`.
-
-
-## Quick start
-
-### Golang
-
-```go
-import sdk "github.com/voxgig-sdk/hong-kong-csdi-sdk/go"
-
-client := sdk.NewHongKongCsdiSDK(map[string]any{
-    "apikey": os.Getenv("HONG-KONG-CSDI_APIKEY"),
-})
-
-// List all datasets
-datasets, err := client.Dataset(nil).List(nil, nil)
-```
-
-### Lua
-
-```lua
-local sdk = require("hong-kong-csdi_sdk")
-
-local client = sdk.new({
-  apikey = os.getenv("HONG-KONG-CSDI_APIKEY"),
-})
-
--- List all datasets
-local datasets, err = client:Dataset(nil):list(nil, nil)
-
--- Load a specific dataset
-local dataset, err = client:Dataset(nil):load(
-  { id = "example_id" }, nil
-)
-```
-
-### PHP
-
-```php
-<?php
-require_once 'hongkongcsdi_sdk.php';
-
-$client = new HongKongCsdiSDK([
-    "apikey" => getenv("HONG-KONG-CSDI_APIKEY"),
-]);
-
-// List all datasets
-[$datasets, $err] = $client->Dataset(null)->list(null, null);
-
-// Load a specific dataset
-[$dataset, $err] = $client->Dataset(null)->load(
-    ["id" => "example_id"], null
-);
-```
+## Quickstart in other languages
 
 ### Python
 
 ```python
-import os
 from hongkongcsdi_sdk import HongKongCsdiSDK
 
-client = HongKongCsdiSDK({
-    "apikey": os.environ.get("HONG-KONG-CSDI_APIKEY"),
-})
+client = HongKongCsdiSDK({})
 
 # List all datasets
 datasets, err = client.Dataset(None).list(None, None)
@@ -126,14 +125,40 @@ dataset, err = client.Dataset(None).load(
 )
 ```
 
+### PHP
+
+```php
+<?php
+require_once 'hongkongcsdi_sdk.php';
+
+$client = new HongKongCsdiSDK([]);
+
+// List all datasets
+[$datasets, $err] = $client->Dataset(null)->list(null, null);
+
+// Load a specific dataset
+[$dataset, $err] = $client->Dataset(null)->load(
+    ["id" => "example_id"], null
+);
+```
+
+### Golang
+
+```go
+import sdk "github.com/voxgig-sdk/hong-kong-csdi-sdk/go"
+
+client := sdk.NewHongKongCsdiSDK(map[string]any{})
+
+// List all datasets
+datasets, err := client.Dataset(nil).List(nil, nil)
+```
+
 ### Ruby
 
 ```ruby
 require_relative "HongKongCsdi_sdk"
 
-client = HongKongCsdiSDK.new({
-  "apikey" => ENV["HONG-KONG-CSDI_APIKEY"],
-})
+client = HongKongCsdiSDK.new({})
 
 # List all datasets
 datasets, err = client.Dataset(nil).list(nil, nil)
@@ -144,40 +169,41 @@ dataset, err = client.Dataset(nil).load(
 )
 ```
 
-### TypeScript
-
-```ts
-import { HongKongCsdiSDK } from 'hong-kong-csdi'
-
-const client = new HongKongCsdiSDK({
-  apikey: process.env.HONG-KONG-CSDI_APIKEY,
-})
-
-// List all datasets
-const datasets = await client.Dataset().list()
-```
-
-
-## Testing
-
-Both SDKs provide a test mode that replaces the HTTP transport with an
-in-memory mock, so tests run without a network connection.
-
-### Golang
-
-```go
-client := sdk.TestSDK(nil, nil)
-result, err := client.Dataset(nil).Load(
-    map[string]any{"id": "test01"}, nil,
-)
-```
-
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Dataset(nil):load(
-  { id = "test01" }, nil
+local sdk = require("hong-kong-csdi_sdk")
+
+local client = sdk.new({})
+
+-- List all datasets
+local datasets, err = client:Dataset(nil):list(nil, nil)
+
+-- Load a specific dataset
+local dataset, err = client:Dataset(nil):load(
+  { id = "example_id" }, nil
+)
+```
+
+## Unit testing in offline mode
+
+Every SDK ships a test mode that swaps the HTTP transport for an
+in-memory mock, so unit tests run offline.
+
+### TypeScript
+
+```ts
+const client = HongKongCsdiSDK.test()
+const result = await client.Dataset().load({ id: 'test01' })
+// result.ok === true, result.data contains mock data
+```
+
+### Python
+
+```python
+client = HongKongCsdiSDK.test(None, None)
+result, err = client.Dataset(None).load(
+    {"id": "test01"}, None
 )
 ```
 
@@ -190,12 +216,12 @@ $client = HongKongCsdiSDK::test(null, null);
 );
 ```
 
-### Python
+### Golang
 
-```python
-client = HongKongCsdiSDK.test(None, None)
-result, err = client.Dataset(None).load(
-    {"id": "test01"}, None
+```go
+client := sdk.TestSDK(nil, nil)
+result, err := client.Dataset(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -208,14 +234,46 @@ result, err = client.Dataset(nil).load(
 )
 ```
 
-### TypeScript
+### Lua
 
-```ts
-const client = HongKongCsdiSDK.test()
-const result = await client.Dataset().load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+```lua
+local client = sdk.test(nil, nil)
+local result, err = client:Dataset(nil):load(
+  { id = "test01" }, nil
+)
 ```
 
+## How it works
+
+Every SDK call runs the same five-stage pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), so features can inspect or modify the pipeline without
+forking the SDK.
+
+### Features
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+Pass custom features via the `extend` option at construction time.
+
+### Direct and Prepare
+
+For endpoints the entity model doesn't cover, use the low-level methods:
+
+- **`direct(fetchargs)`** — build and send an HTTP request in one step.
+- **`prepare(fetchargs)`** — build the request without sending it.
+
+Both accept a map with `path`, `method`, `params`, `query`,
+`headers`, and `body`. See the [How-to guides](#how-to-guides) below.
 
 ## How-to guides
 
@@ -223,21 +281,22 @@ const result = await client.Dataset().load({ id: 'test01' })
 
 When the entity interface does not cover an endpoint, use `direct`:
 
-**Go:**
-```go
-result, err := client.Direct(map[string]any{
-    "path":   "/api/resource/{id}",
-    "method": "GET",
-    "params": map[string]any{"id": "example"},
+**TypeScript:**
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example' },
 })
+console.log(result.data)
 ```
 
-**Lua:**
-```lua
-local result, err = client:direct({
-  path = "/api/resource/{id}",
-  method = "GET",
-  params = { id = "example" },
+**Python:**
+```python
+result, err = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example"},
 })
 ```
 
@@ -250,12 +309,12 @@ local result, err = client:direct({
 ]);
 ```
 
-**Python:**
-```python
-result, err = client.direct({
-    "path": "/api/resource/{id}",
+**Go:**
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
     "method": "GET",
-    "params": {"id": "example"},
+    "params": map[string]any{"id": "example"},
 })
 ```
 
@@ -268,25 +327,28 @@ result, err = client.direct({
 })
 ```
 
-**TypeScript:**
-```ts
-const result = await client.direct({
-  path: '/api/resource/{id}',
-  method: 'GET',
-  params: { id: 'example' },
+**Lua:**
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example" },
 })
-console.log(result.data)
 ```
 
+## Per-language documentation
 
-## Language-specific documentation
+- [TypeScript](ts/README.md)
+- [Python](py/README.md)
+- [PHP](php/README.md)
+- [Golang](go/README.md)
+- [Ruby](rb/README.md)
+- [Lua](lua/README.md)
 
-- [Golang SDK](go/README.md)
-- [Go CLI SDK](go-cli/README.md)
-- [Go MCP server SDK](go-mcp/README.md)
-- [Lua SDK](lua/README.md)
-- [PHP SDK](php/README.md)
-- [Python SDK](py/README.md)
-- [Ruby SDK](rb/README.md)
-- [TypeScript SDK](ts/README.md)
+## Using the Hong Kong CSDI API
 
+- Upstream: [https://portal.csdi.gov.hk/](https://portal.csdi.gov.hk/)
+
+---
+
+Generated from the Hong Kong CSDI API OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).

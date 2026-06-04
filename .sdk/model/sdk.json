@@ -18,7 +18,16 @@
         ],
         "termsOfService": "https://portal.csdi.gov.hk/csdi-webpage/",
         "title": "Hong Kong CSDI API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Hong Kong's spatial data hub: 1,100+ government datasets via OGC WFS, WMS and ArcGIS REST",
+        "homepage": "https://portal.csdi.gov.hk/",
+        "docs_url": "https://portal.csdi.gov.hk/",
+        "about_md": "The [Common Spatial Data Infrastructure (CSDI) Portal](https://portal.csdi.gov.hk/) is Hong Kong's government-run geospatial data hub, aggregating more than 1,100 datasets contributed by departments across the HKSAR Government. It is designed to make geographic information from across the public sector discoverable and reusable through standard web protocols.\n\nWhat you can pull from the portal:\n\n- Datasets organised into 12 framework spatial data themes (Address, Building, Elevation, Transportation, Water, and others) and 17 thematic categories (Climate, Commerce, Development, Education, Environment, Health, Housing, Population, ...).\n- Vector and raster services exposed as **OGC WFS**, **OGC WMS**, and **ArcGIS REST** endpoints, so the same data can be consumed by any standards-compliant GIS client.\n- An **OGC Catalogue Service** for metadata discovery and a Dataset API Explorer for interactive queries.\n- Companion tools including GeoAddress Finder, GeoSpatialiser, GeoVisualiser, a Geo-tagging Tool, and Open3Dhk (3D mapping).\n\nThe portal reports 9.5B+ API service calls and 2.05M+ dataset downloads in 2025, so the underlying services are intended for sustained machine access. Authentication and rate-limit policies vary per dataset and are not centrally documented on the portal landing page — check the metadata for each dataset before building against it.",
+        "entity_desc": {
+          "dataset": "An individual spatial dataset published through CSDI — for example an address layer, building footprint, transport network, or environmental measurement — discoverable via the portal's catalogue and downloadable in standard GIS formats.",
+          "ogc_service": "A live OGC-compliant web service (WFS for features, WMS for map tiles) or ArcGIS REST endpoint that streams a CSDI dataset directly into GIS tools and web maps."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -26,7 +35,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "dataset": {
