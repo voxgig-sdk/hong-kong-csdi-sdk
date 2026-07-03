@@ -85,6 +85,7 @@ function ogc_service_basic_setup($extra)
         "HONGKONGCSDI_TEST_OGC_SERVICE_ENTID" => $idmap,
         "HONGKONGCSDI_TEST_LIVE" => "FALSE",
         "HONGKONGCSDI_TEST_EXPLAIN" => "FALSE",
+        "HONGKONGCSDI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function ogc_service_basic_setup($extra)
     if ($env["HONGKONGCSDI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["HONGKONGCSDI_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -93,6 +93,7 @@ def dataset_basic_setup(extra)
     "HONGKONGCSDI_TEST_DATASET_ENTID" => idmap,
     "HONGKONGCSDI_TEST_LIVE" => "FALSE",
     "HONGKONGCSDI_TEST_EXPLAIN" => "FALSE",
+    "HONGKONGCSDI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -104,6 +105,7 @@ def dataset_basic_setup(extra)
   if env["HONGKONGCSDI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["HONGKONGCSDI_APIKEY"],
       },
       extra || {},
     ])

@@ -136,12 +136,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'HONGKONGCSDI_TEST_DATASET_ENTID': {},
     'HONGKONGCSDI_TEST_LIVE': 'FALSE',
+    'HONGKONGCSDI_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.HONGKONGCSDI_TEST_LIVE
 
   if (live) {
     const client = new HongKongCsdiSDK({
+      apikey: env.HONGKONGCSDI_APIKEY,
     })
 
     let idmap: any = env['HONGKONGCSDI_TEST_DATASET_ENTID']

@@ -194,12 +194,14 @@ func datasetDirectSetup(mockres any) *datasetDirectSetupResult {
 	env := envOverride(map[string]any{
 		"HONGKONGCSDI_TEST_DATASET_ENTID": map[string]any{},
 		"HONGKONGCSDI_TEST_LIVE":    "FALSE",
+		"HONGKONGCSDI_APIKEY":       "NONE",
 	})
 
 	live := env["HONGKONGCSDI_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["HONGKONGCSDI_APIKEY"],
 		}
 		client := sdk.NewHongKongCsdiSDK(mergedOpts)
 

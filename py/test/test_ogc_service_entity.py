@@ -91,6 +91,7 @@ def _ogc_service_basic_setup(extra):
         "HONGKONGCSDI_TEST_OGC_SERVICE_ENTID": idmap,
         "HONGKONGCSDI_TEST_LIVE": "FALSE",
         "HONGKONGCSDI_TEST_EXPLAIN": "FALSE",
+        "HONGKONGCSDI_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _ogc_service_basic_setup(extra):
     if env.get("HONGKONGCSDI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("HONGKONGCSDI_APIKEY"),
             },
             extra or {},
         ])

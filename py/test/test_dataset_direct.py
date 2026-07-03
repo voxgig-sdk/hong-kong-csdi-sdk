@@ -109,12 +109,14 @@ def _dataset_direct_setup(mockres):
     env = runner.env_override({
         "HONGKONGCSDI_TEST_DATASET_ENTID": {},
         "HONGKONGCSDI_TEST_LIVE": "FALSE",
+        "HONGKONGCSDI_APIKEY": "NONE",
     })
 
     live = env.get("HONGKONGCSDI_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("HONGKONGCSDI_APIKEY"),
         }
         client = HongKongCsdiSDK(merged_opts)
         return {

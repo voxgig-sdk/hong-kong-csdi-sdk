@@ -1,21 +1,8 @@
 # HongKongCsdi SDK
 
-Hong Kong's spatial data hub: 1,100+ government datasets via OGC WFS, WMS and ArcGIS REST
+Hong Kong CSDI API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Hong Kong CSDI API
-
-The [Common Spatial Data Infrastructure (CSDI) Portal](https://portal.csdi.gov.hk/) is Hong Kong's government-run geospatial data hub, aggregating more than 1,100 datasets contributed by departments across the HKSAR Government. It is designed to make geographic information from across the public sector discoverable and reusable through standard web protocols.
-
-What you can pull from the portal:
-
-- Datasets organised into 12 framework spatial data themes (Address, Building, Elevation, Transportation, Water, and others) and 17 thematic categories (Climate, Commerce, Development, Education, Environment, Health, Housing, Population, ...).
-- Vector and raster services exposed as **OGC WFS**, **OGC WMS**, and **ArcGIS REST** endpoints, so the same data can be consumed by any standards-compliant GIS client.
-- An **OGC Catalogue Service** for metadata discovery and a Dataset API Explorer for interactive queries.
-- Companion tools including GeoAddress Finder, GeoSpatialiser, GeoVisualiser, a Geo-tagging Tool, and Open3Dhk (3D mapping).
-
-The portal reports 9.5B+ API service calls and 2.05M+ dataset downloads in 2025, so the underlying services are intended for sustained machine access. Authentication and rate-limit policies vary per dataset and are not centrally documented on the portal landing page — check the metadata for each dataset before building against it.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install hong-kong-csdi-sdk
 luarocks install hong-kong-csdi-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { HongKongCsdiSDK } from 'hong-kong-csdi'
 
-const client = new HongKongCsdiSDK({})
+const client = new HongKongCsdiSDK({
+  apikey: process.env.HONG-KONG-CSDI_APIKEY,
+})
 
 // List all datasets
 const datasets = await client.Dataset().list()
+console.log(datasets.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Dataset** | An individual spatial dataset published through CSDI — for example an address layer, building footprint, transport network, or environmental measurement — discoverable via the portal's catalogue and downloadable in standard GIS formats. | `/datasets` |
-| **OgcService** | A live OGC-compliant web service (WFS for features, WMS for map tiles) or ArcGIS REST endpoint that streams a CSDI dataset directly into GIS tools and web maps. | `/map/wms` |
+| **Dataset** |  | `/datasets` |
+| **OgcService** |  | `/map/wms` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -112,17 +101,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from hongkongcsdi_sdk import HongKongCsdiSDK
 
-client = HongKongCsdiSDK({})
+client = HongKongCsdiSDK({
+    "apikey": os.environ.get("HONG-KONG-CSDI_APIKEY"),
+})
 
 # List all datasets
-datasets, err = client.Dataset(None).list(None, None)
+datasets, err = client.Dataset().list()
+print(datasets)
 
 # Load a specific dataset
-dataset, err = client.Dataset(None).load(
-    {"id": "example_id"}, None
-)
+dataset, err = client.Dataset().load({"id": "example_id"})
+print(dataset)
 ```
 
 ### PHP
@@ -131,15 +123,17 @@ dataset, err = client.Dataset(None).load(
 <?php
 require_once 'hongkongcsdi_sdk.php';
 
-$client = new HongKongCsdiSDK([]);
+$client = new HongKongCsdiSDK([
+    "apikey" => getenv("HONG-KONG-CSDI_APIKEY"),
+]);
 
 // List all datasets
-[$datasets, $err] = $client->Dataset(null)->list(null, null);
+[$datasets, $err] = $client->Dataset()->list();
+print_r($datasets);
 
 // Load a specific dataset
-[$dataset, $err] = $client->Dataset(null)->load(
-    ["id" => "example_id"], null
-);
+[$dataset, $err] = $client->Dataset()->load(["id" => "example_id"]);
+print_r($dataset);
 ```
 
 ### Golang
@@ -147,10 +141,13 @@ $client = new HongKongCsdiSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/hong-kong-csdi-sdk/go"
 
-client := sdk.NewHongKongCsdiSDK(map[string]any{})
+client := sdk.NewHongKongCsdiSDK(map[string]any{
+    "apikey": os.Getenv("HONG-KONG-CSDI_APIKEY"),
+})
 
 // List all datasets
 datasets, err := client.Dataset(nil).List(nil, nil)
+fmt.Println(datasets)
 ```
 
 ### Ruby
@@ -158,15 +155,17 @@ datasets, err := client.Dataset(nil).List(nil, nil)
 ```ruby
 require_relative "HongKongCsdi_sdk"
 
-client = HongKongCsdiSDK.new({})
+client = HongKongCsdiSDK.new({
+  "apikey" => ENV["HONG-KONG-CSDI_APIKEY"],
+})
 
 # List all datasets
-datasets, err = client.Dataset(nil).list(nil, nil)
+datasets, err = client.Dataset().list
+puts datasets
 
 # Load a specific dataset
-dataset, err = client.Dataset(nil).load(
-  { "id" => "example_id" }, nil
-)
+dataset, err = client.Dataset().load({ "id" => "example_id" })
+puts dataset
 ```
 
 ### Lua
@@ -174,15 +173,17 @@ dataset, err = client.Dataset(nil).load(
 ```lua
 local sdk = require("hong-kong-csdi_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("HONG-KONG-CSDI_APIKEY"),
+})
 
 -- List all datasets
-local datasets, err = client:Dataset(nil):list(nil, nil)
+local datasets, err = client:Dataset():list()
+print(datasets)
 
 -- Load a specific dataset
-local dataset, err = client:Dataset(nil):load(
-  { id = "example_id" }, nil
-)
+local dataset, err = client:Dataset():load({ id = "example_id" })
+print(dataset)
 ```
 
 ## Unit testing in offline mode
@@ -201,25 +202,21 @@ const result = await client.Dataset().load({ id: 'test01' })
 ### Python
 
 ```python
-client = HongKongCsdiSDK.test(None, None)
-result, err = client.Dataset(None).load(
-    {"id": "test01"}, None
-)
+client = HongKongCsdiSDK.test()
+result, err = client.Dataset().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = HongKongCsdiSDK::test(null, null);
-[$result, $err] = $client->Dataset(null)->load(
-    ["id" => "test01"], null
-);
+$client = HongKongCsdiSDK::test();
+[$result, $err] = $client->Dataset()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Dataset(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -228,19 +225,15 @@ result, err := client.Dataset(nil).Load(
 ### Ruby
 
 ```ruby
-client = HongKongCsdiSDK.test(nil, nil)
-result, err = client.Dataset(nil).load(
-  { "id" => "test01" }, nil
-)
+client = HongKongCsdiSDK.test
+result, err = client.Dataset().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Dataset(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Dataset():load({ id = "test01" })
 ```
 
 ## How it works
@@ -344,10 +337,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Hong Kong CSDI API
-
-- Upstream: [https://portal.csdi.gov.hk/](https://portal.csdi.gov.hk/)
 
 ---
 

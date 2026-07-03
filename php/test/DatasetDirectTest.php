@@ -123,12 +123,14 @@ function dataset_direct_setup($mockres)
     $env = Runner::env_override([
         "HONGKONGCSDI_TEST_DATASET_ENTID" => [],
         "HONGKONGCSDI_TEST_LIVE" => "FALSE",
+        "HONGKONGCSDI_APIKEY" => "NONE",
     ]);
 
     $live = $env["HONGKONGCSDI_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["HONGKONGCSDI_APIKEY"],
         ];
         $client = new HongKongCsdiSDK($merged_opts);
         return [
