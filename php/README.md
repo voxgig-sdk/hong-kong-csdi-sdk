@@ -10,7 +10,7 @@ The PHP SDK for the HongKongCsdi API — an entity-oriented client using PHP con
 
 ## Install
 ```bash
-composer require voxgig/hong-kong-csdi-sdk
+composer require voxgig-sdk/hong-kong-csdi
 ```
 
 

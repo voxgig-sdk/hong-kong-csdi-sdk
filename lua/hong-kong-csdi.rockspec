@@ -8,12 +8,14 @@ source = {
   dir = "hong-kong-csdi-sdk/lua"
 }
 description = {
-  summary = "HongKongCsdi SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Hong Kong CSDI public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/hong-kong-csdi-sdk",
+  issues_url = "https://github.com/voxgig-sdk/hong-kong-csdi-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "hong-kong-csdi" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

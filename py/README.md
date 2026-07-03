@@ -10,7 +10,7 @@ The Python SDK for the HongKongCsdi API — an entity-oriented client following 
 
 ## Install
 ```bash
-pip install hong-kong-csdi-sdk
+pip install voxgig-sdk-hong-kong-csdi
 ```
 
 Or install from source:

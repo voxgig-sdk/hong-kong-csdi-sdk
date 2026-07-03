@@ -10,13 +10,13 @@ The Ruby SDK for the HongKongCsdi API — an entity-oriented client using idioma
 
 ## Install
 ```bash
-gem install hong-kong-csdi-sdk
+gem install voxgig-sdk-hong-kong-csdi
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "hong-kong-csdi-sdk"
+gem "voxgig-sdk-hong-kong-csdi"
 ```
 
 Then run:

@@ -10,7 +10,7 @@ The Lua SDK for the HongKongCsdi API — an entity-oriented client using Lua con
 
 ## Install
 ```bash
-luarocks install hong-kong-csdi-sdk
+luarocks install voxgig-sdk-hong-kong-csdi
 ```
 
 If the module is not yet published, add the source directory to

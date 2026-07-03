@@ -10,7 +10,7 @@ The TypeScript SDK for the HongKongCsdi API — a type-safe, entity-oriented cli
 
 ## Install
 ```bash
-npm install hong-kong-csdi
+npm install @voxgig-sdk/hong-kong-csdi
 ```
 ## Tutorial: your first API call
 
