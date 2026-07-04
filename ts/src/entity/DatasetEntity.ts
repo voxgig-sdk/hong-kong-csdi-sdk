@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Dataset,
+  DatasetLoadMatch,
+  DatasetListMatch,
+} from '../HongKongCsdiTypes'
 
 // TODO: needs Entity superclass
-class DatasetEntity extends HongKongCsdiEntityBase {
+class DatasetEntity extends HongKongCsdiEntityBase<Dataset> {
 
   constructor(client: HongKongCsdiSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class DatasetEntity extends HongKongCsdiEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: DatasetLoadMatch, ctrl?: Control): Promise<Dataset> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class DatasetEntity extends HongKongCsdiEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Dataset> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: DatasetListMatch, ctrl?: Control): Promise<Dataset[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class DatasetEntity extends HongKongCsdiEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Dataset[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

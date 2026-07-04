@@ -271,6 +271,7 @@ local function make_config()
                       ["orig"] = "dataset_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -321,6 +322,7 @@ local function make_config()
                       ["orig"] = "dataset_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                 },

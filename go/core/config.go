@@ -271,6 +271,7 @@ func MakeConfig() map[string]any {
 											"orig": "dataset_id",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 									"query": []any{
@@ -321,6 +322,7 @@ func MakeConfig() map[string]any {
 											"orig": "dataset_id",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 								},

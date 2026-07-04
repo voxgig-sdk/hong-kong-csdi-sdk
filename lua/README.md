@@ -9,12 +9,9 @@ The Lua SDK for the HongKongCsdi API — an entity-oriented client using Lua con
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-hong-kong-csdi
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -32,14 +29,14 @@ loading a specific record.
 local sdk = require("hong-kong-csdi_sdk")
 
 local client = sdk.new({
-  apikey = os.getenv("HONG-KONG-CSDI_APIKEY"),
+  apikey = os.getenv("HONG_KONG_CSDI_APIKEY"),
 })
 ```
 
 ### 2. List datasets
 
 ```lua
-local result, err = client:Dataset():list()
+local result, err = client:dataset():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -53,7 +50,7 @@ end
 ### 3. Load a dataset
 
 ```lua
-local result, err = client:Dataset():load({ id = "example_id" })
+local result, err = client:dataset():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +98,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:HongKongCsdi():load({ id = "test01" })
+local result, err = client:dataset():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -134,8 +131,8 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-HONG-KONG-CSDI_TEST_LIVE=TRUE
-HONG-KONG-CSDI_APIKEY=<your-key>
+HONG_KONG_CSDI_TEST_LIVE=TRUE
+HONG_KONG_CSDI_APIKEY=<your-key>
 ```
 
 Then run:
@@ -264,7 +261,7 @@ API path: `/map/wms`
 
 ### Dataset
 
-Create an instance: `const dataset = client.Dataset()`
+Create an instance: `const dataset = client.dataset`
 
 #### Operations
 
@@ -301,19 +298,19 @@ Create an instance: `const dataset = client.Dataset()`
 #### Example: Load
 
 ```ts
-const dataset = await client.Dataset().load({ id: 'dataset_id' })
+const dataset = await client.dataset.load({ id: 'dataset_id' })
 ```
 
 #### Example: List
 
 ```ts
-const datasets = await client.Dataset().list()
+const datasets = await client.dataset.list()
 ```
 
 
 ### OgcService
 
-Create an instance: `const ogc_service = client.OgcService()`
+Create an instance: `const ogc_service = client.ogc_service`
 
 #### Operations
 
@@ -324,7 +321,7 @@ Create an instance: `const ogc_service = client.OgcService()`
 #### Example: Load
 
 ```ts
-const ogc_service = await client.OgcService().load({ id: 'ogc_service_id' })
+const ogc_service = await client.ogc_service.load({ id: 'ogc_service_id' })
 ```
 
 
@@ -399,11 +396,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local dataset = client:dataset()
+dataset:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- dataset:data_get() now returns the loaded dataset data
+-- dataset:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

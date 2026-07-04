@@ -42,8 +42,7 @@ class OgcServiceEntityTest < Minitest::Test
     # LOAD
     ogc_service_ref01_ent = client.OgcService(nil)
     ogc_service_ref01_match_dt0 = {}
-    ogc_service_ref01_data_dt0_loaded, err = ogc_service_ref01_ent.load(ogc_service_ref01_match_dt0, nil)
-    assert_nil err
+    ogc_service_ref01_data_dt0_loaded = ogc_service_ref01_ent.load(ogc_service_ref01_match_dt0, nil)
     assert !ogc_service_ref01_data_dt0_loaded.nil?
 
   end

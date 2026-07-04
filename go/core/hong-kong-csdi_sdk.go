@@ -245,11 +245,17 @@ func (sdk *HongKongCsdiSDK) Direct(fetchargs map[string]any) (map[string]any, er
 }
 
 
+// Dataset returns a Dataset entity bound to this client.
+// Idiomatic usage: client.Dataset(nil).List(nil, nil) or
+// client.Dataset(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *HongKongCsdiSDK) Dataset(data map[string]any) HongKongCsdiEntity {
 	return NewDatasetEntityFunc(sdk, data)
 }
 
 
+// OgcService returns a OgcService entity bound to this client.
+// Idiomatic usage: client.OgcService(nil).List(nil, nil) or
+// client.OgcService(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *HongKongCsdiSDK) OgcService(data map[string]any) HongKongCsdiEntity {
 	return NewOgcServiceEntityFunc(sdk, data)
 }

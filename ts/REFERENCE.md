@@ -122,7 +122,7 @@ Alias for `HongKongCsdiSDK.test()`.
 ## DatasetEntity
 
 ```ts
-const dataset = client.Dataset()
+const dataset = client.dataset
 ```
 
 ### Fields
@@ -157,7 +157,7 @@ const dataset = client.Dataset()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Dataset().list()
+const results = await client.dataset.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -165,7 +165,7 @@ const results = await client.Dataset().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Dataset().load({ id: 'dataset_id' })
+const result = await client.dataset.load({ id: 'dataset_id' })
 ```
 
 ### Common Methods
@@ -199,7 +199,7 @@ Return a copy of the entity options.
 ## OgcServiceEntity
 
 ```ts
-const ogc_service = client.OgcService()
+const ogc_service = client.ogc_service
 ```
 
 ### Operations
@@ -209,7 +209,7 @@ const ogc_service = client.OgcService()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.OgcService().load({ id: 'ogc_service_id' })
+const result = await client.ogc_service.load({ id: 'ogc_service_id' })
 ```
 
 ### Common Methods

@@ -277,6 +277,7 @@ class HongKongCsdiConfig
                         'orig' => 'dataset_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [
@@ -327,6 +328,7 @@ class HongKongCsdiConfig
                         'orig' => 'dataset_id',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],

@@ -272,6 +272,7 @@ module HongKongCsdiConfig
                         "orig" => "dataset_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -322,6 +323,7 @@ module HongKongCsdiConfig
                         "orig" => "dataset_id",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },

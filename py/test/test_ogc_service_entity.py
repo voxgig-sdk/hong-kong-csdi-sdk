@@ -49,8 +49,7 @@ class TestOgcServiceEntity:
         # LOAD
         ogc_service_ref01_ent = client.OgcService(None)
         ogc_service_ref01_match_dt0 = {}
-        ogc_service_ref01_data_dt0_loaded, err = ogc_service_ref01_ent.load(ogc_service_ref01_match_dt0, None)
-        assert err is None
+        ogc_service_ref01_data_dt0_loaded = ogc_service_ref01_ent.load(ogc_service_ref01_match_dt0, None)
         assert ogc_service_ref01_data_dt0_loaded is not None
 
 

@@ -49,8 +49,7 @@ class OgcServiceEntityTest extends TestCase
         // LOAD
         $ogc_service_ref01_ent = $client->OgcService(null);
         $ogc_service_ref01_match_dt0 = [];
-        [$ogc_service_ref01_data_dt0_loaded, $err] = $ogc_service_ref01_ent->load($ogc_service_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $ogc_service_ref01_data_dt0_loaded = $ogc_service_ref01_ent->load($ogc_service_ref01_match_dt0, null);
         $this->assertNotNull($ogc_service_ref01_data_dt0_loaded);
 
     }

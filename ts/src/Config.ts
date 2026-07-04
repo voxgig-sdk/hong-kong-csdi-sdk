@@ -303,7 +303,8 @@ class Config {
                     "name": "id",
                     "orig": "dataset_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [
@@ -353,7 +354,8 @@ class Config {
                     "name": "id",
                     "orig": "dataset_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

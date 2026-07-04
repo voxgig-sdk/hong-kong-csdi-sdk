@@ -9,9 +9,12 @@ The TypeScript SDK for the HongKongCsdi API — a type-safe, entity-oriented cli
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/hong-kong-csdi
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { HongKongCsdiSDK } from 'hong-kong-csdi'
+import { HongKongCsdiSDK } from '@voxgig-sdk/hong-kong-csdi'
 
 const client = new HongKongCsdiSDK({
-  apikey: process.env.HONG-KONG-CSDI_APIKEY,
+  apikey: process.env.HONG_KONG_CSDI_APIKEY,
 })
 ```
 
 ### 2. List datasets
 
 ```ts
-const result = await client.Dataset().list()
+const result = await client.dataset.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +45,7 @@ if (result.ok) {
 ### 3. Load a dataset
 
 ```ts
-const result = await client.Dataset().load({ id: 'example_id' })
+const result = await client.dataset.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +94,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = HongKongCsdiSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.dataset.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -108,7 +111,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.dataset
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -145,8 +148,8 @@ const client = new HongKongCsdiSDK({
 Create a `.env.local` file at the project root:
 
 ```
-HONG-KONG-CSDI_TEST_LIVE=TRUE
-HONG-KONG-CSDI_APIKEY=<your-key>
+HONG_KONG_CSDI_TEST_LIVE=TRUE
+HONG_KONG_CSDI_APIKEY=<your-key>
 ```
 
 Then run:
@@ -307,7 +310,7 @@ API path: `/map/wms`
 
 ### Dataset
 
-Create an instance: `const dataset = client.Dataset()`
+Create an instance: `const dataset = client.dataset`
 
 #### Operations
 
@@ -344,19 +347,19 @@ Create an instance: `const dataset = client.Dataset()`
 #### Example: Load
 
 ```ts
-const dataset = await client.Dataset().load({ id: 'dataset_id' })
+const dataset = await client.dataset.load({ id: 'dataset_id' })
 ```
 
 #### Example: List
 
 ```ts
-const datasets = await client.Dataset().list()
+const datasets = await client.dataset.list()
 ```
 
 
 ### OgcService
 
-Create an instance: `const ogc_service = client.OgcService()`
+Create an instance: `const ogc_service = client.ogc_service`
 
 #### Operations
 
@@ -367,7 +370,7 @@ Create an instance: `const ogc_service = client.OgcService()`
 #### Example: Load
 
 ```ts
-const ogc_service = await client.OgcService().load({ id: 'ogc_service_id' })
+const ogc_service = await client.ogc_service.load({ id: 'ogc_service_id' })
 ```
 
 
@@ -428,7 +431,7 @@ hong-kong-csdi/
 Import the SDK from the package root:
 
 ```ts
-import { HongKongCsdiSDK } from 'hong-kong-csdi'
+import { HongKongCsdiSDK } from '@voxgig-sdk/hong-kong-csdi'
 ```
 
 ### Entity state
@@ -438,11 +441,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const dataset = client.dataset
+await dataset.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// dataset.data() now returns the loaded dataset data
+// dataset.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

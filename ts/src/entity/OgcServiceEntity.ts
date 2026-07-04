@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  OgcService,
+  OgcServiceLoadMatch,
+} from '../HongKongCsdiTypes'
 
 // TODO: needs Entity superclass
-class OgcServiceEntity extends HongKongCsdiEntityBase {
+class OgcServiceEntity extends HongKongCsdiEntityBase<OgcService> {
 
   constructor(client: HongKongCsdiSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class OgcServiceEntity extends HongKongCsdiEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: OgcServiceLoadMatch, ctrl?: Control): Promise<OgcService> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class OgcServiceEntity extends HongKongCsdiEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<OgcService> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

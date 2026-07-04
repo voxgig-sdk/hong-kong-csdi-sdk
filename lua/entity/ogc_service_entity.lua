@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch OgcServiceLoadMatch
+---@param ctrl? table
+---@return OgcService
+---@return string? err
 function OgcServiceEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

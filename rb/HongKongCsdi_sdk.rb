@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'HongKongCsdi_types'
+
 
 class HongKongCsdiSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class HongKongCsdiSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class HongKongCsdiSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue HongKongCsdiError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = HongKongCsdiHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class HongKongCsdiSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,22 +198,36 @@ class HongKongCsdiSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.dataset.list / client.dataset.load({ "id" => ... })
+  def dataset
+    require_relative 'entity/dataset_entity'
+    @dataset ||= DatasetEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.dataset instead.
   def Dataset(data = nil)
     require_relative 'entity/dataset_entity'
     DatasetEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.ogc_service.list / client.ogc_service.load({ "id" => ... })
+  def ogc_service
+    require_relative 'entity/ogc_service_entity'
+    @ogc_service ||= OgcServiceEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.ogc_service instead.
   def OgcService(data = nil)
     require_relative 'entity/ogc_service_entity'
     OgcServiceEntity.new(self, data)

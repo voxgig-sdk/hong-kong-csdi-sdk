@@ -88,7 +88,7 @@ same parameters as `direct()`.
 ## DatasetEntity
 
 ```lua
-local dataset = client:Dataset(nil)
+local dataset = client:dataset(nil)
 ```
 
 ### Fields
@@ -123,7 +123,7 @@ local dataset = client:Dataset(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Dataset():list()
+local results, err = client:dataset():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -131,7 +131,7 @@ local results, err = client:Dataset():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Dataset():load({ id = "dataset_id" })
+local result, err = client:dataset():load({ id = "dataset_id" })
 ```
 
 ### Common Methods
@@ -167,7 +167,7 @@ Return the entity name.
 ## OgcServiceEntity
 
 ```lua
-local ogc_service = client:OgcService(nil)
+local ogc_service = client:ogc_service(nil)
 ```
 
 ### Operations
@@ -177,7 +177,7 @@ local ogc_service = client:OgcService(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:OgcService():load({ id = "ogc_service_id" })
+local result, err = client:ogc_service():load({ id = "ogc_service_id" })
 ```
 
 ### Common Methods

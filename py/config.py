@@ -272,6 +272,7 @@ def make_config():
                       "orig": "dataset_id",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [
@@ -322,6 +323,7 @@ def make_config():
                       "orig": "dataset_id",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },

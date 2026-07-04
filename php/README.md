@@ -9,9 +9,10 @@ The PHP SDK for the HongKongCsdi API — an entity-oriented client using PHP con
 
 
 ## Install
-```bash
-composer require voxgig-sdk/hong-kong-csdi
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -26,30 +27,35 @@ loading a specific record.
 require_once 'hongkongcsdi_sdk.php';
 
 $client = new HongKongCsdiSDK([
-    "apikey" => getenv("HONG-KONG-CSDI_APIKEY"),
+    "apikey" => getenv("HONG_KONG_CSDI_APIKEY"),
 ]);
 ```
 
 ### 2. List datasets
 
 ```php
-[$result, $err] = $client->Dataset()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->dataset()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a dataset
 
 ```php
-[$result, $err] = $client->Dataset()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->dataset()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +66,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +104,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = HongKongCsdiSDK::test();
 
-[$result, $err] = $client->HongKongCsdi()->load(["id" => "test01"]);
+$result = $client->dataset()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +138,8 @@ $client = new HongKongCsdiSDK([
 Create a `.env.local` file at the project root:
 
 ```
-HONG-KONG-CSDI_TEST_LIVE=TRUE
-HONG-KONG-CSDI_APIKEY=<your-key>
+HONG_KONG_CSDI_TEST_LIVE=TRUE
+HONG_KONG_CSDI_APIKEY=<your-key>
 ```
 
 Then run:
@@ -200,8 +209,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -259,7 +272,7 @@ API path: `/map/wms`
 
 ### Dataset
 
-Create an instance: `const dataset = client.Dataset()`
+Create an instance: `const dataset = client.dataset`
 
 #### Operations
 
@@ -296,19 +309,19 @@ Create an instance: `const dataset = client.Dataset()`
 #### Example: Load
 
 ```ts
-const dataset = await client.Dataset().load({ id: 'dataset_id' })
+const dataset = await client.dataset.load({ id: 'dataset_id' })
 ```
 
 #### Example: List
 
 ```ts
-const datasets = await client.Dataset().list()
+const datasets = await client.dataset.list()
 ```
 
 
 ### OgcService
 
-Create an instance: `const ogc_service = client.OgcService()`
+Create an instance: `const ogc_service = client.ogc_service`
 
 #### Operations
 
@@ -319,7 +332,7 @@ Create an instance: `const ogc_service = client.OgcService()`
 #### Example: Load
 
 ```ts
-const ogc_service = await client.OgcService().load({ id: 'ogc_service_id' })
+const ogc_service = await client.ogc_service.load({ id: 'ogc_service_id' })
 ```
 
 
@@ -394,11 +407,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$dataset = $client->dataset();
+$dataset->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $dataset->dataGet() now returns the loaded dataset data
+// $dataset->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration
