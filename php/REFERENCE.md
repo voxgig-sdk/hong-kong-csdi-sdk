@@ -90,7 +90,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## DatasetEntity
 
 ```php
-$dataset = $client->dataset();
+$dataset = $client->Dataset();
 ```
 
 ### Fields
@@ -125,7 +125,7 @@ $dataset = $client->dataset();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->dataset()->list([]);
+$results = $client->Dataset()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -133,7 +133,7 @@ $results = $client->dataset()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->dataset()->load(["id" => "dataset_id"]);
+$result = $client->Dataset()->load(["id" => "dataset_id"]);
 ```
 
 ### Common Methods
@@ -169,7 +169,7 @@ Return the entity name.
 ## OgcServiceEntity
 
 ```php
-$ogc_service = $client->ogc_service();
+$ogc_service = $client->OgcService();
 ```
 
 ### Operations
@@ -179,7 +179,7 @@ $ogc_service = $client->ogc_service();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ogc_service()->load(["id" => "ogc_service_id"]);
+$result = $client->OgcService()->load(["id" => "ogc_service_id"]);
 ```
 
 ### Common Methods

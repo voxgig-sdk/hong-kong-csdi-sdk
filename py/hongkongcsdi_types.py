@@ -4,72 +4,74 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Dataset:
+class DatasetRequired(TypedDict):
     description: str
     id: str
     title: str
-    api_call_count: Optional[int] = None
-    api_endpoint: Optional[dict] = None
-    api_service_call: Optional[float] = None
-    category: Optional[str] = None
-    dataset_download: Optional[float] = None
-    download_count: Optional[int] = None
-    format: Optional[list] = None
-    keyword: Optional[list] = None
-    last_updated: Optional[str] = None
-    license: Optional[str] = None
-    provider: Optional[str] = None
-    published_date: Optional[str] = None
-    spatial_extent: Optional[dict] = None
-    theme: Optional[str] = None
-    total_dataset: Optional[int] = None
-    view_count: Optional[int] = None
-    year: Optional[int] = None
 
 
-@dataclass
-class DatasetLoadMatch:
+class Dataset(DatasetRequired, total=False):
+    api_call_count: int
+    api_endpoint: dict
+    api_service_call: float
+    category: str
+    dataset_download: float
+    download_count: int
+    format: list
+    keyword: list
+    last_updated: str
+    license: str
+    provider: str
+    published_date: str
+    spatial_extent: dict
+    theme: str
+    total_dataset: int
+    view_count: int
+    year: int
+
+
+class DatasetLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class DatasetListMatch:
-    api_call_count: Optional[int] = None
-    api_endpoint: Optional[dict] = None
-    api_service_call: Optional[float] = None
-    category: Optional[str] = None
-    dataset_download: Optional[float] = None
-    description: Optional[str] = None
-    download_count: Optional[int] = None
-    format: Optional[list] = None
-    id: Optional[str] = None
-    keyword: Optional[list] = None
-    last_updated: Optional[str] = None
-    license: Optional[str] = None
-    provider: Optional[str] = None
-    published_date: Optional[str] = None
-    spatial_extent: Optional[dict] = None
-    theme: Optional[str] = None
-    title: Optional[str] = None
-    total_dataset: Optional[int] = None
-    view_count: Optional[int] = None
-    year: Optional[int] = None
+class DatasetListMatch(TypedDict, total=False):
+    api_call_count: int
+    api_endpoint: dict
+    api_service_call: float
+    category: str
+    dataset_download: float
+    description: str
+    download_count: int
+    format: list
+    id: str
+    keyword: list
+    last_updated: str
+    license: str
+    provider: str
+    published_date: str
+    spatial_extent: dict
+    theme: str
+    title: str
+    total_dataset: int
+    view_count: int
+    year: int
 
 
-@dataclass
-class OgcService:
+class OgcService(TypedDict):
     pass
 
 
-@dataclass
-class OgcServiceLoadMatch:
+class OgcServiceLoadMatch(TypedDict):
     pass
-

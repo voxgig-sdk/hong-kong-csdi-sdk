@@ -233,10 +233,10 @@ class HongKongCsdiSDK
 
     private $_dataset = null;
 
-    // Idiomatic facade: $client->dataset()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Dataset() (PHP method
-    // names are case-insensitive).
-    public function dataset($data = null)
+    // Canonical facade: $client->Dataset()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->dataset()
+    // resolves here too.
+    public function Dataset($data = null)
     {
         require_once __DIR__ . '/entity/dataset_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class HongKongCsdiSDK
 
     private $_ogc_service = null;
 
-    // Idiomatic facade: $client->ogc_service()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias OgcService() (PHP method
-    // names are case-insensitive).
-    public function ogc_service($data = null)
+    // Canonical facade: $client->OgcService()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->ogc_service()
+    // resolves here too.
+    public function OgcService($data = null)
     {
         require_once __DIR__ . '/entity/ogc_service_entity.php';
         if ($data === null) {

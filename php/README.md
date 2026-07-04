@@ -31,18 +31,16 @@ $client = new HongKongCsdiSDK([
 ]);
 ```
 
-### 2. List datasets
+### 2. List dataset records
 
 ```php
 try {
-    $result = $client->dataset()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Dataset records — iterate directly.
+    $datasets = $client->Dataset()->list();
+    foreach ($datasets as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -51,9 +49,10 @@ try {
 
 ```php
 try {
-    $result = $client->dataset()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Dataset record (throws on error).
+    $dataset = $client->Dataset()->load(["id" => "example_id"]);
+    print_r($dataset);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -99,13 +98,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = HongKongCsdiSDK::test();
+$client = HongKongCsdiSDK::test([
+    "entity" => ["dataset" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->dataset()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$dataset = $client->Dataset()->load(["id" => "test01"]);
+print_r($dataset);
 ```
 
 ### Use a custom fetch function
@@ -187,7 +190,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
 | `Dataset` | `($data): DatasetEntity` | Create a Dataset entity instance. |
-| `OgcService` | `($data): OgcServiceEntity` | Create a OgcService entity instance. |
+| `OgcService` | `($data): OgcServiceEntity` | Create an OgcService entity instance. |
 
 ### Entity interface
 
@@ -272,7 +275,7 @@ API path: `/map/wms`
 
 ### Dataset
 
-Create an instance: `const dataset = client.dataset`
+Create an instance: `$dataset = $client->Dataset();`
 
 #### Operations
 
@@ -308,20 +311,22 @@ Create an instance: `const dataset = client.dataset`
 
 #### Example: Load
 
-```ts
-const dataset = await client.dataset.load({ id: 'dataset_id' })
+```php
+// load() returns the bare Dataset record (throws on error).
+$dataset = $client->Dataset()->load(["id" => "dataset_id"]);
 ```
 
 #### Example: List
 
-```ts
-const datasets = await client.dataset.list()
+```php
+// list() returns an array of Dataset records (throws on error).
+$datasets = $client->Dataset()->list();
 ```
 
 
 ### OgcService
 
-Create an instance: `const ogc_service = client.ogc_service`
+Create an instance: `$ogc_service = $client->OgcService();`
 
 #### Operations
 
@@ -331,8 +336,9 @@ Create an instance: `const ogc_service = client.ogc_service`
 
 #### Example: Load
 
-```ts
-const ogc_service = await client.ogc_service.load({ id: 'ogc_service_id' })
+```php
+// load() returns the bare OgcService record (throws on error).
+$ogc_service = $client->OgcService()->load(["id" => "ogc_service_id"]);
 ```
 
 
@@ -407,7 +413,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$dataset = $client->dataset();
+$dataset = $client->Dataset();
 $dataset->load(["id" => "example_id"]);
 
 // $dataset->dataGet() now returns the loaded dataset data

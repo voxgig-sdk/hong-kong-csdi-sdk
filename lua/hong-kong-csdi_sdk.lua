@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:dataset():list() / client:dataset():load({ id = ... })
-function HongKongCsdiSDK:dataset(data)
+-- Idiomatic facade: client:Dataset():list() / client:Dataset():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function HongKongCsdiSDK:Dataset(data)
   local EntityMod = require("entity.dataset_entity")
   if data == nil then
     if self._dataset == nil then
@@ -256,15 +257,10 @@ function HongKongCsdiSDK:dataset(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:dataset() instead.
-function HongKongCsdiSDK:Dataset(data)
-  local EntityMod = require("entity.dataset_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:ogc_service():list() / client:ogc_service():load({ id = ... })
-function HongKongCsdiSDK:ogc_service(data)
+-- Idiomatic facade: client:OgcService():list() / client:OgcService():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function HongKongCsdiSDK:OgcService(data)
   local EntityMod = require("entity.ogc_service_entity")
   if data == nil then
     if self._ogc_service == nil then
@@ -272,12 +268,6 @@ function HongKongCsdiSDK:ogc_service(data)
     end
     return self._ogc_service
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:ogc_service() instead.
-function HongKongCsdiSDK:OgcService(data)
-  local EntityMod = require("entity.ogc_service_entity")
   return EntityMod.new(self, data)
 end
 

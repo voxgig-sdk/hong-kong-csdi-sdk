@@ -30,16 +30,14 @@ client = HongKongCsdiSDK.new({
 })
 ```
 
-### 2. List datasets
+### 2. List dataset records
 
 ```ruby
 begin
-  result = client.dataset.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Dataset records — iterate directly.
+  datasets = client.Dataset.list
+  datasets.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -50,8 +48,9 @@ end
 
 ```ruby
 begin
-  result = client.dataset.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Dataset record (raises on error).
+  dataset = client.Dataset.load({ "id" => "example_id" })
+  puts dataset
 rescue => err
   warn "load failed: #{err}"
 end
@@ -98,13 +97,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = HongKongCsdiSDK.test
+client = HongKongCsdiSDK.test({
+  "entity" => { "dataset" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.dataset.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+dataset = client.Dataset.load({ "id" => "test01" })
+puts dataset
 ```
 
 ### Use a custom fetch function
@@ -183,7 +186,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `Dataset` | `(data) -> DatasetEntity` | Create a Dataset entity instance. |
-| `OgcService` | `(data) -> OgcServiceEntity` | Create a OgcService entity instance. |
+| `OgcService` | `(data) -> OgcServiceEntity` | Create an OgcService entity instance. |
 
 ### Entity interface
 
@@ -267,7 +270,7 @@ API path: `/map/wms`
 
 ### Dataset
 
-Create an instance: `const dataset = client.dataset`
+Create an instance: `dataset = client.Dataset`
 
 #### Operations
 
@@ -303,20 +306,22 @@ Create an instance: `const dataset = client.dataset`
 
 #### Example: Load
 
-```ts
-const dataset = await client.dataset.load({ id: 'dataset_id' })
+```ruby
+# load returns the bare Dataset record (raises on error).
+dataset = client.Dataset.load({ "id" => "dataset_id" })
 ```
 
 #### Example: List
 
-```ts
-const datasets = await client.dataset.list()
+```ruby
+# list returns an Array of Dataset records (raises on error).
+datasets = client.Dataset.list
 ```
 
 
 ### OgcService
 
-Create an instance: `const ogc_service = client.ogc_service`
+Create an instance: `ogc_service = client.OgcService`
 
 #### Operations
 
@@ -326,8 +331,9 @@ Create an instance: `const ogc_service = client.ogc_service`
 
 #### Example: Load
 
-```ts
-const ogc_service = await client.ogc_service.load({ id: 'ogc_service_id' })
+```ruby
+# load returns the bare OgcService record (raises on error).
+ogc_service = client.OgcService.load({ "id" => "ogc_service_id" })
 ```
 
 
@@ -402,7 +408,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-dataset = client.dataset
+dataset = client.Dataset
 dataset.load({ "id" => "example_id" })
 
 # dataset.data_get now returns the loaded dataset data

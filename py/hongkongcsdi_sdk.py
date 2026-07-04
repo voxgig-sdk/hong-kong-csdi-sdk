@@ -220,41 +220,21 @@ class HongKongCsdiSDK:
         }
 
 
-    @property
-    def dataset(self):
-        """Idiomatic facade: client.dataset.list() / client.dataset.load({"id": ...})."""
-        from entity.dataset_entity import DatasetEntity
-        cached = getattr(self, "_dataset", None)
-        if cached is None:
-            cached = DatasetEntity(self, None)
-            self._dataset = cached
-        return cached
-
-    def Dataset(self, data=None):
-        # Deprecated: use client.dataset instead.
+    def Dataset(self, data=None) -> "DatasetEntity":
+        """Entity factory: client.Dataset().list({}) / client.Dataset().load({"id": ...})."""
         from entity.dataset_entity import DatasetEntity
         return DatasetEntity(self, data)
 
 
-    @property
-    def ogc_service(self):
-        """Idiomatic facade: client.ogc_service.list() / client.ogc_service.load({"id": ...})."""
-        from entity.ogc_service_entity import OgcServiceEntity
-        cached = getattr(self, "_ogc_service", None)
-        if cached is None:
-            cached = OgcServiceEntity(self, None)
-            self._ogc_service = cached
-        return cached
-
-    def OgcService(self, data=None):
-        # Deprecated: use client.ogc_service instead.
+    def OgcService(self, data=None) -> "OgcServiceEntity":
+        """Entity factory: client.OgcService().list({}) / client.OgcService().load({"id": ...})."""
         from entity.ogc_service_entity import OgcServiceEntity
         return OgcServiceEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "HongKongCsdiSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class HongKongCsdiSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.dataset_entity import DatasetEntity
+    from entity.ogc_service_entity import OgcServiceEntity

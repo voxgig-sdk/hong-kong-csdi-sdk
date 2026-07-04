@@ -205,28 +205,14 @@ class HongKongCsdiSDK {
 
 
 
-  _dataset?: DatasetEntity
-
-  // Idiomatic facade: `client.dataset.list()` / `client.dataset.load({ id })`.
-  get dataset(): DatasetEntity {
-    return (this._dataset ??= new DatasetEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.dataset` instead. */
+  // Entity access: `client.Dataset().list()` / `client.Dataset().load({ id })`.
   Dataset(data?: any) {
     const self = this
     return new DatasetEntity(self,data)
   }
 
 
-  _ogc_service?: OgcServiceEntity
-
-  // Idiomatic facade: `client.ogc_service.list()` / `client.ogc_service.load({ id })`.
-  get ogc_service(): OgcServiceEntity {
-    return (this._ogc_service ??= new OgcServiceEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.ogc_service` instead. */
+  // Entity access: `client.OgcService().list()` / `client.OgcService().load({ id })`.
   OgcService(data?: any) {
     const self = this
     return new OgcServiceEntity(self,data)

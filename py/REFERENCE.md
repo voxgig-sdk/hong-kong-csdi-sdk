@@ -85,7 +85,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## DatasetEntity
 
 ```python
-dataset = client.dataset
+dataset = client.Dataset()
 ```
 
 ### Fields
@@ -120,7 +120,9 @@ dataset = client.dataset
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.dataset.list({})
+results = client.Dataset().list({})
+for dataset in results:
+    print(dataset)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -128,7 +130,7 @@ results = client.dataset.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.dataset.load({"id": "dataset_id"})
+result = client.Dataset().load({"id": "dataset_id"})
 ```
 
 ### Common Methods
@@ -163,7 +165,7 @@ Return the entity name.
 ## OgcServiceEntity
 
 ```python
-ogc_service = client.ogc_service
+ogc_service = client.OgcService()
 ```
 
 ### Operations
@@ -173,7 +175,7 @@ ogc_service = client.ogc_service
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ogc_service.load({"id": "ogc_service_id"})
+result = client.OgcService().load({"id": "ogc_service_id"})
 ```
 
 ### Common Methods

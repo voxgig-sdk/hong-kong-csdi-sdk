@@ -33,26 +33,26 @@ local client = sdk.new({
 })
 ```
 
-### 2. List datasets
+### 2. List dataset records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:dataset():list()
+local datasets, err = client:Dataset():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(datasets) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load a dataset
 
 ```lua
-local result, err = client:dataset():load({ id = "example_id" })
+local dataset, err = client:Dataset():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(dataset)
 ```
 
 
@@ -98,8 +98,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:dataset():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Dataset():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -180,7 +180,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
 | `Dataset` | `(data) -> DatasetEntity` | Create a Dataset entity instance. |
-| `OgcService` | `(data) -> OgcServiceEntity` | Create a OgcService entity instance. |
+| `OgcService` | `(data) -> OgcServiceEntity` | Create an OgcService entity instance. |
 
 ### Entity interface
 
@@ -202,17 +202,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local dataset, err = client:Dataset():load({ id = "example_id" })
+    if err then error(err) end
+    -- dataset is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -261,7 +266,7 @@ API path: `/map/wms`
 
 ### Dataset
 
-Create an instance: `const dataset = client.dataset`
+Create an instance: `local dataset = client:Dataset(nil)`
 
 #### Operations
 
@@ -297,20 +302,20 @@ Create an instance: `const dataset = client.dataset`
 
 #### Example: Load
 
-```ts
-const dataset = await client.dataset.load({ id: 'dataset_id' })
+```lua
+local dataset, err = client:Dataset():load({ id = "dataset_id" })
 ```
 
 #### Example: List
 
-```ts
-const datasets = await client.dataset.list()
+```lua
+local datasets, err = client:Dataset():list()
 ```
 
 
 ### OgcService
 
-Create an instance: `const ogc_service = client.ogc_service`
+Create an instance: `local ogc_service = client:OgcService(nil)`
 
 #### Operations
 
@@ -320,8 +325,8 @@ Create an instance: `const ogc_service = client.ogc_service`
 
 #### Example: Load
 
-```ts
-const ogc_service = await client.ogc_service.load({ id: 'ogc_service_id' })
+```lua
+local ogc_service, err = client:OgcService():load({ id = "ogc_service_id" })
 ```
 
 
@@ -396,7 +401,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local dataset = client:dataset()
+local dataset = client:Dataset()
 dataset:load({ id = "example_id" })
 
 -- dataset:data_get() now returns the loaded dataset data

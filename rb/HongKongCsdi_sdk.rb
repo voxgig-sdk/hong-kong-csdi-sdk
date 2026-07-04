@@ -208,26 +208,14 @@ class HongKongCsdiSDK
   end
 
 
-  # Idiomatic facade: client.dataset.list / client.dataset.load({ "id" => ... })
-  def dataset
-    require_relative 'entity/dataset_entity'
-    @dataset ||= DatasetEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.dataset instead.
+  # Canonical facade: client.Dataset.list / client.Dataset.load({ "id" => ... })
   def Dataset(data = nil)
     require_relative 'entity/dataset_entity'
     DatasetEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.ogc_service.list / client.ogc_service.load({ "id" => ... })
-  def ogc_service
-    require_relative 'entity/ogc_service_entity'
-    @ogc_service ||= OgcServiceEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.ogc_service instead.
+  # Canonical facade: client.OgcService.list / client.OgcService.load({ "id" => ... })
   def OgcService(data = nil)
     require_relative 'entity/ogc_service_entity'
     OgcServiceEntity.new(self, data)
