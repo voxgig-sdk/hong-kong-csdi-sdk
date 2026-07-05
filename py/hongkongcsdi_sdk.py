@@ -221,13 +221,13 @@ class HongKongCsdiSDK:
 
 
     def Dataset(self, data=None) -> "DatasetEntity":
-        """Entity factory: client.Dataset().list({}) / client.Dataset().load({"id": ...})."""
+        """Entity factory: client.Dataset().list() / client.Dataset().load({"id": ...})."""
         from entity.dataset_entity import DatasetEntity
         return DatasetEntity(self, data)
 
 
     def OgcService(self, data=None) -> "OgcServiceEntity":
-        """Entity factory: client.OgcService().list({}) / client.OgcService().load({"id": ...})."""
+        """Entity factory: client.OgcService().list() / client.OgcService().load({"id": ...})."""
         from entity.ogc_service_entity import OgcServiceEntity
         return OgcServiceEntity(self, data)
 

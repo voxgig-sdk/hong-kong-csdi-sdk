@@ -102,26 +102,26 @@ dataset := client.Dataset(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_call_count` | ``$INTEGER`` | No |  |
-| `api_endpoint` | ``$OBJECT`` | No |  |
-| `api_service_call` | ``$NUMBER`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `dataset_download` | ``$NUMBER`` | No |  |
-| `description` | ``$STRING`` | Yes |  |
-| `download_count` | ``$INTEGER`` | No |  |
-| `format` | ``$ARRAY`` | No |  |
-| `id` | ``$STRING`` | Yes |  |
-| `keyword` | ``$ARRAY`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `license` | ``$STRING`` | No |  |
-| `provider` | ``$STRING`` | No |  |
-| `published_date` | ``$STRING`` | No |  |
-| `spatial_extent` | ``$OBJECT`` | No |  |
-| `theme` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | Yes |  |
-| `total_dataset` | ``$INTEGER`` | No |  |
-| `view_count` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `api_call_count` | `int` | No |  |
+| `api_endpoint` | `map[string]any` | No |  |
+| `api_service_call` | `float64` | No |  |
+| `category` | `string` | No |  |
+| `dataset_download` | `float64` | No |  |
+| `description` | `string` | Yes |  |
+| `download_count` | `int` | No |  |
+| `format` | `[]any` | No |  |
+| `id` | `string` | Yes |  |
+| `keyword` | `[]any` | No |  |
+| `last_updated` | `string` | No |  |
+| `license` | `string` | No |  |
+| `provider` | `string` | No |  |
+| `published_date` | `string` | No |  |
+| `spatial_extent` | `map[string]any` | No |  |
+| `theme` | `string` | No |  |
+| `title` | `string` | Yes |  |
+| `total_dataset` | `int` | No |  |
+| `view_count` | `int` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
@@ -178,7 +178,7 @@ ogc_service := client.OgcService(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.OgcService(nil).Load(map[string]any{"id": "ogc_service_id"}, nil)
+result, err := client.OgcService(nil).Load(nil, nil)
 ```
 
 ### Common Methods

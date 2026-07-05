@@ -37,8 +37,7 @@ type DatasetLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// DatasetListMatch mirrors the dataset fields as an all-optional match
-// filter (Go analog of Partial<Dataset>).
+// DatasetListMatch is the typed request payload for Dataset.ListTyped.
 type DatasetListMatch struct {
 	ApiCallCount *int `json:"api_call_count,omitempty"`
 	ApiEndpoint *map[string]any `json:"api_endpoint,omitempty"`
@@ -66,8 +65,7 @@ type DatasetListMatch struct {
 type OgcService struct {
 }
 
-// OgcServiceLoadMatch mirrors the ogc_service fields as an all-optional match
-// filter (Go analog of Partial<OgcService>).
+// OgcServiceLoadMatch is the typed request payload for OgcService.LoadTyped.
 type OgcServiceLoadMatch struct {
 }
 

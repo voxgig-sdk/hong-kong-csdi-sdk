@@ -8,7 +8,7 @@ Complete API reference for the HongKongCsdi Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'hong-kong-csdi_sdk'
+require_relative 'HongKongCsdi_sdk'
 
 client = HongKongCsdiSDK.new(options)
 ```
@@ -98,35 +98,35 @@ dataset = client.Dataset
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_call_count` | ``$INTEGER`` | No |  |
-| `api_endpoint` | ``$OBJECT`` | No |  |
-| `api_service_call` | ``$NUMBER`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `dataset_download` | ``$NUMBER`` | No |  |
-| `description` | ``$STRING`` | Yes |  |
-| `download_count` | ``$INTEGER`` | No |  |
-| `format` | ``$ARRAY`` | No |  |
-| `id` | ``$STRING`` | Yes |  |
-| `keyword` | ``$ARRAY`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `license` | ``$STRING`` | No |  |
-| `provider` | ``$STRING`` | No |  |
-| `published_date` | ``$STRING`` | No |  |
-| `spatial_extent` | ``$OBJECT`` | No |  |
-| `theme` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | Yes |  |
-| `total_dataset` | ``$INTEGER`` | No |  |
-| `view_count` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `api_call_count` | `Integer` | No |  |
+| `api_endpoint` | `Hash` | No |  |
+| `api_service_call` | `Float` | No |  |
+| `category` | `String` | No |  |
+| `dataset_download` | `Float` | No |  |
+| `description` | `String` | Yes |  |
+| `download_count` | `Integer` | No |  |
+| `format` | `Array` | No |  |
+| `id` | `String` | Yes |  |
+| `keyword` | `Array` | No |  |
+| `last_updated` | `String` | No |  |
+| `license` | `String` | No |  |
+| `provider` | `String` | No |  |
+| `published_date` | `String` | No |  |
+| `spatial_extent` | `Hash` | No |  |
+| `theme` | `String` | No |  |
+| `title` | `String` | Yes |  |
+| `total_dataset` | `Integer` | No |  |
+| `view_count` | `Integer` | No |  |
+| `year` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Dataset.list(nil)
+results = client.Dataset.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -180,7 +180,7 @@ ogc_service = client.OgcService
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.OgcService.load({ "id" => "ogc_service_id" })
+result = client.OgcService.load()
 ```
 
 ### Common Methods

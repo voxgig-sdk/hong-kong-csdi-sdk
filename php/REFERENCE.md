@@ -8,7 +8,7 @@ Complete API reference for the HongKongCsdi PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/hong-kong-csdi_sdk.php';
+require_once __DIR__ . '/hongkongcsdi_sdk.php';
 
 $client = new HongKongCsdiSDK($options);
 ```
@@ -50,11 +50,11 @@ Create a new `DatasetEntity` instance. Pass `null` for no initial data.
 
 Create a new `OgcServiceEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): HongKongCsdiUtility`
 
 Return a copy of the SDK utility object.
 
@@ -97,35 +97,35 @@ $dataset = $client->Dataset();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_call_count` | ``$INTEGER`` | No |  |
-| `api_endpoint` | ``$OBJECT`` | No |  |
-| `api_service_call` | ``$NUMBER`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `dataset_download` | ``$NUMBER`` | No |  |
-| `description` | ``$STRING`` | Yes |  |
-| `download_count` | ``$INTEGER`` | No |  |
-| `format` | ``$ARRAY`` | No |  |
-| `id` | ``$STRING`` | Yes |  |
-| `keyword` | ``$ARRAY`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `license` | ``$STRING`` | No |  |
-| `provider` | ``$STRING`` | No |  |
-| `published_date` | ``$STRING`` | No |  |
-| `spatial_extent` | ``$OBJECT`` | No |  |
-| `theme` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | Yes |  |
-| `total_dataset` | ``$INTEGER`` | No |  |
-| `view_count` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `api_call_count` | `int` | No |  |
+| `api_endpoint` | `array` | No |  |
+| `api_service_call` | `float` | No |  |
+| `category` | `string` | No |  |
+| `dataset_download` | `float` | No |  |
+| `description` | `string` | Yes |  |
+| `download_count` | `int` | No |  |
+| `format` | `array` | No |  |
+| `id` | `string` | Yes |  |
+| `keyword` | `array` | No |  |
+| `last_updated` | `string` | No |  |
+| `license` | `string` | No |  |
+| `provider` | `string` | No |  |
+| `published_date` | `string` | No |  |
+| `spatial_extent` | `array` | No |  |
+| `theme` | `string` | No |  |
+| `title` | `string` | Yes |  |
+| `total_dataset` | `int` | No |  |
+| `view_count` | `int` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Dataset()->list([]);
+$results = $client->Dataset()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -138,19 +138,19 @@ $result = $client->Dataset()->load(["id" => "dataset_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -159,7 +159,7 @@ Set the entity match criteria.
 Create a new `DatasetEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -179,24 +179,24 @@ $ogc_service = $client->OgcService();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->OgcService()->load(["id" => "ogc_service_id"]);
+$result = $client->OgcService()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -205,7 +205,7 @@ Set the entity match criteria.
 Create a new `OgcServiceEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

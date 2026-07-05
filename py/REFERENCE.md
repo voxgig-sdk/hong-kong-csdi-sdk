@@ -8,7 +8,7 @@ Complete API reference for the HongKongCsdi Python SDK.
 ### Constructor
 
 ```python
-from hong-kong-csdi_sdk import HongKongCsdiSDK
+from hongkongcsdi_sdk import HongKongCsdiSDK
 
 client = HongKongCsdiSDK(options)
 ```
@@ -92,35 +92,35 @@ dataset = client.Dataset()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_call_count` | ``$INTEGER`` | No |  |
-| `api_endpoint` | ``$OBJECT`` | No |  |
-| `api_service_call` | ``$NUMBER`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `dataset_download` | ``$NUMBER`` | No |  |
-| `description` | ``$STRING`` | Yes |  |
-| `download_count` | ``$INTEGER`` | No |  |
-| `format` | ``$ARRAY`` | No |  |
-| `id` | ``$STRING`` | Yes |  |
-| `keyword` | ``$ARRAY`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `license` | ``$STRING`` | No |  |
-| `provider` | ``$STRING`` | No |  |
-| `published_date` | ``$STRING`` | No |  |
-| `spatial_extent` | ``$OBJECT`` | No |  |
-| `theme` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | Yes |  |
-| `total_dataset` | ``$INTEGER`` | No |  |
-| `view_count` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `api_call_count` | `int` | No |  |
+| `api_endpoint` | `dict` | No |  |
+| `api_service_call` | `float` | No |  |
+| `category` | `str` | No |  |
+| `dataset_download` | `float` | No |  |
+| `description` | `str` | Yes |  |
+| `download_count` | `int` | No |  |
+| `format` | `list` | No |  |
+| `id` | `str` | Yes |  |
+| `keyword` | `list` | No |  |
+| `last_updated` | `str` | No |  |
+| `license` | `str` | No |  |
+| `provider` | `str` | No |  |
+| `published_date` | `str` | No |  |
+| `spatial_extent` | `dict` | No |  |
+| `theme` | `str` | No |  |
+| `title` | `str` | Yes |  |
+| `total_dataset` | `int` | No |  |
+| `view_count` | `int` | No |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Dataset().list({})
+results = client.Dataset().list()
 for dataset in results:
     print(dataset)
 ```
@@ -175,7 +175,7 @@ ogc_service = client.OgcService()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.OgcService().load({"id": "ogc_service_id"})
+result = client.OgcService().load()
 ```
 
 ### Common Methods

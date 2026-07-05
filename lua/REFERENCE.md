@@ -95,26 +95,26 @@ local dataset = client:Dataset(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_call_count` | ``$INTEGER`` | No |  |
-| `api_endpoint` | ``$OBJECT`` | No |  |
-| `api_service_call` | ``$NUMBER`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `dataset_download` | ``$NUMBER`` | No |  |
-| `description` | ``$STRING`` | Yes |  |
-| `download_count` | ``$INTEGER`` | No |  |
-| `format` | ``$ARRAY`` | No |  |
-| `id` | ``$STRING`` | Yes |  |
-| `keyword` | ``$ARRAY`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `license` | ``$STRING`` | No |  |
-| `provider` | ``$STRING`` | No |  |
-| `published_date` | ``$STRING`` | No |  |
-| `spatial_extent` | ``$OBJECT`` | No |  |
-| `theme` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | Yes |  |
-| `total_dataset` | ``$INTEGER`` | No |  |
-| `view_count` | ``$INTEGER`` | No |  |
-| `year` | ``$INTEGER`` | No |  |
+| `api_call_count` | `number` | No |  |
+| `api_endpoint` | `table` | No |  |
+| `api_service_call` | `number` | No |  |
+| `category` | `string` | No |  |
+| `dataset_download` | `number` | No |  |
+| `description` | `string` | Yes |  |
+| `download_count` | `number` | No |  |
+| `format` | `table` | No |  |
+| `id` | `string` | Yes |  |
+| `keyword` | `table` | No |  |
+| `last_updated` | `string` | No |  |
+| `license` | `string` | No |  |
+| `provider` | `string` | No |  |
+| `published_date` | `string` | No |  |
+| `spatial_extent` | `table` | No |  |
+| `theme` | `string` | No |  |
+| `title` | `string` | Yes |  |
+| `total_dataset` | `number` | No |  |
+| `view_count` | `number` | No |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -177,7 +177,7 @@ local ogc_service = client:OgcService(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:OgcService():load({ id = "ogc_service_id" })
+local result, err = client:OgcService():load()
 ```
 
 ### Common Methods

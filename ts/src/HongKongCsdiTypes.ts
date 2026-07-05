@@ -32,10 +32,32 @@ export interface DatasetLoadMatch {
   id: string
 }
 
-export type DatasetListMatch = Partial<Dataset>
+export interface DatasetListMatch {
+  api_call_count?: number
+  api_endpoint?: Record<string, any>
+  api_service_call?: number
+  category?: string
+  dataset_download?: number
+  description?: string
+  download_count?: number
+  format?: any[]
+  id?: string
+  keyword?: any[]
+  last_updated?: string
+  license?: string
+  provider?: string
+  published_date?: string
+  spatial_extent?: Record<string, any>
+  theme?: string
+  title?: string
+  total_dataset?: number
+  view_count?: number
+  year?: number
+}
 
 export interface OgcService {
 }
 
-export type OgcServiceLoadMatch = Partial<OgcService>
+export interface OgcServiceLoadMatch {
+}
 

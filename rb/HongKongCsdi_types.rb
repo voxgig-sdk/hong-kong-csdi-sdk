@@ -102,7 +102,7 @@ DatasetLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Dataset#list (any subset of Dataset fields).
+# Request payload for Dataset#list.
 #
 # @!attribute [rw] api_call_count
 #   @return [Integer, nil]
@@ -191,7 +191,7 @@ DatasetListMatch = Struct.new(
 class OgcService
 end
 
-# Match filter for OgcService#load (any subset of OgcService fields).
+# Request payload for OgcService#load.
 class OgcServiceLoadMatch
 end
 

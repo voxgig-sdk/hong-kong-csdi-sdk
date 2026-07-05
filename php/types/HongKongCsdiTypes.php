@@ -43,7 +43,7 @@ class DatasetLoadMatch
     public string $id;
 }
 
-/** Match filter for Dataset#list (any subset of Dataset fields). */
+/** Request payload for Dataset#list. */
 class DatasetListMatch
 {
     public ?int $api_call_count = null;
@@ -73,7 +73,7 @@ class OgcService
 {
 }
 
-/** Match filter for OgcService#load (any subset of OgcService fields). */
+/** Request payload for OgcService#load. */
 class OgcServiceLoadMatch
 {
 }
