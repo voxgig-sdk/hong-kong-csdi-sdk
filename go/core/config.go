@@ -15,7 +15,7 @@ func MakeConfig() map[string]any {
 		"options": map[string]any{
 			"base": "https://portal.csdi.gov.hk/api",
 			"auth": map[string]any{
-				"prefix": "Bearer",
+				"prefix": "",
 			},
 			"headers": map[string]any{
 				"content-type": "application/json",
@@ -271,7 +271,6 @@ func MakeConfig() map[string]any {
 											"orig": "dataset_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 									"query": []any{

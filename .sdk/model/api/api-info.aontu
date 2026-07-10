@@ -9,16 +9,23 @@ main: {
         url: "https://portal.csdi.gov.hk/csdi-webpage/"
       }
       description: "The Hong Kong Common Spatial Data Infrastructure (CSDI) Portal provides access to a range of geospatial data and applications aimed at supporting data sharing and government initiatives. It centralizes resources for spatial data, making it easier for users to find and utilize geographic information. The API provides access to over 1100+ datasets with support for various OGC standards including WFS, WMS, and ArcGIS REST API."
+      security: {
+        in: "header"
+        name: "X-API-Key"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
       servers: [
         {
           description: "Hong Kong CSDI Production Server"
           url: "https://portal.csdi.gov.hk/api"
         }
       ]
+      summary: "The Hong Kong Common Spatial Data Infrastructure (CSDI) Portal provides access to a range of geospatial data and applications aimed at supporting data sharing and government initiatives."
       termsOfService: "https://portal.csdi.gov.hk/csdi-webpage/"
       title: "Hong Kong CSDI API"
       version: "1.0.0"
+      website: "https://portal.csdi.gov.hk"
     }
   }
-}
-

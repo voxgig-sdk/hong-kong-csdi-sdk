@@ -39,7 +39,7 @@ class Config {
     base: 'https://portal.csdi.gov.hk/api',
 
     auth: {
-      prefix: 'Bearer',
+      prefix: '',
     },
 
     headers: {

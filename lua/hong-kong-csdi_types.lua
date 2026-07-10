@@ -29,7 +29,7 @@
 ---@field year? number
 
 ---@class DatasetLoadMatch
----@field id string
+---@field id? string
 
 ---@class DatasetListMatch
 ---@field api_call_count? number

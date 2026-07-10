@@ -63,7 +63,7 @@ func main() {
     }
 
     // Load a single dataset — the value is the loaded record.
-    dataset, err := client.Dataset(nil).Load(map[string]any{"id": "example"}, nil)
+    dataset, err := client.Dataset(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
@@ -373,7 +373,7 @@ fmt.Println(datasets) // the array of records
 
 ### OgcService
 
-Create an instance: `ogc_service := client.OgcService(nil)`
+Create an instance: `ogcService := client.OgcService(nil)`
 
 #### Operations
 
@@ -384,11 +384,11 @@ Create an instance: `ogc_service := client.OgcService(nil)`
 #### Example: Load
 
 ```go
-ogc_service, err := client.OgcService(nil).Load(nil, nil)
+ogcService, err := client.OgcService(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(ogc_service) // the loaded record
+fmt.Println(ogcService) // the loaded record
 ```
 
 

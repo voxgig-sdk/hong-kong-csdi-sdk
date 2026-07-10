@@ -96,7 +96,7 @@ Dataset = Struct.new(
 # Request payload for Dataset#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 DatasetLoadMatch = Struct.new(
   :id,
   keyword_init: true

@@ -15,7 +15,7 @@ local function make_config()
     options = {
       base = "https://portal.csdi.gov.hk/api",
       auth = {
-        prefix = "Bearer",
+        prefix = "",
       },
       headers = {
         ["content-type"] = "application/json",

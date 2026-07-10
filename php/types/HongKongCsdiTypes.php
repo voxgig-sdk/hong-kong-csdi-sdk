@@ -40,7 +40,7 @@ class Dataset
 /** Request payload for Dataset#load. */
 class DatasetLoadMatch
 {
-    public string $id;
+    public ?string $id = null;
 }
 
 /** Request payload for Dataset#list. */
