@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- HongKongCsdi SDK exists test
 
 local sdk = require("hong-kong-csdi_sdk")
 
