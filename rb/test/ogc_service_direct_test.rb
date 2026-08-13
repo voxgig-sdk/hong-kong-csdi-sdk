@@ -66,16 +66,16 @@ def ogc_service_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "HONGKONGCSDI_TEST_OGC_SERVICE_ENTID" => {},
-    "HONGKONGCSDI_TEST_LIVE" => "FALSE",
-    "HONGKONGCSDI_APIKEY" => "NONE",
+    "HONG_KONG_CSDI_TEST_OGC_SERVICE_ENTID" => {},
+    "HONG_KONG_CSDI_TEST_LIVE" => "FALSE",
+    "HONG_KONG_CSDI_APIKEY" => "NONE",
   })
 
-  live = env["HONGKONGCSDI_TEST_LIVE"] == "TRUE"
+  live = env["HONG_KONG_CSDI_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["HONGKONGCSDI_APIKEY"],
+      "apikey" => env["HONG_KONG_CSDI_APIKEY"],
     }
     client = HongKongCsdiSDK.new(merged_opts)
     return {

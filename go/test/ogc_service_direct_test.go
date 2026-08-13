@@ -42,7 +42,8 @@ func TestOgcServiceDirect(t *testing.T) {
 		if setup.live {
 			// Live mode is lenient: synthetic IDs frequently 4xx. Skip
 			// rather than fail when the load endpoint isn't reachable with
-			// the IDs we can construct from setup.idmap.
+			// the IDs we can construct from setup.idmap — unless the model
+			// sets main.kit.test.live.strict.
 			if err != nil {
 				t.Skipf("load call failed (likely synthetic IDs against live API): %v", err)
 			}
@@ -104,21 +105,21 @@ func ogc_serviceDirectSetup(mockres any) *ogc_serviceDirectSetupResult {
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"HONGKONGCSDI_TEST_OGC_SERVICE_ENTID": map[string]any{},
-		"HONGKONGCSDI_TEST_LIVE":    "FALSE",
-		"HONGKONGCSDI_APIKEY":       "NONE",
+		"HONG_KONG_CSDI_TEST_OGC_SERVICE_ENTID": map[string]any{},
+		"HONG_KONG_CSDI_TEST_LIVE":    "FALSE",
+		"HONG_KONG_CSDI_APIKEY":       "NONE",
 	})
 
-	live := env["HONGKONGCSDI_TEST_LIVE"] == "TRUE"
+	live := env["HONG_KONG_CSDI_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["HONGKONGCSDI_APIKEY"],
+			"apikey": env["HONG_KONG_CSDI_APIKEY"],
 		}
 		client := sdk.NewHongKongCsdiSDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["HONGKONGCSDI_TEST_OGC_SERVICE_ENTID"]; ok {
+		if entidRaw, ok := env["HONG_KONG_CSDI_TEST_OGC_SERVICE_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {

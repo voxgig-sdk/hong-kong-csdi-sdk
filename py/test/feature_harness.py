@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import HongKongCsdiControl
-from core.error import HongKongCsdiError
-from core.result import HongKongCsdiResult
-from core.spec import HongKongCsdiSpec
+from hongkongcsdi_sdk.config import make_config
+from hongkongcsdi_sdk.features import _make_feature
+from hongkongcsdi_sdk.core.control import HongKongCsdiControl
+from hongkongcsdi_sdk.core.error import HongKongCsdiError
+from hongkongcsdi_sdk.core.result import HongKongCsdiResult
+from hongkongcsdi_sdk.core.spec import HongKongCsdiSpec
 
 
 # True when this SDK was generated with the named feature.

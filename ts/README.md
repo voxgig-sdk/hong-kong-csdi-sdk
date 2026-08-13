@@ -37,7 +37,9 @@ const client = new HongKongCsdiSDK({
 
 ### 2. List dataset records
 
-`list()` resolves to an array of Dataset objects — iterate it directly:
+`list()` resolves to an array of Dataset ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const datasets = await client.Dataset().list()
@@ -135,7 +137,8 @@ Create a mock client for unit testing — no server required:
 const client = HongKongCsdiSDK.test()
 
 const dataset = await client.Dataset().list()
-// dataset is a bare entity populated with mock response data
+// dataset is the entity, populated with mock response data
+// — call dataset.data() for the record itself
 console.log(dataset)
 ```
 
@@ -306,25 +309,25 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `api_call_count` |  |
-| `api_endpoint` |  |
-| `api_service_call` |  |
+| `apiCallCount` |  |
+| `apiEndpoints` |  |
+| `apiServiceCalls` |  |
 | `category` |  |
-| `dataset_download` |  |
+| `datasetDownloads` |  |
 | `description` |  |
-| `download_count` |  |
-| `format` |  |
+| `downloadCount` |  |
+| `formats` |  |
 | `id` |  |
-| `keyword` |  |
-| `last_updated` |  |
+| `keywords` |  |
+| `lastUpdated` |  |
 | `license` |  |
 | `provider` |  |
-| `published_date` |  |
-| `spatial_extent` |  |
+| `publishedDate` |  |
+| `spatialExtent` |  |
 | `theme` |  |
 | `title` |  |
-| `total_dataset` |  |
-| `view_count` |  |
+| `totalDatasets` |  |
+| `viewCount` |  |
 | `year` |  |
 
 Operations: list, load.
@@ -360,25 +363,25 @@ Create an instance: `const dataset = client.Dataset()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `api_call_count` | `number` |  |
-| `api_endpoint` | `Record<string, any>` |  |
-| `api_service_call` | `number` |  |
+| `apiCallCount` | `number` |  |
+| `apiEndpoints` | `Record<string, any>` |  |
+| `apiServiceCalls` | `number` |  |
 | `category` | `string` |  |
-| `dataset_download` | `number` |  |
+| `datasetDownloads` | `number` |  |
 | `description` | `string` |  |
-| `download_count` | `number` |  |
-| `format` | `any[]` |  |
+| `downloadCount` | `number` |  |
+| `formats` | `any[]` |  |
 | `id` | `string` |  |
-| `keyword` | `any[]` |  |
-| `last_updated` | `string` |  |
+| `keywords` | `any[]` |  |
+| `lastUpdated` | `string` |  |
 | `license` | `string` |  |
 | `provider` | `string` |  |
-| `published_date` | `string` |  |
-| `spatial_extent` | `Record<string, any>` |  |
+| `publishedDate` | `string` |  |
+| `spatialExtent` | `Record<string, any>` |  |
 | `theme` | `string` |  |
 | `title` | `string` |  |
-| `total_dataset` | `number` |  |
-| `view_count` | `number` |  |
+| `totalDatasets` | `number` |  |
+| `viewCount` | `number` |  |
 | `year` | `number` |  |
 
 #### Example: Load

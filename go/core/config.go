@@ -30,21 +30,21 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "api_call_count",
+						"name": "apiCallCount",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "api_endpoint",
+						"name": "apiEndpoints",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "api_service_call",
+						"name": "apiServiceCalls",
 						"req": false,
 						"type": "`$NUMBER`",
 						"index$": 2,
@@ -58,7 +58,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "dataset_download",
+						"name": "datasetDownloads",
 						"req": false,
 						"type": "`$NUMBER`",
 						"index$": 4,
@@ -72,14 +72,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "download_count",
+						"name": "downloadCount",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 6,
 					},
 					map[string]any{
 						"active": true,
-						"name": "format",
+						"name": "formats",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 7,
@@ -93,14 +93,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "keyword",
+						"name": "keywords",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 9,
 					},
 					map[string]any{
 						"active": true,
-						"name": "last_updated",
+						"name": "lastUpdated",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 10,
@@ -121,14 +121,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "published_date",
+						"name": "publishedDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 13,
 					},
 					map[string]any{
 						"active": true,
-						"name": "spatial_extent",
+						"name": "spatialExtent",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 14,
@@ -149,14 +149,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "total_dataset",
+						"name": "totalDatasets",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 17,
 					},
 					map[string]any{
 						"active": true,
-						"name": "view_count",
+						"name": "viewCount",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 18,
@@ -232,6 +232,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/datasets",
 								"parts": []any{
@@ -249,12 +250,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.datasets`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -285,6 +285,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/datasets/{datasetId}/download",
 								"parts": []any{
@@ -325,6 +326,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/datasets/{datasetId}",
 								"parts": []any{
@@ -362,6 +364,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/statistics",
 								"parts": []any{
@@ -379,7 +382,6 @@ func MakeConfig() map[string]any {
 								"index$": 2,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -475,6 +477,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/map/wms",
 								"parts": []any{
@@ -575,6 +578,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/map/wfs",
 								"parts": []any{
@@ -600,7 +604,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

@@ -26,8 +26,8 @@ import {
 describe('DatasetEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when HONGKONGCSDI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('HONGKONGCSDI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when HONG_KONG_CSDI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('HONG_KONG_CSDI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = HongKongCsdiSDK.test()
@@ -63,13 +63,13 @@ describe('DatasetEntity', async () => {
     const dataset_ref01_ent = client.Dataset()
     const dataset_ref01_match: any = {}
 
-    const dataset_ref01_list = await dataset_ref01_ent.list(dataset_ref01_match)
+    const dataset_ref01_list = (await dataset_ref01_ent.list(dataset_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const dataset_ref01_match_dt0: any = {}
     dataset_ref01_match_dt0.id = dataset_ref01_data.id
-    const dataset_ref01_data_dt0 = await dataset_ref01_ent.load(dataset_ref01_match_dt0)
+    const dataset_ref01_data_dt0 = (await dataset_ref01_ent.load(dataset_ref01_match_dt0)).data()
     assert(dataset_ref01_data_dt0.id === dataset_ref01_data.id)
 
 

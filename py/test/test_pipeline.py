@@ -16,11 +16,11 @@
 import pytest
 
 from hongkongcsdi_sdk import HongKongCsdiSDK
-from core.error import HongKongCsdiError
-from core.result import HongKongCsdiResult
-from core.response import HongKongCsdiResponse
-from core.spec import HongKongCsdiSpec
-from feature.base_feature import HongKongCsdiBaseFeature
+from hongkongcsdi_sdk.core.error import HongKongCsdiError
+from hongkongcsdi_sdk.core.result import HongKongCsdiResult
+from hongkongcsdi_sdk.core.response import HongKongCsdiResponse
+from hongkongcsdi_sdk.core.spec import HongKongCsdiSpec
+from hongkongcsdi_sdk.feature.base_feature import HongKongCsdiBaseFeature
 
 
 def _client():

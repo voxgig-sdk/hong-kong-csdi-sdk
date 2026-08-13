@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ HongKongCsdiUtility::setRegistrar(function (HongKongCsdiUtility $u): void {
     $u->prepare_params = [HongKongCsdiPrepareParams::class, 'call'];
     $u->prepare_path = [HongKongCsdiPreparePath::class, 'call'];
     $u->prepare_query = [HongKongCsdiPrepareQuery::class, 'call'];
+    $u->graphql_body = [HongKongCsdiGraphql::class, 'body'];
+    $u->graphql_errors = [HongKongCsdiGraphql::class, 'errors'];
     $u->result_basic = [HongKongCsdiResultBasic::class, 'call'];
     $u->result_body = [HongKongCsdiResultBody::class, 'call'];
     $u->result_headers = [HongKongCsdiResultHeaders::class, 'call'];

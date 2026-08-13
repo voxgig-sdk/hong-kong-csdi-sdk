@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# HongKongCsdi SDK exists test
 
 import pytest
 from hongkongcsdi_sdk import HongKongCsdiSDK

@@ -97,25 +97,25 @@ $dataset = $client->Dataset();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_call_count` | `int` | No |  |
-| `api_endpoint` | `array` | No |  |
-| `api_service_call` | `float` | No |  |
+| `apiCallCount` | `int` | No |  |
+| `apiEndpoints` | `array` | No |  |
+| `apiServiceCalls` | `float` | No |  |
 | `category` | `string` | No |  |
-| `dataset_download` | `float` | No |  |
+| `datasetDownloads` | `float` | No |  |
 | `description` | `string` | Yes |  |
-| `download_count` | `int` | No |  |
-| `format` | `array` | No |  |
+| `downloadCount` | `int` | No |  |
+| `formats` | `array` | No |  |
 | `id` | `string` | Yes |  |
-| `keyword` | `array` | No |  |
-| `last_updated` | `string` | No |  |
+| `keywords` | `array` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `license` | `string` | No |  |
 | `provider` | `string` | No |  |
-| `published_date` | `string` | No |  |
-| `spatial_extent` | `array` | No |  |
+| `publishedDate` | `string` | No |  |
+| `spatialExtent` | `array` | No |  |
 | `theme` | `string` | No |  |
 | `title` | `string` | Yes |  |
-| `total_dataset` | `int` | No |  |
-| `view_count` | `int` | No |  |
+| `totalDatasets` | `int` | No |  |
+| `viewCount` | `int` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations

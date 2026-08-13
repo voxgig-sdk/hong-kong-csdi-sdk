@@ -40,7 +40,7 @@ try {
     // list() returns an array of Dataset records — iterate directly.
     $datasets = $client->Dataset()->list();
     foreach ($datasets as $item) {
-        echo $item["id"] . " " . $item["api_call_count"] . "\n";
+        echo $item["id"] . " " . $item["apiCallCount"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -51,7 +51,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Dataset record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Dataset record (throws on error).
     $dataset = $client->Dataset()->load(["id" => "example_id"]);
     print_r($dataset);
 } catch (\Throwable $err) {
@@ -142,7 +142,8 @@ $client = HongKongCsdiSDK::test([
     "entity" => ["dataset" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $dataset = $client->Dataset()->list();
 print_r($dataset);
 ```
@@ -245,7 +246,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -267,25 +268,25 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `api_call_count` |  |
-| `api_endpoint` |  |
-| `api_service_call` |  |
+| `apiCallCount` |  |
+| `apiEndpoints` |  |
+| `apiServiceCalls` |  |
 | `category` |  |
-| `dataset_download` |  |
+| `datasetDownloads` |  |
 | `description` |  |
-| `download_count` |  |
-| `format` |  |
+| `downloadCount` |  |
+| `formats` |  |
 | `id` |  |
-| `keyword` |  |
-| `last_updated` |  |
+| `keywords` |  |
+| `lastUpdated` |  |
 | `license` |  |
 | `provider` |  |
-| `published_date` |  |
-| `spatial_extent` |  |
+| `publishedDate` |  |
+| `spatialExtent` |  |
 | `theme` |  |
 | `title` |  |
-| `total_dataset` |  |
-| `view_count` |  |
+| `totalDatasets` |  |
+| `viewCount` |  |
 | `year` |  |
 
 Operations: List, Load.
@@ -321,31 +322,31 @@ Create an instance: `$dataset = $client->Dataset();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `api_call_count` | `int` |  |
-| `api_endpoint` | `array` |  |
-| `api_service_call` | `float` |  |
+| `apiCallCount` | `int` |  |
+| `apiEndpoints` | `array` |  |
+| `apiServiceCalls` | `float` |  |
 | `category` | `string` |  |
-| `dataset_download` | `float` |  |
+| `datasetDownloads` | `float` |  |
 | `description` | `string` |  |
-| `download_count` | `int` |  |
-| `format` | `array` |  |
+| `downloadCount` | `int` |  |
+| `formats` | `array` |  |
 | `id` | `string` |  |
-| `keyword` | `array` |  |
-| `last_updated` | `string` |  |
+| `keywords` | `array` |  |
+| `lastUpdated` | `string` |  |
 | `license` | `string` |  |
 | `provider` | `string` |  |
-| `published_date` | `string` |  |
-| `spatial_extent` | `array` |  |
+| `publishedDate` | `string` |  |
+| `spatialExtent` | `array` |  |
 | `theme` | `string` |  |
 | `title` | `string` |  |
-| `total_dataset` | `int` |  |
-| `view_count` | `int` |  |
+| `totalDatasets` | `int` |  |
+| `viewCount` | `int` |  |
 | `year` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Dataset record (throws on error).
+// load() returns the ENTITY — call data_get() for the Dataset record (throws on error).
 $dataset = $client->Dataset()->load(["id" => "dataset_id"]);
 ```
 
@@ -370,7 +371,7 @@ Create an instance: `$ogc_service = $client->OgcService();`
 #### Example: Load
 
 ```php
-// load() returns the bare OgcService record (throws on error).
+// load() returns the ENTITY — call data_get() for the OgcService record (throws on error).
 $ogc_service = $client->OgcService()->load();
 ```
 

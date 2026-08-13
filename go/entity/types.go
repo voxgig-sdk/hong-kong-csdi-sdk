@@ -6,29 +6,33 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/hong-kong-csdi-sdk/go/core"
+)
 
 // Dataset is the typed data model for the dataset entity.
 type Dataset struct {
-	ApiCallCount *int `json:"api_call_count,omitempty"`
-	ApiEndpoint *map[string]any `json:"api_endpoint,omitempty"`
-	ApiServiceCall *float64 `json:"api_service_call,omitempty"`
+	ApiCallCount *int `json:"apiCallCount,omitempty"`
+	ApiEndpoints *map[string]any `json:"apiEndpoints,omitempty"`
+	ApiServiceCalls *float64 `json:"apiServiceCalls,omitempty"`
 	Category *string `json:"category,omitempty"`
-	DatasetDownload *float64 `json:"dataset_download,omitempty"`
+	DatasetDownloads *float64 `json:"datasetDownloads,omitempty"`
 	Description string `json:"description"`
-	DownloadCount *int `json:"download_count,omitempty"`
-	Format *[]any `json:"format,omitempty"`
+	DownloadCount *int `json:"downloadCount,omitempty"`
+	Formats *[]any `json:"formats,omitempty"`
 	Id string `json:"id"`
-	Keyword *[]any `json:"keyword,omitempty"`
-	LastUpdated *string `json:"last_updated,omitempty"`
+	Keywords *[]any `json:"keywords,omitempty"`
+	LastUpdated *string `json:"lastUpdated,omitempty"`
 	License *string `json:"license,omitempty"`
 	Provider *string `json:"provider,omitempty"`
-	PublishedDate *string `json:"published_date,omitempty"`
-	SpatialExtent *map[string]any `json:"spatial_extent,omitempty"`
+	PublishedDate *string `json:"publishedDate,omitempty"`
+	SpatialExtent *map[string]any `json:"spatialExtent,omitempty"`
 	Theme *string `json:"theme,omitempty"`
 	Title string `json:"title"`
-	TotalDataset *int `json:"total_dataset,omitempty"`
-	ViewCount *int `json:"view_count,omitempty"`
+	TotalDatasets *int `json:"totalDatasets,omitempty"`
+	ViewCount *int `json:"viewCount,omitempty"`
 	Year *int `json:"year,omitempty"`
 }
 
@@ -39,25 +43,25 @@ type DatasetLoadMatch struct {
 
 // DatasetListMatch is the typed request payload for Dataset.ListTyped.
 type DatasetListMatch struct {
-	ApiCallCount *int `json:"api_call_count,omitempty"`
-	ApiEndpoint *map[string]any `json:"api_endpoint,omitempty"`
-	ApiServiceCall *float64 `json:"api_service_call,omitempty"`
+	ApiCallCount *int `json:"apiCallCount,omitempty"`
+	ApiEndpoints *map[string]any `json:"apiEndpoints,omitempty"`
+	ApiServiceCalls *float64 `json:"apiServiceCalls,omitempty"`
 	Category *string `json:"category,omitempty"`
-	DatasetDownload *float64 `json:"dataset_download,omitempty"`
+	DatasetDownloads *float64 `json:"datasetDownloads,omitempty"`
 	Description *string `json:"description,omitempty"`
-	DownloadCount *int `json:"download_count,omitempty"`
-	Format *[]any `json:"format,omitempty"`
+	DownloadCount *int `json:"downloadCount,omitempty"`
+	Formats *[]any `json:"formats,omitempty"`
 	Id *string `json:"id,omitempty"`
-	Keyword *[]any `json:"keyword,omitempty"`
-	LastUpdated *string `json:"last_updated,omitempty"`
+	Keywords *[]any `json:"keywords,omitempty"`
+	LastUpdated *string `json:"lastUpdated,omitempty"`
 	License *string `json:"license,omitempty"`
 	Provider *string `json:"provider,omitempty"`
-	PublishedDate *string `json:"published_date,omitempty"`
-	SpatialExtent *map[string]any `json:"spatial_extent,omitempty"`
+	PublishedDate *string `json:"publishedDate,omitempty"`
+	SpatialExtent *map[string]any `json:"spatialExtent,omitempty"`
 	Theme *string `json:"theme,omitempty"`
 	Title *string `json:"title,omitempty"`
-	TotalDataset *int `json:"total_dataset,omitempty"`
-	ViewCount *int `json:"view_count,omitempty"`
+	TotalDatasets *int `json:"totalDatasets,omitempty"`
+	ViewCount *int `json:"viewCount,omitempty"`
 	Year *int `json:"year,omitempty"`
 }
 
@@ -81,12 +85,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -98,12 +116,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

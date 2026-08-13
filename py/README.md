@@ -55,7 +55,7 @@ except Exception as err:
 
 ### 3. Load a dataset
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -139,7 +139,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = HongKongCsdiSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 dataset = client.Dataset().list()
 # dataset contains the mock response record
 ```
@@ -239,7 +240,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -261,25 +262,25 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `api_call_count` |  |
-| `api_endpoint` |  |
-| `api_service_call` |  |
+| `apiCallCount` |  |
+| `apiEndpoints` |  |
+| `apiServiceCalls` |  |
 | `category` |  |
-| `dataset_download` |  |
+| `datasetDownloads` |  |
 | `description` |  |
-| `download_count` |  |
-| `format` |  |
+| `downloadCount` |  |
+| `formats` |  |
 | `id` |  |
-| `keyword` |  |
-| `last_updated` |  |
+| `keywords` |  |
+| `lastUpdated` |  |
 | `license` |  |
 | `provider` |  |
-| `published_date` |  |
-| `spatial_extent` |  |
+| `publishedDate` |  |
+| `spatialExtent` |  |
 | `theme` |  |
 | `title` |  |
-| `total_dataset` |  |
-| `view_count` |  |
+| `totalDatasets` |  |
+| `viewCount` |  |
 | `year` |  |
 
 Operations: List, Load.
@@ -315,25 +316,25 @@ Create an instance: `dataset = client.Dataset()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `api_call_count` | `int` |  |
-| `api_endpoint` | `dict` |  |
-| `api_service_call` | `float` |  |
+| `apiCallCount` | `int` |  |
+| `apiEndpoints` | `dict` |  |
+| `apiServiceCalls` | `float` |  |
 | `category` | `str` |  |
-| `dataset_download` | `float` |  |
+| `datasetDownloads` | `float` |  |
 | `description` | `str` |  |
-| `download_count` | `int` |  |
-| `format` | `list` |  |
+| `downloadCount` | `int` |  |
+| `formats` | `list` |  |
 | `id` | `str` |  |
-| `keyword` | `list` |  |
-| `last_updated` | `str` |  |
+| `keywords` | `list` |  |
+| `lastUpdated` | `str` |  |
 | `license` | `str` |  |
 | `provider` | `str` |  |
-| `published_date` | `str` |  |
-| `spatial_extent` | `dict` |  |
+| `publishedDate` | `str` |  |
+| `spatialExtent` | `dict` |  |
 | `theme` | `str` |  |
 | `title` | `str` |  |
-| `total_dataset` | `int` |  |
-| `view_count` | `int` |  |
+| `totalDatasets` | `int` |  |
+| `viewCount` | `int` |  |
 | `year` | `int` |  |
 
 #### Example: Load

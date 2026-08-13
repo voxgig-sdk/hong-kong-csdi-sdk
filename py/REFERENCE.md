@@ -92,25 +92,25 @@ dataset = client.Dataset()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_call_count` | `int` | No |  |
-| `api_endpoint` | `dict` | No |  |
-| `api_service_call` | `float` | No |  |
+| `apiCallCount` | `int` | No |  |
+| `apiEndpoints` | `dict` | No |  |
+| `apiServiceCalls` | `float` | No |  |
 | `category` | `str` | No |  |
-| `dataset_download` | `float` | No |  |
+| `datasetDownloads` | `float` | No |  |
 | `description` | `str` | Yes |  |
-| `download_count` | `int` | No |  |
-| `format` | `list` | No |  |
+| `downloadCount` | `int` | No |  |
+| `formats` | `list` | No |  |
 | `id` | `str` | Yes |  |
-| `keyword` | `list` | No |  |
-| `last_updated` | `str` | No |  |
+| `keywords` | `list` | No |  |
+| `lastUpdated` | `str` | No |  |
 | `license` | `str` | No |  |
 | `provider` | `str` | No |  |
-| `published_date` | `str` | No |  |
-| `spatial_extent` | `dict` | No |  |
+| `publishedDate` | `str` | No |  |
+| `spatialExtent` | `dict` | No |  |
 | `theme` | `str` | No |  |
 | `title` | `str` | Yes |  |
-| `total_dataset` | `int` | No |  |
-| `view_count` | `int` | No |  |
+| `totalDatasets` | `int` | No |  |
+| `viewCount` | `int` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations

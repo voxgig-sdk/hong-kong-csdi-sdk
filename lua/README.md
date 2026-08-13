@@ -246,25 +246,25 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `api_call_count` |  |
-| `api_endpoint` |  |
-| `api_service_call` |  |
+| `apiCallCount` |  |
+| `apiEndpoints` |  |
+| `apiServiceCalls` |  |
 | `category` |  |
-| `dataset_download` |  |
+| `datasetDownloads` |  |
 | `description` |  |
-| `download_count` |  |
-| `format` |  |
+| `downloadCount` |  |
+| `formats` |  |
 | `id` |  |
-| `keyword` |  |
-| `last_updated` |  |
+| `keywords` |  |
+| `lastUpdated` |  |
 | `license` |  |
 | `provider` |  |
-| `published_date` |  |
-| `spatial_extent` |  |
+| `publishedDate` |  |
+| `spatialExtent` |  |
 | `theme` |  |
 | `title` |  |
-| `total_dataset` |  |
-| `view_count` |  |
+| `totalDatasets` |  |
+| `viewCount` |  |
 | `year` |  |
 
 Operations: List, Load.
@@ -300,25 +300,25 @@ Create an instance: `local dataset = client:Dataset(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `api_call_count` | `number` |  |
-| `api_endpoint` | `table` |  |
-| `api_service_call` | `number` |  |
+| `apiCallCount` | `number` |  |
+| `apiEndpoints` | `table` |  |
+| `apiServiceCalls` | `number` |  |
 | `category` | `string` |  |
-| `dataset_download` | `number` |  |
+| `datasetDownloads` | `number` |  |
 | `description` | `string` |  |
-| `download_count` | `number` |  |
-| `format` | `table` |  |
+| `downloadCount` | `number` |  |
+| `formats` | `table` |  |
 | `id` | `string` |  |
-| `keyword` | `table` |  |
-| `last_updated` | `string` |  |
+| `keywords` | `table` |  |
+| `lastUpdated` | `string` |  |
 | `license` | `string` |  |
 | `provider` | `string` |  |
-| `published_date` | `string` |  |
-| `spatial_extent` | `table` |  |
+| `publishedDate` | `string` |  |
+| `spatialExtent` | `table` |  |
 | `theme` | `string` |  |
 | `title` | `string` |  |
-| `total_dataset` | `number` |  |
-| `view_count` | `number` |  |
+| `totalDatasets` | `number` |  |
+| `viewCount` | `number` |  |
 | `year` | `number` |  |
 
 #### Example: Load

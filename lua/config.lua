@@ -30,21 +30,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "api_call_count",
+            ["name"] = "apiCallCount",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "api_endpoint",
+            ["name"] = "apiEndpoints",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "api_service_call",
+            ["name"] = "apiServiceCalls",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 2,
@@ -58,7 +58,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "dataset_download",
+            ["name"] = "datasetDownloads",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 4,
@@ -72,14 +72,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "download_count",
+            ["name"] = "downloadCount",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "format",
+            ["name"] = "formats",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 7,
@@ -93,14 +93,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "keyword",
+            ["name"] = "keywords",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 9,
           },
           {
             ["active"] = true,
-            ["name"] = "last_updated",
+            ["name"] = "lastUpdated",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 10,
@@ -121,14 +121,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "published_date",
+            ["name"] = "publishedDate",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 13,
           },
           {
             ["active"] = true,
-            ["name"] = "spatial_extent",
+            ["name"] = "spatialExtent",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 14,
@@ -149,14 +149,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "total_dataset",
+            ["name"] = "totalDatasets",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 17,
           },
           {
             ["active"] = true,
-            ["name"] = "view_count",
+            ["name"] = "viewCount",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 18,
@@ -232,6 +232,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/datasets",
                 ["parts"] = {
@@ -249,7 +250,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.datasets`",
                 },
                 ["index$"] = 0,
               },
@@ -286,6 +287,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/datasets/{datasetId}/download",
                 ["parts"] = {
@@ -326,6 +328,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/datasets/{datasetId}",
                 ["parts"] = {
@@ -363,6 +366,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/statistics",
                 ["parts"] = {
@@ -476,6 +480,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/map/wms",
                 ["parts"] = {
@@ -576,6 +581,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/map/wfs",
                 ["parts"] = {

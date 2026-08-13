@@ -15,25 +15,25 @@ declare(strict_types=1);
 /** Dataset entity data model. */
 class Dataset
 {
-    public ?int $api_call_count = null;
-    public ?array $api_endpoint = null;
-    public ?float $api_service_call = null;
+    public ?int $apiCallCount = null;
+    public ?array $apiEndpoints = null;
+    public ?float $apiServiceCalls = null;
     public ?string $category = null;
-    public ?float $dataset_download = null;
+    public ?float $datasetDownloads = null;
     public string $description;
-    public ?int $download_count = null;
-    public ?array $format = null;
+    public ?int $downloadCount = null;
+    public ?array $formats = null;
     public string $id;
-    public ?array $keyword = null;
-    public ?string $last_updated = null;
+    public ?array $keywords = null;
+    public ?string $lastUpdated = null;
     public ?string $license = null;
     public ?string $provider = null;
-    public ?string $published_date = null;
-    public ?array $spatial_extent = null;
+    public ?string $publishedDate = null;
+    public ?array $spatialExtent = null;
     public ?string $theme = null;
     public string $title;
-    public ?int $total_dataset = null;
-    public ?int $view_count = null;
+    public ?int $totalDatasets = null;
+    public ?int $viewCount = null;
     public ?int $year = null;
 }
 
@@ -46,25 +46,25 @@ class DatasetLoadMatch
 /** Request payload for Dataset#list. */
 class DatasetListMatch
 {
-    public ?int $api_call_count = null;
-    public ?array $api_endpoint = null;
-    public ?float $api_service_call = null;
+    public ?int $apiCallCount = null;
+    public ?array $apiEndpoints = null;
+    public ?float $apiServiceCalls = null;
     public ?string $category = null;
-    public ?float $dataset_download = null;
+    public ?float $datasetDownloads = null;
     public ?string $description = null;
-    public ?int $download_count = null;
-    public ?array $format = null;
+    public ?int $downloadCount = null;
+    public ?array $formats = null;
     public ?string $id = null;
-    public ?array $keyword = null;
-    public ?string $last_updated = null;
+    public ?array $keywords = null;
+    public ?string $lastUpdated = null;
     public ?string $license = null;
     public ?string $provider = null;
-    public ?string $published_date = null;
-    public ?array $spatial_extent = null;
+    public ?string $publishedDate = null;
+    public ?array $spatialExtent = null;
     public ?string $theme = null;
     public ?string $title = null;
-    public ?int $total_dataset = null;
-    public ?int $view_count = null;
+    public ?int $totalDatasets = null;
+    public ?int $viewCount = null;
     public ?int $year = null;
 }
 

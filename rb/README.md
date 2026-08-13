@@ -39,7 +39,7 @@ begin
   # list returns an Array of Dataset records — iterate directly.
   datasets = client.Dataset.list
   datasets.each do |item|
-    puts "#{item["id"]} #{item["api_call_count"]}"
+    puts "#{item["id"]} #{item["apiCallCount"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -50,7 +50,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Dataset record (raises on error).
+  # load returns the ENTITY — call data_get for the Dataset record (raises on error).
   dataset = client.Dataset.load({ "id" => "example_id" })
   puts dataset
 rescue => err
@@ -136,7 +136,8 @@ client = HongKongCsdiSDK.test({
   "entity" => { "dataset" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 dataset = client.Dataset.list()
 puts dataset
 ```
@@ -257,25 +258,25 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `api_call_count` |  |
-| `api_endpoint` |  |
-| `api_service_call` |  |
+| `apiCallCount` |  |
+| `apiEndpoints` |  |
+| `apiServiceCalls` |  |
 | `category` |  |
-| `dataset_download` |  |
+| `datasetDownloads` |  |
 | `description` |  |
-| `download_count` |  |
-| `format` |  |
+| `downloadCount` |  |
+| `formats` |  |
 | `id` |  |
-| `keyword` |  |
-| `last_updated` |  |
+| `keywords` |  |
+| `lastUpdated` |  |
 | `license` |  |
 | `provider` |  |
-| `published_date` |  |
-| `spatial_extent` |  |
+| `publishedDate` |  |
+| `spatialExtent` |  |
 | `theme` |  |
 | `title` |  |
-| `total_dataset` |  |
-| `view_count` |  |
+| `totalDatasets` |  |
+| `viewCount` |  |
 | `year` |  |
 
 Operations: List, Load.
@@ -311,31 +312,31 @@ Create an instance: `dataset = client.Dataset`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `api_call_count` | `Integer` |  |
-| `api_endpoint` | `Hash` |  |
-| `api_service_call` | `Float` |  |
+| `apiCallCount` | `Integer` |  |
+| `apiEndpoints` | `Hash` |  |
+| `apiServiceCalls` | `Float` |  |
 | `category` | `String` |  |
-| `dataset_download` | `Float` |  |
+| `datasetDownloads` | `Float` |  |
 | `description` | `String` |  |
-| `download_count` | `Integer` |  |
-| `format` | `Array` |  |
+| `downloadCount` | `Integer` |  |
+| `formats` | `Array` |  |
 | `id` | `String` |  |
-| `keyword` | `Array` |  |
-| `last_updated` | `String` |  |
+| `keywords` | `Array` |  |
+| `lastUpdated` | `String` |  |
 | `license` | `String` |  |
 | `provider` | `String` |  |
-| `published_date` | `String` |  |
-| `spatial_extent` | `Hash` |  |
+| `publishedDate` | `String` |  |
+| `spatialExtent` | `Hash` |  |
 | `theme` | `String` |  |
 | `title` | `String` |  |
-| `total_dataset` | `Integer` |  |
-| `view_count` | `Integer` |  |
+| `totalDatasets` | `Integer` |  |
+| `viewCount` | `Integer` |  |
 | `year` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Dataset record (raises on error).
+# load returns the ENTITY — call data_get for the Dataset record (raises on error).
 dataset = client.Dataset.load({ "id" => "dataset_id" })
 ```
 
@@ -360,7 +361,7 @@ Create an instance: `ogc_service = client.OgcService`
 #### Example: Load
 
 ```ruby
-# load returns the bare OgcService record (raises on error).
+# load returns the ENTITY — call data_get for the OgcService record (raises on error).
 ogc_service = client.OgcService.load()
 ```
 

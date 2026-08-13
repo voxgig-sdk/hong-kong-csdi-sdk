@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from hongkongcsdi_sdk.utility.voxgig_struct import voxgig_struct as vs
 from hongkongcsdi_sdk import HongKongCsdiSDK
-from core import helpers
+from hongkongcsdi_sdk.core import helpers
 from test import runner
 
 
@@ -62,16 +62,16 @@ def _ogc_service_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "HONGKONGCSDI_TEST_OGC_SERVICE_ENTID": {},
-        "HONGKONGCSDI_TEST_LIVE": "FALSE",
-        "HONGKONGCSDI_APIKEY": "NONE",
+        "HONG_KONG_CSDI_TEST_OGC_SERVICE_ENTID": {},
+        "HONG_KONG_CSDI_TEST_LIVE": "FALSE",
+        "HONG_KONG_CSDI_APIKEY": "NONE",
     })
 
-    live = env.get("HONGKONGCSDI_TEST_LIVE") == "TRUE"
+    live = env.get("HONG_KONG_CSDI_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("HONGKONGCSDI_APIKEY"),
+            "apikey": env.get("HONG_KONG_CSDI_APIKEY"),
         }
         client = HongKongCsdiSDK(merged_opts)
         return {

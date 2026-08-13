@@ -129,26 +129,46 @@ const dataset = client.Dataset()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_call_count` | `number` | No |  |
-| `api_endpoint` | `Record<string, any>` | No |  |
-| `api_service_call` | `number` | No |  |
+| `apiCallCount` | `number` | No |  |
+| `apiEndpoints` | `Record<string, any>` | No |  |
+| `apiServiceCalls` | `number` | No |  |
 | `category` | `string` | No |  |
-| `dataset_download` | `number` | No |  |
+| `datasetDownloads` | `number` | No |  |
 | `description` | `string` | Yes |  |
-| `download_count` | `number` | No |  |
-| `format` | `any[]` | No |  |
+| `downloadCount` | `number` | No |  |
+| `formats` | `any[]` | No |  |
 | `id` | `string` | Yes |  |
-| `keyword` | `any[]` | No |  |
-| `last_updated` | `string` | No |  |
+| `keywords` | `any[]` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `license` | `string` | No |  |
 | `provider` | `string` | No |  |
-| `published_date` | `string` | No |  |
-| `spatial_extent` | `Record<string, any>` | No |  |
+| `publishedDate` | `string` | No |  |
+| `spatialExtent` | `Record<string, any>` | No |  |
 | `theme` | `string` | No |  |
 | `title` | `string` | Yes |  |
-| `total_dataset` | `number` | No |  |
-| `view_count` | `number` | No |  |
+| `totalDatasets` | `number` | No |  |
+| `viewCount` | `number` | No |  |
 | `year` | `number` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `download` | `/datasets/{datasetId}/download` | `client.Dataset().load({ $action: 'download', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Dataset record — check the API definition for its shape.
+
+```ts
+const result = await client.Dataset().load({
+  $action: 'download',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 

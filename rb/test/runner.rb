@@ -23,8 +23,8 @@ module HongKongCsdiTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("HONGKONGCSDI_TEST_LIVE")
-    override = getenv("HONGKONGCSDI_TEST_OVERRIDE")
+    live = getenv("HONG_KONG_CSDI_TEST_LIVE")
+    override = getenv("HONG_KONG_CSDI_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module HongKongCsdiTestRunner
       end
     end
 
-    explain = getenv("HONGKONGCSDI_TEST_EXPLAIN")
-    m["HONGKONGCSDI_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("HONG_KONG_CSDI_TEST_EXPLAIN")
+    m["HONG_KONG_CSDI_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

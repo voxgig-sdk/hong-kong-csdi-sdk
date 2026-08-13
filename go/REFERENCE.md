@@ -103,25 +103,25 @@ fmt.Println(dataset.GetName()) // "dataset"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_call_count` | `int` | No |  |
-| `api_endpoint` | `map[string]any` | No |  |
-| `api_service_call` | `float64` | No |  |
+| `apiCallCount` | `int` | No |  |
+| `apiEndpoints` | `map[string]any` | No |  |
+| `apiServiceCalls` | `float64` | No |  |
 | `category` | `string` | No |  |
-| `dataset_download` | `float64` | No |  |
+| `datasetDownloads` | `float64` | No |  |
 | `description` | `string` | Yes |  |
-| `download_count` | `int` | No |  |
-| `format` | `[]any` | No |  |
+| `downloadCount` | `int` | No |  |
+| `formats` | `[]any` | No |  |
 | `id` | `string` | Yes |  |
-| `keyword` | `[]any` | No |  |
-| `last_updated` | `string` | No |  |
+| `keywords` | `[]any` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `license` | `string` | No |  |
 | `provider` | `string` | No |  |
-| `published_date` | `string` | No |  |
-| `spatial_extent` | `map[string]any` | No |  |
+| `publishedDate` | `string` | No |  |
+| `spatialExtent` | `map[string]any` | No |  |
 | `theme` | `string` | No |  |
 | `title` | `string` | Yes |  |
-| `total_dataset` | `int` | No |  |
-| `view_count` | `int` | No |  |
+| `totalDatasets` | `int` | No |  |
+| `viewCount` | `int` | No |  |
 | `year` | `int` | No |  |
 
 ### Operations

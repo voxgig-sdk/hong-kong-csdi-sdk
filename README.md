@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = HongKongCsdiSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = HongKongCsdiSDK.test({
+  entity: {
+    dataset: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const datasets = await client.Dataset().list()
-// datasets is an array of bare Dataset records populated with mock data
+// datasets is an array of Dataset entities, populated with mock data
+// — call datasets[0].data() for the record itself
 console.log(datasets)
 ```
 
@@ -112,7 +121,7 @@ const client = new HongKongCsdiSDK({
   apikey: process.env.HONG_KONG_CSDI_APIKEY,
 })
 
-// List all datasets (returns Dataset[])
+// List all datasets (returns DatasetEntity[] — .data() for the record)
 const datasets = await client.Dataset().list()
 for (const dataset of datasets) {
   console.log(dataset)
@@ -199,7 +208,7 @@ $client = new HongKongCsdiSDK([
 $datasets = $client->Dataset()->list();
 print_r($datasets);
 
-// Load a specific dataset (returns the bare record; throws on error)
+// Load a specific dataset (returns the ENTITY; call data_get() for the record; throws on error)
 $dataset = $client->Dataset()->load(["id" => "example_id"]);
 print_r($dataset);
 ```
@@ -234,7 +243,7 @@ client = HongKongCsdiSDK.new({
 datasets = client.Dataset.list
 puts datasets
 
-# Load a specific dataset (returns the bare record; raises on error)
+# Load a specific dataset (returns the ENTITY; call data_get for the record)
 dataset = client.Dataset.load({ "id" => "example_id" })
 puts dataset
 ```
@@ -373,6 +382,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://portal.csdi.gov.hk/csdi-webpage/](https://portal.csdi.gov.hk/csdi-webpage/)
 

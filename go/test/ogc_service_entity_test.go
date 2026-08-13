@@ -44,7 +44,7 @@ func TestOgcServiceEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set HONGKONGCSDI_TEST_OGC_SERVICE_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set HONG_KONG_CSDI_TEST_OGC_SERVICE_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -110,38 +110,38 @@ func ogc_serviceBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("HONGKONGCSDI_TEST_OGC_SERVICE_ENTID")
+	entidEnvRaw := os.Getenv("HONG_KONG_CSDI_TEST_OGC_SERVICE_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"HONGKONGCSDI_TEST_OGC_SERVICE_ENTID": idmap,
-		"HONGKONGCSDI_TEST_LIVE":      "FALSE",
-		"HONGKONGCSDI_TEST_EXPLAIN":   "FALSE",
-		"HONGKONGCSDI_APIKEY":         "NONE",
+		"HONG_KONG_CSDI_TEST_OGC_SERVICE_ENTID": idmap,
+		"HONG_KONG_CSDI_TEST_LIVE":      "FALSE",
+		"HONG_KONG_CSDI_TEST_EXPLAIN":   "FALSE",
+		"HONG_KONG_CSDI_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["HONGKONGCSDI_TEST_OGC_SERVICE_ENTID"])
+	idmapResolved := core.ToMapAny(env["HONG_KONG_CSDI_TEST_OGC_SERVICE_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["HONGKONGCSDI_TEST_LIVE"] == "TRUE" {
+	if env["HONG_KONG_CSDI_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["HONGKONGCSDI_APIKEY"],
+				"apikey": env["HONG_KONG_CSDI_APIKEY"],
 			},
 			extra,
 		})
 		client = sdk.NewHongKongCsdiSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["HONGKONGCSDI_TEST_LIVE"] == "TRUE"
+	live := env["HONG_KONG_CSDI_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["HONGKONGCSDI_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["HONG_KONG_CSDI_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

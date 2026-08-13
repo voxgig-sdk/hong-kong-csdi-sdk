@@ -26,8 +26,8 @@ import {
 describe('OgcServiceEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when HONGKONGCSDI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('HONGKONGCSDI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when HONG_KONG_CSDI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('HONG_KONG_CSDI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = HongKongCsdiSDK.test()
@@ -62,7 +62,7 @@ describe('OgcServiceEntity', async () => {
     // LOAD
     const ogc_service_ref01_ent = client.OgcService()
     const ogc_service_ref01_match_dt0: any = {}
-    const ogc_service_ref01_data_dt0 = await ogc_service_ref01_ent.load(ogc_service_ref01_match_dt0)
+    const ogc_service_ref01_data_dt0 = (await ogc_service_ref01_ent.load(ogc_service_ref01_match_dt0)).data()
     assert(null != ogc_service_ref01_data_dt0)
 
 

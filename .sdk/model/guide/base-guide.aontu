@@ -8,6 +8,7 @@ guide: {
   entity: dataset: {
     path: "/datasets": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.datasets`")|top
     }
     path: "/datasets/{datasetId}": {
       rename: param: "datasetId": *"id"

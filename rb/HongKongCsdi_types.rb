@@ -10,37 +10,37 @@
 
 # Dataset entity data model.
 #
-# @!attribute [rw] api_call_count
+# @!attribute [rw] apiCallCount
 #   @return [Integer, nil]
 #
-# @!attribute [rw] api_endpoint
+# @!attribute [rw] apiEndpoints
 #   @return [Hash, nil]
 #
-# @!attribute [rw] api_service_call
+# @!attribute [rw] apiServiceCalls
 #   @return [Float, nil]
 #
 # @!attribute [rw] category
 #   @return [String, nil]
 #
-# @!attribute [rw] dataset_download
+# @!attribute [rw] datasetDownloads
 #   @return [Float, nil]
 #
 # @!attribute [rw] description
 #   @return [String]
 #
-# @!attribute [rw] download_count
+# @!attribute [rw] downloadCount
 #   @return [Integer, nil]
 #
-# @!attribute [rw] format
+# @!attribute [rw] formats
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
 #   @return [String]
 #
-# @!attribute [rw] keyword
+# @!attribute [rw] keywords
 #   @return [Array, nil]
 #
-# @!attribute [rw] last_updated
+# @!attribute [rw] lastUpdated
 #   @return [String, nil]
 #
 # @!attribute [rw] license
@@ -49,10 +49,10 @@
 # @!attribute [rw] provider
 #   @return [String, nil]
 #
-# @!attribute [rw] published_date
+# @!attribute [rw] publishedDate
 #   @return [String, nil]
 #
-# @!attribute [rw] spatial_extent
+# @!attribute [rw] spatialExtent
 #   @return [Hash, nil]
 #
 # @!attribute [rw] theme
@@ -61,34 +61,34 @@
 # @!attribute [rw] title
 #   @return [String]
 #
-# @!attribute [rw] total_dataset
+# @!attribute [rw] totalDatasets
 #   @return [Integer, nil]
 #
-# @!attribute [rw] view_count
+# @!attribute [rw] viewCount
 #   @return [Integer, nil]
 #
 # @!attribute [rw] year
 #   @return [Integer, nil]
 Dataset = Struct.new(
-  :api_call_count,
-  :api_endpoint,
-  :api_service_call,
+  :apiCallCount,
+  :apiEndpoints,
+  :apiServiceCalls,
   :category,
-  :dataset_download,
+  :datasetDownloads,
   :description,
-  :download_count,
-  :format,
+  :downloadCount,
+  :formats,
   :id,
-  :keyword,
-  :last_updated,
+  :keywords,
+  :lastUpdated,
   :license,
   :provider,
-  :published_date,
-  :spatial_extent,
+  :publishedDate,
+  :spatialExtent,
   :theme,
   :title,
-  :total_dataset,
-  :view_count,
+  :totalDatasets,
+  :viewCount,
   :year,
   keyword_init: true
 )
@@ -104,37 +104,37 @@ DatasetLoadMatch = Struct.new(
 
 # Request payload for Dataset#list.
 #
-# @!attribute [rw] api_call_count
+# @!attribute [rw] apiCallCount
 #   @return [Integer, nil]
 #
-# @!attribute [rw] api_endpoint
+# @!attribute [rw] apiEndpoints
 #   @return [Hash, nil]
 #
-# @!attribute [rw] api_service_call
+# @!attribute [rw] apiServiceCalls
 #   @return [Float, nil]
 #
 # @!attribute [rw] category
 #   @return [String, nil]
 #
-# @!attribute [rw] dataset_download
+# @!attribute [rw] datasetDownloads
 #   @return [Float, nil]
 #
 # @!attribute [rw] description
 #   @return [String, nil]
 #
-# @!attribute [rw] download_count
+# @!attribute [rw] downloadCount
 #   @return [Integer, nil]
 #
-# @!attribute [rw] format
+# @!attribute [rw] formats
 #   @return [Array, nil]
 #
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] keyword
+# @!attribute [rw] keywords
 #   @return [Array, nil]
 #
-# @!attribute [rw] last_updated
+# @!attribute [rw] lastUpdated
 #   @return [String, nil]
 #
 # @!attribute [rw] license
@@ -143,10 +143,10 @@ DatasetLoadMatch = Struct.new(
 # @!attribute [rw] provider
 #   @return [String, nil]
 #
-# @!attribute [rw] published_date
+# @!attribute [rw] publishedDate
 #   @return [String, nil]
 #
-# @!attribute [rw] spatial_extent
+# @!attribute [rw] spatialExtent
 #   @return [Hash, nil]
 #
 # @!attribute [rw] theme
@@ -155,34 +155,34 @@ DatasetLoadMatch = Struct.new(
 # @!attribute [rw] title
 #   @return [String, nil]
 #
-# @!attribute [rw] total_dataset
+# @!attribute [rw] totalDatasets
 #   @return [Integer, nil]
 #
-# @!attribute [rw] view_count
+# @!attribute [rw] viewCount
 #   @return [Integer, nil]
 #
 # @!attribute [rw] year
 #   @return [Integer, nil]
 DatasetListMatch = Struct.new(
-  :api_call_count,
-  :api_endpoint,
-  :api_service_call,
+  :apiCallCount,
+  :apiEndpoints,
+  :apiServiceCalls,
   :category,
-  :dataset_download,
+  :datasetDownloads,
   :description,
-  :download_count,
-  :format,
+  :downloadCount,
+  :formats,
   :id,
-  :keyword,
-  :last_updated,
+  :keywords,
+  :lastUpdated,
   :license,
   :provider,
-  :published_date,
-  :spatial_extent,
+  :publishedDate,
+  :spatialExtent,
   :theme,
   :title,
-  :total_dataset,
-  :view_count,
+  :totalDatasets,
+  :viewCount,
   :year,
   keyword_init: true
 )

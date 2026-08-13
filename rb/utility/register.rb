@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ HongKongCsdiUtility.registrar = ->(u) {
   u.prepare_params = HongKongCsdiUtilities::PrepareParams
   u.prepare_path = HongKongCsdiUtilities::PreparePath
   u.prepare_query = HongKongCsdiUtilities::PrepareQuery
+  u.graphql_body = HongKongCsdiUtilities::GraphqlBody
+  u.graphql_errors = HongKongCsdiUtilities::GraphqlErrors
   u.result_basic = HongKongCsdiUtilities::ResultBasic
   u.result_body = HongKongCsdiUtilities::ResultBody
   u.result_headers = HongKongCsdiUtilities::ResultHeaders

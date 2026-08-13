@@ -95,25 +95,25 @@ local dataset = client:Dataset(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_call_count` | `number` | No |  |
-| `api_endpoint` | `table` | No |  |
-| `api_service_call` | `number` | No |  |
+| `apiCallCount` | `number` | No |  |
+| `apiEndpoints` | `table` | No |  |
+| `apiServiceCalls` | `number` | No |  |
 | `category` | `string` | No |  |
-| `dataset_download` | `number` | No |  |
+| `datasetDownloads` | `number` | No |  |
 | `description` | `string` | Yes |  |
-| `download_count` | `number` | No |  |
-| `format` | `table` | No |  |
+| `downloadCount` | `number` | No |  |
+| `formats` | `table` | No |  |
 | `id` | `string` | Yes |  |
-| `keyword` | `table` | No |  |
-| `last_updated` | `string` | No |  |
+| `keywords` | `table` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `license` | `string` | No |  |
 | `provider` | `string` | No |  |
-| `published_date` | `string` | No |  |
-| `spatial_extent` | `table` | No |  |
+| `publishedDate` | `string` | No |  |
+| `spatialExtent` | `table` | No |  |
 | `theme` | `string` | No |  |
 | `title` | `string` | Yes |  |
-| `total_dataset` | `number` | No |  |
-| `view_count` | `number` | No |  |
+| `totalDatasets` | `number` | No |  |
+| `viewCount` | `number` | No |  |
 | `year` | `number` | No |  |
 
 ### Operations

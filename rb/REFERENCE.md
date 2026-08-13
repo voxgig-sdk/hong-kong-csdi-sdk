@@ -98,25 +98,25 @@ dataset = client.Dataset
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_call_count` | `Integer` | No |  |
-| `api_endpoint` | `Hash` | No |  |
-| `api_service_call` | `Float` | No |  |
+| `apiCallCount` | `Integer` | No |  |
+| `apiEndpoints` | `Hash` | No |  |
+| `apiServiceCalls` | `Float` | No |  |
 | `category` | `String` | No |  |
-| `dataset_download` | `Float` | No |  |
+| `datasetDownloads` | `Float` | No |  |
 | `description` | `String` | Yes |  |
-| `download_count` | `Integer` | No |  |
-| `format` | `Array` | No |  |
+| `downloadCount` | `Integer` | No |  |
+| `formats` | `Array` | No |  |
 | `id` | `String` | Yes |  |
-| `keyword` | `Array` | No |  |
-| `last_updated` | `String` | No |  |
+| `keywords` | `Array` | No |  |
+| `lastUpdated` | `String` | No |  |
 | `license` | `String` | No |  |
 | `provider` | `String` | No |  |
-| `published_date` | `String` | No |  |
-| `spatial_extent` | `Hash` | No |  |
+| `publishedDate` | `String` | No |  |
+| `spatialExtent` | `Hash` | No |  |
 | `theme` | `String` | No |  |
 | `title` | `String` | Yes |  |
-| `total_dataset` | `Integer` | No |  |
-| `view_count` | `Integer` | No |  |
+| `totalDatasets` | `Integer` | No |  |
+| `viewCount` | `Integer` | No |  |
 | `year` | `Integer` | No |  |
 
 ### Operations

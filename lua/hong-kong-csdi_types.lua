@@ -7,50 +7,50 @@
 -- edit by hand.
 
 ---@class Dataset
----@field api_call_count? number
----@field api_endpoint? table
----@field api_service_call? number
+---@field apiCallCount? number
+---@field apiEndpoints? table
+---@field apiServiceCalls? number
 ---@field category? string
----@field dataset_download? number
+---@field datasetDownloads? number
 ---@field description string
----@field download_count? number
----@field format? table
+---@field downloadCount? number
+---@field formats? table
 ---@field id string
----@field keyword? table
----@field last_updated? string
+---@field keywords? table
+---@field lastUpdated? string
 ---@field license? string
 ---@field provider? string
----@field published_date? string
----@field spatial_extent? table
+---@field publishedDate? string
+---@field spatialExtent? table
 ---@field theme? string
 ---@field title string
----@field total_dataset? number
----@field view_count? number
+---@field totalDatasets? number
+---@field viewCount? number
 ---@field year? number
 
 ---@class DatasetLoadMatch
 ---@field id? string
 
 ---@class DatasetListMatch
----@field api_call_count? number
----@field api_endpoint? table
----@field api_service_call? number
+---@field apiCallCount? number
+---@field apiEndpoints? table
+---@field apiServiceCalls? number
 ---@field category? string
----@field dataset_download? number
+---@field datasetDownloads? number
 ---@field description? string
----@field download_count? number
----@field format? table
+---@field downloadCount? number
+---@field formats? table
 ---@field id? string
----@field keyword? table
----@field last_updated? string
+---@field keywords? table
+---@field lastUpdated? string
 ---@field license? string
 ---@field provider? string
----@field published_date? string
----@field spatial_extent? table
+---@field publishedDate? string
+---@field spatialExtent? table
 ---@field theme? string
 ---@field title? string
----@field total_dataset? number
----@field view_count? number
+---@field totalDatasets? number
+---@field viewCount? number
 ---@field year? number
 
 ---@class OgcService

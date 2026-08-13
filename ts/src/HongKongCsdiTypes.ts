@@ -6,52 +6,58 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Dataset {
-  api_call_count?: number
-  api_endpoint?: Record<string, any>
-  api_service_call?: number
+  apiCallCount?: number
+  apiEndpoints?: Record<string, any>
+  apiServiceCalls?: number
   category?: string
-  dataset_download?: number
+  datasetDownloads?: number
   description: string
-  download_count?: number
-  format?: any[]
+  downloadCount?: number
+  formats?: any[]
   id: string
-  keyword?: any[]
-  last_updated?: string
+  keywords?: any[]
+  lastUpdated?: string
   license?: string
   provider?: string
-  published_date?: string
-  spatial_extent?: Record<string, any>
+  publishedDate?: string
+  spatialExtent?: Record<string, any>
   theme?: string
   title: string
-  total_dataset?: number
-  view_count?: number
+  totalDatasets?: number
+  viewCount?: number
   year?: number
 }
 
 export interface DatasetLoadMatch {
   id?: string
+
+  // Selects a custom action instead of the plain load:
+  //   'download'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface DatasetListMatch {
-  api_call_count?: number
-  api_endpoint?: Record<string, any>
-  api_service_call?: number
+  apiCallCount?: number
+  apiEndpoints?: Record<string, any>
+  apiServiceCalls?: number
   category?: string
-  dataset_download?: number
+  datasetDownloads?: number
   description?: string
-  download_count?: number
-  format?: any[]
+  downloadCount?: number
+  formats?: any[]
   id?: string
-  keyword?: any[]
-  last_updated?: string
+  keywords?: any[]
+  lastUpdated?: string
   license?: string
   provider?: string
-  published_date?: string
-  spatial_extent?: Record<string, any>
+  publishedDate?: string
+  spatialExtent?: Record<string, any>
   theme?: string
   title?: string
-  total_dataset?: number
-  view_count?: number
+  totalDatasets?: number
+  viewCount?: number
   year?: number
 }
 

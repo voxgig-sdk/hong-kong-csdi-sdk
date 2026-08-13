@@ -275,25 +275,25 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"api_call_count"` |  |
-| `"api_endpoint"` |  |
-| `"api_service_call"` |  |
+| `"apiCallCount"` |  |
+| `"apiEndpoints"` |  |
+| `"apiServiceCalls"` |  |
 | `"category"` |  |
-| `"dataset_download"` |  |
+| `"datasetDownloads"` |  |
 | `"description"` |  |
-| `"download_count"` |  |
-| `"format"` |  |
+| `"downloadCount"` |  |
+| `"formats"` |  |
 | `"id"` |  |
-| `"keyword"` |  |
-| `"last_updated"` |  |
+| `"keywords"` |  |
+| `"lastUpdated"` |  |
 | `"license"` |  |
 | `"provider"` |  |
-| `"published_date"` |  |
-| `"spatial_extent"` |  |
+| `"publishedDate"` |  |
+| `"spatialExtent"` |  |
 | `"theme"` |  |
 | `"title"` |  |
-| `"total_dataset"` |  |
-| `"view_count"` |  |
+| `"totalDatasets"` |  |
+| `"viewCount"` |  |
 | `"year"` |  |
 
 Operations: List, Load.
@@ -329,25 +329,25 @@ Create an instance: `dataset := client.Dataset(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `api_call_count` | `int` |  |
-| `api_endpoint` | `map[string]any` |  |
-| `api_service_call` | `float64` |  |
+| `apiCallCount` | `int` |  |
+| `apiEndpoints` | `map[string]any` |  |
+| `apiServiceCalls` | `float64` |  |
 | `category` | `string` |  |
-| `dataset_download` | `float64` |  |
+| `datasetDownloads` | `float64` |  |
 | `description` | `string` |  |
-| `download_count` | `int` |  |
-| `format` | `[]any` |  |
+| `downloadCount` | `int` |  |
+| `formats` | `[]any` |  |
 | `id` | `string` |  |
-| `keyword` | `[]any` |  |
-| `last_updated` | `string` |  |
+| `keywords` | `[]any` |  |
+| `lastUpdated` | `string` |  |
 | `license` | `string` |  |
 | `provider` | `string` |  |
-| `published_date` | `string` |  |
-| `spatial_extent` | `map[string]any` |  |
+| `publishedDate` | `string` |  |
+| `spatialExtent` | `map[string]any` |  |
 | `theme` | `string` |  |
 | `title` | `string` |  |
-| `total_dataset` | `int` |  |
-| `view_count` | `int` |  |
+| `totalDatasets` | `int` |  |
+| `viewCount` | `int` |  |
 | `year` | `int` |  |
 
 #### Example: Load
