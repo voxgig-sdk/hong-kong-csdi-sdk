@@ -40,7 +40,7 @@ class HongKongCsdiSDK
         $utility = new HongKongCsdiUtility();
         $this->_utility = $utility;
 
-        $config = HongKongCsdiConfig::make_config();
+        $config = HongKongCsdiConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

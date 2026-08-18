@@ -42,7 +42,7 @@ class Dataset(DatasetRequired, total=False):
     year: int
 
 
-class DatasetLoadMatch(TypedDict, total=False):
+class DatasetLoadMatch(TypedDict):
     id: str
 
 

@@ -28,7 +28,7 @@ class HongKongCsdiSDK
     utility = HongKongCsdiUtility.new
     @_utility = utility
 
-    config = HongKongCsdiConfig.make_config
+    config = HongKongCsdiConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

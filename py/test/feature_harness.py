@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from hongkongcsdi_sdk.config import make_config
+from hongkongcsdi_sdk.config import shared_config
 from hongkongcsdi_sdk.features import _make_feature
 from hongkongcsdi_sdk.core.control import HongKongCsdiControl
 from hongkongcsdi_sdk.core.error import HongKongCsdiError
@@ -24,7 +24,7 @@ from hongkongcsdi_sdk.core.spec import HongKongCsdiSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

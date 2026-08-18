@@ -23,6 +23,7 @@ build = {
   modules = {
     ["hong-kong-csdi_sdk"] = "hong-kong-csdi_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

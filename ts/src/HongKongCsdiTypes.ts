@@ -29,7 +29,7 @@ export interface Dataset {
 }
 
 export interface DatasetLoadMatch {
-  id?: string
+  id: string
 
   // Selects a custom action instead of the plain load:
   //   'download'

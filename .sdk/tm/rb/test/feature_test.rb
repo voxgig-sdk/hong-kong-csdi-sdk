@@ -15,7 +15,7 @@ require_relative "../HongKongCsdi_sdk"
 module HongKongCsdiFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = HongKongCsdiConfig.make_config["feature"]
+    f = HongKongCsdiConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 
