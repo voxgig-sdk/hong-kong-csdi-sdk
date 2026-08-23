@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "HongKongCsdi",
+			"slug": "hong-kong-csdi",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -37,81 +40,100 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "apiCallCount",
+						"short": "Number of API calls made for this dataset",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "apiEndpoints",
+						"short": "Available API endpoints for this dataset",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "apiServiceCalls",
+						"short": "Total API service calls in the specified year",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "category",
+						"short": "Category of the dataset",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "datasetDownloads",
+						"short": "Total dataset downloads in the specified year",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "description",
 						"req": true,
+						"short": "Detailed description of the dataset",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "downloadCount",
+						"short": "Number of times the dataset has been downloaded",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "formats",
+						"short": "Available formats for the dataset",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "id",
 						"req": true,
+						"short": "Unique identifier for the dataset",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "keywords",
+						"short": "Keywords associated with the dataset",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "lastUpdated",
+						"short": "Date when the dataset was last updated",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "license",
+						"short": "License information for the dataset",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "provider",
+						"short": "Data provider organization",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "publishedDate",
+						"short": "Date when the dataset was published",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "spatialExtent",
+						"short": "Spatial extent of the dataset",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "theme",
+						"short": "Framework Spatial Data Theme",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "title",
 						"req": true,
+						"short": "Title of the dataset",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "totalDatasets",
+						"short": "Total number of datasets available",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "viewCount",
+						"short": "Number of times the dataset has been viewed",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{

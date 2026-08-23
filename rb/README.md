@@ -258,25 +258,25 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `apiCallCount` |  |
-| `apiEndpoints` |  |
-| `apiServiceCalls` |  |
-| `category` |  |
-| `datasetDownloads` |  |
-| `description` |  |
-| `downloadCount` |  |
-| `formats` |  |
-| `id` |  |
-| `keywords` |  |
-| `lastUpdated` |  |
-| `license` |  |
-| `provider` |  |
-| `publishedDate` |  |
-| `spatialExtent` |  |
-| `theme` |  |
-| `title` |  |
-| `totalDatasets` |  |
-| `viewCount` |  |
+| `apiCallCount` | Number of API calls made for this dataset |
+| `apiEndpoints` | Available API endpoints for this dataset |
+| `apiServiceCalls` | Total API service calls in the specified year |
+| `category` | Category of the dataset |
+| `datasetDownloads` | Total dataset downloads in the specified year |
+| `description` | Detailed description of the dataset |
+| `downloadCount` | Number of times the dataset has been downloaded |
+| `formats` | Available formats for the dataset |
+| `id` | Unique identifier for the dataset |
+| `keywords` | Keywords associated with the dataset |
+| `lastUpdated` | Date when the dataset was last updated |
+| `license` | License information for the dataset |
+| `provider` | Data provider organization |
+| `publishedDate` | Date when the dataset was published |
+| `spatialExtent` | Spatial extent of the dataset |
+| `theme` | Framework Spatial Data Theme |
+| `title` | Title of the dataset |
+| `totalDatasets` | Total number of datasets available |
+| `viewCount` | Number of times the dataset has been viewed |
 | `year` |  |
 
 Operations: List, Load.
@@ -312,25 +312,25 @@ Create an instance: `dataset = client.Dataset`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apiCallCount` | `Integer` |  |
-| `apiEndpoints` | `Hash` |  |
-| `apiServiceCalls` | `Float` |  |
-| `category` | `String` |  |
-| `datasetDownloads` | `Float` |  |
-| `description` | `String` |  |
-| `downloadCount` | `Integer` |  |
-| `formats` | `Array` |  |
-| `id` | `String` |  |
-| `keywords` | `Array` |  |
-| `lastUpdated` | `String` |  |
-| `license` | `String` |  |
-| `provider` | `String` |  |
-| `publishedDate` | `String` |  |
-| `spatialExtent` | `Hash` |  |
-| `theme` | `String` |  |
-| `title` | `String` |  |
-| `totalDatasets` | `Integer` |  |
-| `viewCount` | `Integer` |  |
+| `apiCallCount` | `Integer` | Number of API calls made for this dataset |
+| `apiEndpoints` | `Hash` | Available API endpoints for this dataset |
+| `apiServiceCalls` | `Float` | Total API service calls in the specified year |
+| `category` | `String` | Category of the dataset |
+| `datasetDownloads` | `Float` | Total dataset downloads in the specified year |
+| `description` | `String` | Detailed description of the dataset |
+| `downloadCount` | `Integer` | Number of times the dataset has been downloaded |
+| `formats` | `Array` | Available formats for the dataset |
+| `id` | `String` | Unique identifier for the dataset |
+| `keywords` | `Array` | Keywords associated with the dataset |
+| `lastUpdated` | `String` | Date when the dataset was last updated |
+| `license` | `String` | License information for the dataset |
+| `provider` | `String` | Data provider organization |
+| `publishedDate` | `String` | Date when the dataset was published |
+| `spatialExtent` | `Hash` | Spatial extent of the dataset |
+| `theme` | `String` | Framework Spatial Data Theme |
+| `title` | `String` | Title of the dataset |
+| `totalDatasets` | `Integer` | Total number of datasets available |
+| `viewCount` | `Integer` | Number of times the dataset has been viewed |
 | `year` | `Integer` |  |
 
 #### Example: Load

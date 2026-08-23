@@ -103,25 +103,25 @@ fmt.Println(dataset.GetName()) // "dataset"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apiCallCount` | `int` | No |  |
-| `apiEndpoints` | `map[string]any` | No |  |
-| `apiServiceCalls` | `float64` | No |  |
-| `category` | `string` | No |  |
-| `datasetDownloads` | `float64` | No |  |
-| `description` | `string` | Yes |  |
-| `downloadCount` | `int` | No |  |
-| `formats` | `[]any` | No |  |
-| `id` | `string` | Yes |  |
-| `keywords` | `[]any` | No |  |
-| `lastUpdated` | `string` | No |  |
-| `license` | `string` | No |  |
-| `provider` | `string` | No |  |
-| `publishedDate` | `string` | No |  |
-| `spatialExtent` | `map[string]any` | No |  |
-| `theme` | `string` | No |  |
-| `title` | `string` | Yes |  |
-| `totalDatasets` | `int` | No |  |
-| `viewCount` | `int` | No |  |
+| `apiCallCount` | `int` | No | Number of API calls made for this dataset |
+| `apiEndpoints` | `map[string]any` | No | Available API endpoints for this dataset |
+| `apiServiceCalls` | `float64` | No | Total API service calls in the specified year |
+| `category` | `string` | No | Category of the dataset |
+| `datasetDownloads` | `float64` | No | Total dataset downloads in the specified year |
+| `description` | `string` | Yes | Detailed description of the dataset |
+| `downloadCount` | `int` | No | Number of times the dataset has been downloaded |
+| `formats` | `[]any` | No | Available formats for the dataset |
+| `id` | `string` | Yes | Unique identifier for the dataset |
+| `keywords` | `[]any` | No | Keywords associated with the dataset |
+| `lastUpdated` | `string` | No | Date when the dataset was last updated |
+| `license` | `string` | No | License information for the dataset |
+| `provider` | `string` | No | Data provider organization |
+| `publishedDate` | `string` | No | Date when the dataset was published |
+| `spatialExtent` | `map[string]any` | No | Spatial extent of the dataset |
+| `theme` | `string` | No | Framework Spatial Data Theme |
+| `title` | `string` | Yes | Title of the dataset |
+| `totalDatasets` | `int` | No | Total number of datasets available |
+| `viewCount` | `int` | No | Number of times the dataset has been viewed |
 | `year` | `int` | No |  |
 
 ### Operations

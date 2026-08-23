@@ -36,114 +36,133 @@
               "active": true,
               "name": "apiCallCount",
               "req": false,
+              "short": "Number of API calls made for this dataset",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "apiEndpoints",
               "req": false,
+              "short": "Available API endpoints for this dataset",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "apiServiceCalls",
               "req": false,
+              "short": "Total API service calls in the specified year",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "category",
               "req": false,
+              "short": "Category of the dataset",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "datasetDownloads",
               "req": false,
+              "short": "Total dataset downloads in the specified year",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "description",
               "req": true,
+              "short": "Detailed description of the dataset",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "downloadCount",
               "req": false,
+              "short": "Number of times the dataset has been downloaded",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "formats",
               "req": false,
+              "short": "Available formats for the dataset",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "id",
               "req": true,
+              "short": "Unique identifier for the dataset",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "keywords",
               "req": false,
+              "short": "Keywords associated with the dataset",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "lastUpdated",
               "req": false,
+              "short": "Date when the dataset was last updated",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "license",
               "req": false,
+              "short": "License information for the dataset",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "provider",
               "req": false,
+              "short": "Data provider organization",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "publishedDate",
               "req": false,
+              "short": "Date when the dataset was published",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "spatialExtent",
               "req": false,
+              "short": "Spatial extent of the dataset",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "theme",
               "req": false,
+              "short": "Framework Spatial Data Theme",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "title",
               "req": true,
+              "short": "Title of the dataset",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "totalDatasets",
               "req": false,
+              "short": "Total number of datasets available",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "viewCount",
               "req": false,
+              "short": "Number of times the dataset has been viewed",
               "type": "`$INTEGER`"
             },
             {

@@ -6,7 +6,7 @@ The Golang SDK for the HongKongCsdi API — an entity-oriented client using stan
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Dataset(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -275,25 +275,25 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"apiCallCount"` |  |
-| `"apiEndpoints"` |  |
-| `"apiServiceCalls"` |  |
-| `"category"` |  |
-| `"datasetDownloads"` |  |
-| `"description"` |  |
-| `"downloadCount"` |  |
-| `"formats"` |  |
-| `"id"` |  |
-| `"keywords"` |  |
-| `"lastUpdated"` |  |
-| `"license"` |  |
-| `"provider"` |  |
-| `"publishedDate"` |  |
-| `"spatialExtent"` |  |
-| `"theme"` |  |
-| `"title"` |  |
-| `"totalDatasets"` |  |
-| `"viewCount"` |  |
+| `"apiCallCount"` | Number of API calls made for this dataset |
+| `"apiEndpoints"` | Available API endpoints for this dataset |
+| `"apiServiceCalls"` | Total API service calls in the specified year |
+| `"category"` | Category of the dataset |
+| `"datasetDownloads"` | Total dataset downloads in the specified year |
+| `"description"` | Detailed description of the dataset |
+| `"downloadCount"` | Number of times the dataset has been downloaded |
+| `"formats"` | Available formats for the dataset |
+| `"id"` | Unique identifier for the dataset |
+| `"keywords"` | Keywords associated with the dataset |
+| `"lastUpdated"` | Date when the dataset was last updated |
+| `"license"` | License information for the dataset |
+| `"provider"` | Data provider organization |
+| `"publishedDate"` | Date when the dataset was published |
+| `"spatialExtent"` | Spatial extent of the dataset |
+| `"theme"` | Framework Spatial Data Theme |
+| `"title"` | Title of the dataset |
+| `"totalDatasets"` | Total number of datasets available |
+| `"viewCount"` | Number of times the dataset has been viewed |
 | `"year"` |  |
 
 Operations: List, Load.
@@ -329,25 +329,25 @@ Create an instance: `dataset := client.Dataset(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apiCallCount` | `int` |  |
-| `apiEndpoints` | `map[string]any` |  |
-| `apiServiceCalls` | `float64` |  |
-| `category` | `string` |  |
-| `datasetDownloads` | `float64` |  |
-| `description` | `string` |  |
-| `downloadCount` | `int` |  |
-| `formats` | `[]any` |  |
-| `id` | `string` |  |
-| `keywords` | `[]any` |  |
-| `lastUpdated` | `string` |  |
-| `license` | `string` |  |
-| `provider` | `string` |  |
-| `publishedDate` | `string` |  |
-| `spatialExtent` | `map[string]any` |  |
-| `theme` | `string` |  |
-| `title` | `string` |  |
-| `totalDatasets` | `int` |  |
-| `viewCount` | `int` |  |
+| `apiCallCount` | `int` | Number of API calls made for this dataset |
+| `apiEndpoints` | `map[string]any` | Available API endpoints for this dataset |
+| `apiServiceCalls` | `float64` | Total API service calls in the specified year |
+| `category` | `string` | Category of the dataset |
+| `datasetDownloads` | `float64` | Total dataset downloads in the specified year |
+| `description` | `string` | Detailed description of the dataset |
+| `downloadCount` | `int` | Number of times the dataset has been downloaded |
+| `formats` | `[]any` | Available formats for the dataset |
+| `id` | `string` | Unique identifier for the dataset |
+| `keywords` | `[]any` | Keywords associated with the dataset |
+| `lastUpdated` | `string` | Date when the dataset was last updated |
+| `license` | `string` | License information for the dataset |
+| `provider` | `string` | Data provider organization |
+| `publishedDate` | `string` | Date when the dataset was published |
+| `spatialExtent` | `map[string]any` | Spatial extent of the dataset |
+| `theme` | `string` | Framework Spatial Data Theme |
+| `title` | `string` | Title of the dataset |
+| `totalDatasets` | `int` | Total number of datasets available |
+| `viewCount` | `int` | Number of times the dataset has been viewed |
 | `year` | `int` |  |
 
 #### Example: Load

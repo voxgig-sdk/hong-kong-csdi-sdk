@@ -33,6 +33,9 @@ class HongKongCsdiConfig
         return [
             "main" => [
                 "name" => "HongKongCsdi",
+                "slug" => "hong-kong-csdi",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -59,81 +62,100 @@ class HongKongCsdiConfig
           'fields' => [
             [
               'name' => 'apiCallCount',
+              'short' => 'Number of API calls made for this dataset',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'apiEndpoints',
+              'short' => 'Available API endpoints for this dataset',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'apiServiceCalls',
+              'short' => 'Total API service calls in the specified year',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'category',
+              'short' => 'Category of the dataset',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'datasetDownloads',
+              'short' => 'Total dataset downloads in the specified year',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'description',
               'req' => true,
+              'short' => 'Detailed description of the dataset',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'downloadCount',
+              'short' => 'Number of times the dataset has been downloaded',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'formats',
+              'short' => 'Available formats for the dataset',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'id',
               'req' => true,
+              'short' => 'Unique identifier for the dataset',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'keywords',
+              'short' => 'Keywords associated with the dataset',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'lastUpdated',
+              'short' => 'Date when the dataset was last updated',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'license',
+              'short' => 'License information for the dataset',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'provider',
+              'short' => 'Data provider organization',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'publishedDate',
+              'short' => 'Date when the dataset was published',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'spatialExtent',
+              'short' => 'Spatial extent of the dataset',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'theme',
+              'short' => 'Framework Spatial Data Theme',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'title',
               'req' => true,
+              'short' => 'Title of the dataset',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'totalDatasets',
+              'short' => 'Total number of datasets available',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'viewCount',
+              'short' => 'Number of times the dataset has been viewed',
               'type' => '`$INTEGER`',
             ],
             [

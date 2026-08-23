@@ -8,96 +8,115 @@ main: kit: entity: dataset: {
     {
       name: "apiCallCount"
       req: false
+      short: "Number of API calls made for this dataset"
       type: "`$INTEGER`"
     }
     {
       name: "apiEndpoints"
       req: false
+      short: "Available API endpoints for this dataset"
       type: "`$OBJECT`"
     }
     {
       name: "apiServiceCalls"
       req: false
+      short: "Total API service calls in the specified year"
       type: "`$NUMBER`"
     }
     {
       name: "category"
       req: false
+      short: "Category of the dataset"
       type: "`$STRING`"
     }
     {
       name: "datasetDownloads"
       req: false
+      short: "Total dataset downloads in the specified year"
       type: "`$NUMBER`"
     }
     {
       name: "description"
       req: true
+      short: "Detailed description of the dataset"
       type: "`$STRING`"
     }
     {
       name: "downloadCount"
       req: false
+      short: "Number of times the dataset has been downloaded"
       type: "`$INTEGER`"
     }
     {
       name: "formats"
       req: false
+      short: "Available formats for the dataset"
       type: "`$ARRAY`"
     }
     {
       name: "id"
       req: true
+      short: "Unique identifier for the dataset"
       type: "`$STRING`"
     }
     {
       name: "keywords"
       req: false
+      short: "Keywords associated with the dataset"
       type: "`$ARRAY`"
     }
     {
       name: "lastUpdated"
       req: false
+      short: "Date when the dataset was last updated"
       type: "`$STRING`"
     }
     {
       name: "license"
       req: false
+      short: "License information for the dataset"
       type: "`$STRING`"
     }
     {
       name: "provider"
       req: false
+      short: "Data provider organization"
       type: "`$STRING`"
     }
     {
       name: "publishedDate"
       req: false
+      short: "Date when the dataset was published"
       type: "`$STRING`"
     }
     {
       name: "spatialExtent"
       req: false
+      short: "Spatial extent of the dataset"
       type: "`$OBJECT`"
     }
     {
       name: "theme"
       req: false
+      short: "Framework Spatial Data Theme"
       type: "`$STRING`"
     }
     {
       name: "title"
       req: true
+      short: "Title of the dataset"
       type: "`$STRING`"
     }
     {
       name: "totalDatasets"
       req: false
+      short: "Total number of datasets available"
       type: "`$INTEGER`"
     }
     {
       name: "viewCount"
       req: false
+      short: "Number of times the dataset has been viewed"
       type: "`$INTEGER`"
     }
     {

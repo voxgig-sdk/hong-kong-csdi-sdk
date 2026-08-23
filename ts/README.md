@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -309,25 +309,25 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `apiCallCount` |  |
-| `apiEndpoints` |  |
-| `apiServiceCalls` |  |
-| `category` |  |
-| `datasetDownloads` |  |
-| `description` |  |
-| `downloadCount` |  |
-| `formats` |  |
-| `id` |  |
-| `keywords` |  |
-| `lastUpdated` |  |
-| `license` |  |
-| `provider` |  |
-| `publishedDate` |  |
-| `spatialExtent` |  |
-| `theme` |  |
-| `title` |  |
-| `totalDatasets` |  |
-| `viewCount` |  |
+| `apiCallCount` | Number of API calls made for this dataset |
+| `apiEndpoints` | Available API endpoints for this dataset |
+| `apiServiceCalls` | Total API service calls in the specified year |
+| `category` | Category of the dataset |
+| `datasetDownloads` | Total dataset downloads in the specified year |
+| `description` | Detailed description of the dataset |
+| `downloadCount` | Number of times the dataset has been downloaded |
+| `formats` | Available formats for the dataset |
+| `id` | Unique identifier for the dataset |
+| `keywords` | Keywords associated with the dataset |
+| `lastUpdated` | Date when the dataset was last updated |
+| `license` | License information for the dataset |
+| `provider` | Data provider organization |
+| `publishedDate` | Date when the dataset was published |
+| `spatialExtent` | Spatial extent of the dataset |
+| `theme` | Framework Spatial Data Theme |
+| `title` | Title of the dataset |
+| `totalDatasets` | Total number of datasets available |
+| `viewCount` | Number of times the dataset has been viewed |
 | `year` |  |
 
 Operations: list, load.
@@ -363,25 +363,25 @@ Create an instance: `const dataset = client.Dataset()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `apiCallCount` | `number` |  |
-| `apiEndpoints` | `Record<string, any>` |  |
-| `apiServiceCalls` | `number` |  |
-| `category` | `string` |  |
-| `datasetDownloads` | `number` |  |
-| `description` | `string` |  |
-| `downloadCount` | `number` |  |
-| `formats` | `any[]` |  |
-| `id` | `string` |  |
-| `keywords` | `any[]` |  |
-| `lastUpdated` | `string` |  |
-| `license` | `string` |  |
-| `provider` | `string` |  |
-| `publishedDate` | `string` |  |
-| `spatialExtent` | `Record<string, any>` |  |
-| `theme` | `string` |  |
-| `title` | `string` |  |
-| `totalDatasets` | `number` |  |
-| `viewCount` | `number` |  |
+| `apiCallCount` | `number` | Number of API calls made for this dataset |
+| `apiEndpoints` | `Record<string, any>` | Available API endpoints for this dataset |
+| `apiServiceCalls` | `number` | Total API service calls in the specified year |
+| `category` | `string` | Category of the dataset |
+| `datasetDownloads` | `number` | Total dataset downloads in the specified year |
+| `description` | `string` | Detailed description of the dataset |
+| `downloadCount` | `number` | Number of times the dataset has been downloaded |
+| `formats` | `any[]` | Available formats for the dataset |
+| `id` | `string` | Unique identifier for the dataset |
+| `keywords` | `any[]` | Keywords associated with the dataset |
+| `lastUpdated` | `string` | Date when the dataset was last updated |
+| `license` | `string` | License information for the dataset |
+| `provider` | `string` | Data provider organization |
+| `publishedDate` | `string` | Date when the dataset was published |
+| `spatialExtent` | `Record<string, any>` | Spatial extent of the dataset |
+| `theme` | `string` | Framework Spatial Data Theme |
+| `title` | `string` | Title of the dataset |
+| `totalDatasets` | `number` | Total number of datasets available |
+| `viewCount` | `number` | Number of times the dataset has been viewed |
 | `year` | `number` |  |
 
 #### Example: Load

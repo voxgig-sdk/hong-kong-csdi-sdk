@@ -98,25 +98,25 @@ dataset = client.Dataset
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apiCallCount` | `Integer` | No |  |
-| `apiEndpoints` | `Hash` | No |  |
-| `apiServiceCalls` | `Float` | No |  |
-| `category` | `String` | No |  |
-| `datasetDownloads` | `Float` | No |  |
-| `description` | `String` | Yes |  |
-| `downloadCount` | `Integer` | No |  |
-| `formats` | `Array` | No |  |
-| `id` | `String` | Yes |  |
-| `keywords` | `Array` | No |  |
-| `lastUpdated` | `String` | No |  |
-| `license` | `String` | No |  |
-| `provider` | `String` | No |  |
-| `publishedDate` | `String` | No |  |
-| `spatialExtent` | `Hash` | No |  |
-| `theme` | `String` | No |  |
-| `title` | `String` | Yes |  |
-| `totalDatasets` | `Integer` | No |  |
-| `viewCount` | `Integer` | No |  |
+| `apiCallCount` | `Integer` | No | Number of API calls made for this dataset |
+| `apiEndpoints` | `Hash` | No | Available API endpoints for this dataset |
+| `apiServiceCalls` | `Float` | No | Total API service calls in the specified year |
+| `category` | `String` | No | Category of the dataset |
+| `datasetDownloads` | `Float` | No | Total dataset downloads in the specified year |
+| `description` | `String` | Yes | Detailed description of the dataset |
+| `downloadCount` | `Integer` | No | Number of times the dataset has been downloaded |
+| `formats` | `Array` | No | Available formats for the dataset |
+| `id` | `String` | Yes | Unique identifier for the dataset |
+| `keywords` | `Array` | No | Keywords associated with the dataset |
+| `lastUpdated` | `String` | No | Date when the dataset was last updated |
+| `license` | `String` | No | License information for the dataset |
+| `provider` | `String` | No | Data provider organization |
+| `publishedDate` | `String` | No | Date when the dataset was published |
+| `spatialExtent` | `Hash` | No | Spatial extent of the dataset |
+| `theme` | `String` | No | Framework Spatial Data Theme |
+| `title` | `String` | Yes | Title of the dataset |
+| `totalDatasets` | `Integer` | No | Total number of datasets available |
+| `viewCount` | `Integer` | No | Number of times the dataset has been viewed |
 | `year` | `Integer` | No |  |
 
 ### Operations

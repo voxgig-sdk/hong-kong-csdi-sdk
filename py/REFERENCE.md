@@ -92,25 +92,25 @@ dataset = client.Dataset()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `apiCallCount` | `int` | No |  |
-| `apiEndpoints` | `dict` | No |  |
-| `apiServiceCalls` | `float` | No |  |
-| `category` | `str` | No |  |
-| `datasetDownloads` | `float` | No |  |
-| `description` | `str` | Yes |  |
-| `downloadCount` | `int` | No |  |
-| `formats` | `list` | No |  |
-| `id` | `str` | Yes |  |
-| `keywords` | `list` | No |  |
-| `lastUpdated` | `str` | No |  |
-| `license` | `str` | No |  |
-| `provider` | `str` | No |  |
-| `publishedDate` | `str` | No |  |
-| `spatialExtent` | `dict` | No |  |
-| `theme` | `str` | No |  |
-| `title` | `str` | Yes |  |
-| `totalDatasets` | `int` | No |  |
-| `viewCount` | `int` | No |  |
+| `apiCallCount` | `int` | No | Number of API calls made for this dataset |
+| `apiEndpoints` | `dict` | No | Available API endpoints for this dataset |
+| `apiServiceCalls` | `float` | No | Total API service calls in the specified year |
+| `category` | `str` | No | Category of the dataset |
+| `datasetDownloads` | `float` | No | Total dataset downloads in the specified year |
+| `description` | `str` | Yes | Detailed description of the dataset |
+| `downloadCount` | `int` | No | Number of times the dataset has been downloaded |
+| `formats` | `list` | No | Available formats for the dataset |
+| `id` | `str` | Yes | Unique identifier for the dataset |
+| `keywords` | `list` | No | Keywords associated with the dataset |
+| `lastUpdated` | `str` | No | Date when the dataset was last updated |
+| `license` | `str` | No | License information for the dataset |
+| `provider` | `str` | No | Data provider organization |
+| `publishedDate` | `str` | No | Date when the dataset was published |
+| `spatialExtent` | `dict` | No | Spatial extent of the dataset |
+| `theme` | `str` | No | Framework Spatial Data Theme |
+| `title` | `str` | Yes | Title of the dataset |
+| `totalDatasets` | `int` | No | Total number of datasets available |
+| `viewCount` | `int` | No | Number of times the dataset has been viewed |
 | `year` | `int` | No |  |
 
 ### Operations
