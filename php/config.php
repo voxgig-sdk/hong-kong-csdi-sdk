@@ -42,6 +42,7 @@ class HongKongCsdiConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
