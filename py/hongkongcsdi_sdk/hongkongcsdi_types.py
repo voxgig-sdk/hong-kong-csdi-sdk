@@ -47,31 +47,32 @@ class DatasetLoadMatch(TypedDict):
 
 
 class DatasetListMatch(TypedDict, total=False):
-    apiCallCount: int
-    apiEndpoints: dict
-    apiServiceCalls: float
     category: str
-    datasetDownloads: float
-    description: str
-    downloadCount: int
-    formats: list
-    id: str
-    keywords: list
-    lastUpdated: str
-    license: str
-    provider: str
-    publishedDate: str
-    spatialExtent: dict
+    limit: int
+    offset: int
+    search: str
+    sort_by: str
     theme: str
-    title: str
-    totalDatasets: int
-    viewCount: int
-    year: int
 
 
 class OgcService(TypedDict):
     pass
 
 
-class OgcServiceLoadMatch(TypedDict):
-    pass
+class OgcServiceLoadMatchRequired(TypedDict):
+    request: str
+    service: str
+    version: str
+
+
+class OgcServiceLoadMatch(OgcServiceLoadMatchRequired, total=False):
+    bbox: str
+    crs: str
+    format: str
+    height: int
+    layer: str
+    width: int
+    count: int
+    outputformat: str
+    srsname: str
+    typename: str

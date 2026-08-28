@@ -39,31 +39,30 @@ export interface DatasetLoadMatch {
 }
 
 export interface DatasetListMatch {
-  apiCallCount?: number
-  apiEndpoints?: Record<string, any>
-  apiServiceCalls?: number
   category?: string
-  datasetDownloads?: number
-  description?: string
-  downloadCount?: number
-  formats?: any[]
-  id?: string
-  keywords?: any[]
-  lastUpdated?: string
-  license?: string
-  provider?: string
-  publishedDate?: string
-  spatialExtent?: Record<string, any>
+  limit?: number
+  offset?: number
+  search?: string
+  sort_by?: string
   theme?: string
-  title?: string
-  totalDatasets?: number
-  viewCount?: number
-  year?: number
 }
 
 export interface OgcService {
 }
 
 export interface OgcServiceLoadMatch {
+  bbox?: string
+  crs?: string
+  format?: string
+  height?: number
+  layer?: string
+  request: string
+  service: string
+  version: string
+  width?: number
+  count?: number
+  outputformat?: string
+  srsname?: string
+  typename?: string
 }
 

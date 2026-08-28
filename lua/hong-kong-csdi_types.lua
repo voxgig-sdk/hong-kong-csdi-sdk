@@ -32,30 +32,29 @@
 ---@field id string
 
 ---@class DatasetListMatch
----@field apiCallCount? number
----@field apiEndpoints? table
----@field apiServiceCalls? number
 ---@field category? string
----@field datasetDownloads? number
----@field description? string
----@field downloadCount? number
----@field formats? table
----@field id? string
----@field keywords? table
----@field lastUpdated? string
----@field license? string
----@field provider? string
----@field publishedDate? string
----@field spatialExtent? table
+---@field limit? number
+---@field offset? number
+---@field search? string
+---@field sort_by? string
 ---@field theme? string
----@field title? string
----@field totalDatasets? number
----@field viewCount? number
----@field year? number
 
 ---@class OgcService
 
 ---@class OgcServiceLoadMatch
+---@field bbox? string
+---@field crs? string
+---@field format? string
+---@field height? number
+---@field layer? string
+---@field request string
+---@field service string
+---@field version string
+---@field width? number
+---@field count? number
+---@field outputformat? string
+---@field srsname? string
+---@field typename? string
 
 local M = {}
 

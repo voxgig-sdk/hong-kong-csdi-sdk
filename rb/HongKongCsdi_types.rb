@@ -104,86 +104,30 @@ DatasetLoadMatch = Struct.new(
 
 # Request payload for Dataset#list.
 #
-# @!attribute [rw] apiCallCount
-#   @return [Integer, nil]
-#
-# @!attribute [rw] apiEndpoints
-#   @return [Hash, nil]
-#
-# @!attribute [rw] apiServiceCalls
-#   @return [Float, nil]
-#
 # @!attribute [rw] category
 #   @return [String, nil]
 #
-# @!attribute [rw] datasetDownloads
-#   @return [Float, nil]
-#
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] downloadCount
+# @!attribute [rw] limit
 #   @return [Integer, nil]
 #
-# @!attribute [rw] formats
-#   @return [Array, nil]
+# @!attribute [rw] offset
+#   @return [Integer, nil]
 #
-# @!attribute [rw] id
+# @!attribute [rw] search
 #   @return [String, nil]
 #
-# @!attribute [rw] keywords
-#   @return [Array, nil]
-#
-# @!attribute [rw] lastUpdated
+# @!attribute [rw] sort_by
 #   @return [String, nil]
-#
-# @!attribute [rw] license
-#   @return [String, nil]
-#
-# @!attribute [rw] provider
-#   @return [String, nil]
-#
-# @!attribute [rw] publishedDate
-#   @return [String, nil]
-#
-# @!attribute [rw] spatialExtent
-#   @return [Hash, nil]
 #
 # @!attribute [rw] theme
 #   @return [String, nil]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
-#
-# @!attribute [rw] totalDatasets
-#   @return [Integer, nil]
-#
-# @!attribute [rw] viewCount
-#   @return [Integer, nil]
-#
-# @!attribute [rw] year
-#   @return [Integer, nil]
 DatasetListMatch = Struct.new(
-  :apiCallCount,
-  :apiEndpoints,
-  :apiServiceCalls,
   :category,
-  :datasetDownloads,
-  :description,
-  :downloadCount,
-  :formats,
-  :id,
-  :keywords,
-  :lastUpdated,
-  :license,
-  :provider,
-  :publishedDate,
-  :spatialExtent,
+  :limit,
+  :offset,
+  :search,
+  :sort_by,
   :theme,
-  :title,
-  :totalDatasets,
-  :viewCount,
-  :year,
   keyword_init: true
 )
 
@@ -192,6 +136,59 @@ class OgcService
 end
 
 # Request payload for OgcService#load.
-class OgcServiceLoadMatch
-end
+#
+# @!attribute [rw] bbox
+#   @return [String, nil]
+#
+# @!attribute [rw] crs
+#   @return [String, nil]
+#
+# @!attribute [rw] format
+#   @return [String, nil]
+#
+# @!attribute [rw] height
+#   @return [Integer, nil]
+#
+# @!attribute [rw] layer
+#   @return [String, nil]
+#
+# @!attribute [rw] request
+#   @return [String]
+#
+# @!attribute [rw] service
+#   @return [String]
+#
+# @!attribute [rw] version
+#   @return [String]
+#
+# @!attribute [rw] width
+#   @return [Integer, nil]
+#
+# @!attribute [rw] count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] outputformat
+#   @return [String, nil]
+#
+# @!attribute [rw] srsname
+#   @return [String, nil]
+#
+# @!attribute [rw] typename
+#   @return [String, nil]
+OgcServiceLoadMatch = Struct.new(
+  :bbox,
+  :crs,
+  :format,
+  :height,
+  :layer,
+  :request,
+  :service,
+  :version,
+  :width,
+  :count,
+  :outputformat,
+  :srsname,
+  :typename,
+  keyword_init: true
+)
 

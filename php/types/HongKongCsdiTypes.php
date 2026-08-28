@@ -46,26 +46,12 @@ class DatasetLoadMatch
 /** Request payload for Dataset#list. */
 class DatasetListMatch
 {
-    public ?int $apiCallCount = null;
-    public ?array $apiEndpoints = null;
-    public ?float $apiServiceCalls = null;
     public ?string $category = null;
-    public ?float $datasetDownloads = null;
-    public ?string $description = null;
-    public ?int $downloadCount = null;
-    public ?array $formats = null;
-    public ?string $id = null;
-    public ?array $keywords = null;
-    public ?string $lastUpdated = null;
-    public ?string $license = null;
-    public ?string $provider = null;
-    public ?string $publishedDate = null;
-    public ?array $spatialExtent = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
+    public ?string $search = null;
+    public ?string $sort_by = null;
     public ?string $theme = null;
-    public ?string $title = null;
-    public ?int $totalDatasets = null;
-    public ?int $viewCount = null;
-    public ?int $year = null;
 }
 
 /** OgcService entity data model. */
@@ -76,5 +62,18 @@ class OgcService
 /** Request payload for OgcService#load. */
 class OgcServiceLoadMatch
 {
+    public ?string $bbox = null;
+    public ?string $crs = null;
+    public ?string $format = null;
+    public ?int $height = null;
+    public ?string $layer = null;
+    public string $request;
+    public string $service;
+    public string $version;
+    public ?int $width = null;
+    public ?int $count = null;
+    public ?string $outputformat = null;
+    public ?string $srsname = null;
+    public ?string $typename = null;
 }
 

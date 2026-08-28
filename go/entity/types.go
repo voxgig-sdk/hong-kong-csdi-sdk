@@ -43,26 +43,12 @@ type DatasetLoadMatch struct {
 
 // DatasetListMatch is the typed request payload for Dataset.ListTyped.
 type DatasetListMatch struct {
-	ApiCallCount *int `json:"apiCallCount,omitempty"`
-	ApiEndpoints *map[string]any `json:"apiEndpoints,omitempty"`
-	ApiServiceCalls *float64 `json:"apiServiceCalls,omitempty"`
 	Category *string `json:"category,omitempty"`
-	DatasetDownloads *float64 `json:"datasetDownloads,omitempty"`
-	Description *string `json:"description,omitempty"`
-	DownloadCount *int `json:"downloadCount,omitempty"`
-	Formats *[]any `json:"formats,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Keywords *[]any `json:"keywords,omitempty"`
-	LastUpdated *string `json:"lastUpdated,omitempty"`
-	License *string `json:"license,omitempty"`
-	Provider *string `json:"provider,omitempty"`
-	PublishedDate *string `json:"publishedDate,omitempty"`
-	SpatialExtent *map[string]any `json:"spatialExtent,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Search *string `json:"search,omitempty"`
+	SortBy *string `json:"sort_by,omitempty"`
 	Theme *string `json:"theme,omitempty"`
-	Title *string `json:"title,omitempty"`
-	TotalDatasets *int `json:"totalDatasets,omitempty"`
-	ViewCount *int `json:"viewCount,omitempty"`
-	Year *int `json:"year,omitempty"`
 }
 
 // OgcService is the typed data model for the ogc_service entity.
@@ -71,6 +57,19 @@ type OgcService struct {
 
 // OgcServiceLoadMatch is the typed request payload for OgcService.LoadTyped.
 type OgcServiceLoadMatch struct {
+	Bbox *string `json:"bbox,omitempty"`
+	Crs *string `json:"crs,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Height *int `json:"height,omitempty"`
+	Layer *string `json:"layer,omitempty"`
+	Request string `json:"request"`
+	Service string `json:"service"`
+	Version string `json:"version"`
+	Width *int `json:"width,omitempty"`
+	Count *int `json:"count,omitempty"`
+	Outputformat *string `json:"outputformat,omitempty"`
+	Srsname *string `json:"srsname,omitempty"`
+	Typename *string `json:"typename,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
