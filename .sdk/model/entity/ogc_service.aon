@@ -82,9 +82,13 @@ main: kit: entity: ogc_service: {
           }
           method: "GET"
           orig: "/map/wms"
-          parts: [
-            "map"
-            "wms"
+          segments: [
+            {
+              lit: "map"
+            }
+            {
+              lit: "wms"
+            }
           ]
           select: {
             exist: [
@@ -172,9 +176,13 @@ main: kit: entity: ogc_service: {
           }
           method: "GET"
           orig: "/map/wfs"
-          parts: [
-            "map"
-            "wfs"
+          segments: [
+            {
+              lit: "map"
+            }
+            {
+              lit: "wfs"
+            }
           ]
           select: {
             exist: [

@@ -114,6 +114,7 @@ class HongKongCsdiConfig
               'type' => '`$ARRAY`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'lastUpdated',
               'short' => 'Date when the dataset was last updated',
               'type' => '`$STRING`',
@@ -129,6 +130,7 @@ class HongKongCsdiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'publishedDate',
               'short' => 'Date when the dataset was published',
               'type' => '`$STRING`',
@@ -163,6 +165,10 @@ class HongKongCsdiConfig
               'name' => 'year',
               'type' => '`$INTEGER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'dataset',
           'op' => [
@@ -217,8 +223,10 @@ class HongKongCsdiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/datasets',
-                  'parts' => [
-                    'datasets',
+                  'segments' => [
+                    [
+                      'lit' => 'datasets',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -233,6 +241,9 @@ class HongKongCsdiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.datasets`',
+                  ],
+                  'parts' => [
+                    'datasets',
                   ],
                 ],
               ],
@@ -265,14 +276,20 @@ class HongKongCsdiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/datasets/{datasetId}/download',
-                  'parts' => [
-                    'datasets',
-                    '{id}',
-                    'download',
-                  ],
                   'rename' => [
                     'param' => [
                       'datasetId' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'datasets',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
+                    [
+                      'lit' => 'download',
                     ],
                   ],
                   'select' => [
@@ -285,6 +302,11 @@ class HongKongCsdiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'datasets',
+                    '{id}',
+                    'download',
                   ],
                 ],
                 [
@@ -302,13 +324,17 @@ class HongKongCsdiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/datasets/{datasetId}',
-                  'parts' => [
-                    'datasets',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'datasetId' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'datasets',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -319,6 +345,10 @@ class HongKongCsdiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'datasets',
+                    '{id}',
                   ],
                 ],
                 [
@@ -336,8 +366,10 @@ class HongKongCsdiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/statistics',
-                  'parts' => [
-                    'statistics',
+                  'segments' => [
+                    [
+                      'lit' => 'statistics',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -347,6 +379,9 @@ class HongKongCsdiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'statistics',
                   ],
                 ],
               ],
@@ -432,9 +467,13 @@ class HongKongCsdiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/map/wms',
-                  'parts' => [
-                    'map',
-                    'wms',
+                  'segments' => [
+                    [
+                      'lit' => 'map',
+                    ],
+                    [
+                      'lit' => 'wms',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -452,6 +491,10 @@ class HongKongCsdiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'map',
+                    'wms',
                   ],
                 ],
                 [
@@ -518,9 +561,13 @@ class HongKongCsdiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/map/wfs',
-                  'parts' => [
-                    'map',
-                    'wfs',
+                  'segments' => [
+                    [
+                      'lit' => 'map',
+                    ],
+                    [
+                      'lit' => 'wfs',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -537,6 +584,10 @@ class HongKongCsdiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'map',
+                    'wfs',
                   ],
                 ],
               ],

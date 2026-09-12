@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -126,6 +137,7 @@ class Config {
           "type": "`$ARRAY`"
         },
         {
+          "format": "date-time",
           "name": "lastUpdated",
           "short": "Date when the dataset was last updated",
           "type": "`$STRING`"
@@ -141,6 +153,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "publishedDate",
           "short": "Date when the dataset was published",
           "type": "`$STRING`"
@@ -176,6 +189,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "dataset",
       "op": {
         "list": {
@@ -229,8 +246,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/datasets",
-              "parts": [
-                "datasets"
+              "segments": [
+                {
+                  "lit": "datasets"
+                }
               ],
               "select": {
                 "exist": [
@@ -245,7 +264,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.datasets`"
-              }
+              },
+              "parts": [
+                "datasets"
+              ]
             }
           ]
         },
@@ -277,16 +299,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/datasets/{datasetId}/download",
-              "parts": [
-                "datasets",
-                "{id}",
-                "download"
-              ],
               "rename": {
                 "param": {
                   "datasetId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "datasets"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "download"
+                }
+              ],
               "select": {
                 "$action": "download",
                 "exist": [
@@ -297,7 +325,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "datasets",
+                "{id}",
+                "download"
+              ]
             },
             {
               "args": {
@@ -314,15 +347,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/datasets/{datasetId}",
-              "parts": [
-                "datasets",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "datasetId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "datasets"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -331,7 +368,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "datasets",
+                "{id}"
+              ]
             },
             {
               "args": {
@@ -348,8 +389,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/statistics",
-              "parts": [
-                "statistics"
+              "segments": [
+                {
+                  "lit": "statistics"
+                }
               ],
               "select": {
                 "exist": [
@@ -359,7 +402,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "statistics"
+              ]
             }
           ]
         }
@@ -444,9 +490,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/map/wms",
-              "parts": [
-                "map",
-                "wms"
+              "segments": [
+                {
+                  "lit": "map"
+                },
+                {
+                  "lit": "wms"
+                }
               ],
               "select": {
                 "exist": [
@@ -464,7 +514,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "map",
+                "wms"
+              ]
             },
             {
               "args": {
@@ -530,9 +584,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/map/wfs",
-              "parts": [
-                "map",
-                "wfs"
+              "segments": [
+                {
+                  "lit": "map"
+                },
+                {
+                  "lit": "wfs"
+                }
               ],
               "select": {
                 "exist": [
@@ -549,7 +607,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "map",
+                "wfs"
+              ]
             }
           ]
         }
@@ -565,6 +627,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

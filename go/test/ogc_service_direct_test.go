@@ -107,14 +107,22 @@ func ogc_serviceDirectSetup(mockres any) *ogc_serviceDirectSetupResult {
 	env := envOverride(map[string]any{
 		"HONG_KONG_CSDI_TEST_OGC_SERVICE_ENTID": map[string]any{},
 		"HONG_KONG_CSDI_TEST_LIVE":    "FALSE",
-		"HONG_KONG_CSDI_APIKEY":       "NONE",
+		"HONG_KONG_CSDI_APIKEY":       "",
 	})
 
 	live := env["HONG_KONG_CSDI_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["HONG_KONG_CSDI_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewHongKongCsdiSDK(mergedOpts)
 

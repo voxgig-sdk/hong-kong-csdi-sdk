@@ -92,6 +92,7 @@ func MakeConfig() map[string]any {
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "lastUpdated",
 						"short": "Date when the dataset was last updated",
 						"type": "`$STRING`",
@@ -107,6 +108,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "publishedDate",
 						"short": "Date when the dataset was published",
 						"type": "`$STRING`",
@@ -141,6 +143,10 @@ func MakeConfig() map[string]any {
 						"name": "year",
 						"type": "`$INTEGER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "dataset",
 				"op": map[string]any{
@@ -195,8 +201,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/datasets",
-								"parts": []any{
-									"datasets",
+								"segments": []any{
+									map[string]any{
+										"lit": "datasets",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -211,6 +219,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.datasets`",
+								},
+								"parts": []any{
+									"datasets",
 								},
 							},
 						},
@@ -243,14 +254,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/datasets/{datasetId}/download",
-								"parts": []any{
-									"datasets",
-									"{id}",
-									"download",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"datasetId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "datasets",
+									},
+									map[string]any{
+										"var": "id",
+									},
+									map[string]any{
+										"lit": "download",
 									},
 								},
 								"select": map[string]any{
@@ -263,6 +280,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"datasets",
+									"{id}",
+									"download",
 								},
 							},
 							map[string]any{
@@ -280,13 +302,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/datasets/{datasetId}",
-								"parts": []any{
-									"datasets",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"datasetId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "datasets",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -297,6 +323,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"datasets",
+									"{id}",
 								},
 							},
 							map[string]any{
@@ -314,8 +344,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/statistics",
-								"parts": []any{
-									"statistics",
+								"segments": []any{
+									map[string]any{
+										"lit": "statistics",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -325,6 +357,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"statistics",
 								},
 							},
 						},
@@ -410,9 +445,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/map/wms",
-								"parts": []any{
-									"map",
-									"wms",
+								"segments": []any{
+									map[string]any{
+										"lit": "map",
+									},
+									map[string]any{
+										"lit": "wms",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -430,6 +469,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"map",
+									"wms",
 								},
 							},
 							map[string]any{
@@ -496,9 +539,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/map/wfs",
-								"parts": []any{
-									"map",
-									"wfs",
+								"segments": []any{
+									map[string]any{
+										"lit": "map",
+									},
+									map[string]any{
+										"lit": "wfs",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -516,6 +563,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"map",
+									"wfs",
+								},
 							},
 						},
 					},
@@ -526,6 +577,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

@@ -100,6 +100,7 @@ module HongKongCsdiConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "date-time",
               "name" => "lastUpdated",
               "short" => "Date when the dataset was last updated",
               "type" => "`$STRING`",
@@ -115,6 +116,7 @@ module HongKongCsdiConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "publishedDate",
               "short" => "Date when the dataset was published",
               "type" => "`$STRING`",
@@ -150,6 +152,10 @@ module HongKongCsdiConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "dataset",
           "op" => {
             "list" => {
@@ -203,8 +209,10 @@ module HongKongCsdiConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/datasets",
-                  "parts" => [
-                    "datasets",
+                  "segments" => [
+                    {
+                      "lit" => "datasets",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -220,6 +228,9 @@ module HongKongCsdiConfig
                     "req" => "`reqdata`",
                     "res" => "`body.datasets`",
                   },
+                  "parts" => [
+                    "datasets",
+                  ],
                 },
               ],
             },
@@ -251,16 +262,22 @@ module HongKongCsdiConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/datasets/{datasetId}/download",
-                  "parts" => [
-                    "datasets",
-                    "{id}",
-                    "download",
-                  ],
                   "rename" => {
                     "param" => {
                       "datasetId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "datasets",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                    {
+                      "lit" => "download",
+                    },
+                  ],
                   "select" => {
                     "$action" => "download",
                     "exist" => [
@@ -272,6 +289,11 @@ module HongKongCsdiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "datasets",
+                    "{id}",
+                    "download",
+                  ],
                 },
                 {
                   "args" => {
@@ -288,15 +310,19 @@ module HongKongCsdiConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/datasets/{datasetId}",
-                  "parts" => [
-                    "datasets",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "datasetId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "datasets",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -306,6 +332,10 @@ module HongKongCsdiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "datasets",
+                    "{id}",
+                  ],
                 },
                 {
                   "args" => {
@@ -322,8 +352,10 @@ module HongKongCsdiConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/statistics",
-                  "parts" => [
-                    "statistics",
+                  "segments" => [
+                    {
+                      "lit" => "statistics",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -334,6 +366,9 @@ module HongKongCsdiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "statistics",
+                  ],
                 },
               ],
             },
@@ -418,9 +453,13 @@ module HongKongCsdiConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/map/wms",
-                  "parts" => [
-                    "map",
-                    "wms",
+                  "segments" => [
+                    {
+                      "lit" => "map",
+                    },
+                    {
+                      "lit" => "wms",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -439,6 +478,10 @@ module HongKongCsdiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "map",
+                    "wms",
+                  ],
                 },
                 {
                   "args" => {
@@ -504,9 +547,13 @@ module HongKongCsdiConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/map/wfs",
-                  "parts" => [
-                    "map",
-                    "wfs",
+                  "segments" => [
+                    {
+                      "lit" => "map",
+                    },
+                    {
+                      "lit" => "wfs",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -524,6 +571,10 @@ module HongKongCsdiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "map",
+                    "wfs",
+                  ],
                 },
               ],
             },

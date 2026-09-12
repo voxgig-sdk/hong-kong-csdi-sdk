@@ -88,6 +88,7 @@ local function make_config()
             ["type"] = "`$ARRAY`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "lastUpdated",
             ["short"] = "Date when the dataset was last updated",
             ["type"] = "`$STRING`",
@@ -103,6 +104,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "publishedDate",
             ["short"] = "Date when the dataset was published",
             ["type"] = "`$STRING`",
@@ -137,6 +139,10 @@ local function make_config()
             ["name"] = "year",
             ["type"] = "`$INTEGER`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "dataset",
         ["op"] = {
@@ -191,8 +197,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/datasets",
-                ["parts"] = {
-                  "datasets",
+                ["segments"] = {
+                  {
+                    ["lit"] = "datasets",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -207,6 +215,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.datasets`",
+                },
+                ["parts"] = {
+                  "datasets",
                 },
               },
             },
@@ -239,14 +250,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/datasets/{datasetId}/download",
-                ["parts"] = {
-                  "datasets",
-                  "{id}",
-                  "download",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["datasetId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "datasets",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
+                  {
+                    ["lit"] = "download",
                   },
                 },
                 ["select"] = {
@@ -259,6 +276,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "datasets",
+                  "{id}",
+                  "download",
                 },
               },
               {
@@ -276,13 +298,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/datasets/{datasetId}",
-                ["parts"] = {
-                  "datasets",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["datasetId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "datasets",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -293,6 +319,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "datasets",
+                  "{id}",
                 },
               },
               {
@@ -310,8 +340,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/statistics",
-                ["parts"] = {
-                  "statistics",
+                ["segments"] = {
+                  {
+                    ["lit"] = "statistics",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -321,6 +353,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "statistics",
                 },
               },
             },
@@ -406,9 +441,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/map/wms",
-                ["parts"] = {
-                  "map",
-                  "wms",
+                ["segments"] = {
+                  {
+                    ["lit"] = "map",
+                  },
+                  {
+                    ["lit"] = "wms",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -426,6 +465,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "map",
+                  "wms",
                 },
               },
               {
@@ -492,9 +535,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/map/wfs",
-                ["parts"] = {
-                  "map",
-                  "wfs",
+                ["segments"] = {
+                  {
+                    ["lit"] = "map",
+                  },
+                  {
+                    ["lit"] = "wfs",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -511,6 +558,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "map",
+                  "wfs",
                 },
               },
             },

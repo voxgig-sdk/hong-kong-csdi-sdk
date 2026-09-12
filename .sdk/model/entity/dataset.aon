@@ -66,6 +66,7 @@ main: kit: entity: dataset: {
       type: "`$ARRAY`"
     }
     {
+      format: "date-time"
       name: "lastUpdated"
       req: false
       short: "Date when the dataset was last updated"
@@ -84,6 +85,7 @@ main: kit: entity: dataset: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "publishedDate"
       req: false
       short: "Date when the dataset was published"
@@ -188,8 +190,10 @@ main: kit: entity: dataset: {
           }
           method: "GET"
           orig: "/datasets"
-          parts: [
-            "datasets"
+          segments: [
+            {
+              lit: "datasets"
+            }
           ]
           select: {
             exist: [
@@ -235,16 +239,22 @@ main: kit: entity: dataset: {
           }
           method: "GET"
           orig: "/datasets/{datasetId}/download"
-          parts: [
-            "datasets"
-            "{id}"
-            "download"
-          ]
           rename: {
             param: {
               datasetId: "id"
             }
           }
+          segments: [
+            {
+              lit: "datasets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "download"
+            }
+          ]
           select: {
             "$action": "download"
             exist: [
@@ -271,15 +281,19 @@ main: kit: entity: dataset: {
           }
           method: "GET"
           orig: "/datasets/{datasetId}"
-          parts: [
-            "datasets"
-            "{id}"
-          ]
           rename: {
             param: {
               datasetId: "id"
             }
           }
+          segments: [
+            {
+              lit: "datasets"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -305,8 +319,10 @@ main: kit: entity: dataset: {
           }
           method: "GET"
           orig: "/statistics"
-          parts: [
-            "statistics"
+          segments: [
+            {
+              lit: "statistics"
+            }
           ]
           select: {
             exist: [
