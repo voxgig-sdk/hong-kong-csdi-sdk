@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { HongKongCsdiSDK } from '@voxgig-sdk/hong-kong-csdi'
+import { HongKongCsdiSDK } from '@voxgig-sdk/hong-kong-csdi-sdk'
 
 const client = new HongKongCsdiSDK({
   apikey: process.env.HONG_KONG_CSDI_APIKEY,
@@ -496,7 +496,7 @@ hong-kong-csdi/
 Import the SDK from the package root:
 
 ```ts
-import { HongKongCsdiSDK } from '@voxgig-sdk/hong-kong-csdi'
+import { HongKongCsdiSDK } from '@voxgig-sdk/hong-kong-csdi-sdk'
 ```
 
 ### Entity state

@@ -105,7 +105,7 @@ local results, err = client:Dataset():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/hong-kong-csdi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases) |
+| TypeScript | `@voxgig-sdk/hong-kong-csdi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases) |
 | Python | `voxgig-sdk-hong-kong-csdi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases) |
 | PHP | `voxgig-sdk/hong-kong-csdi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/hong-kong-csdi-sdk/go` | `go get github.com/voxgig-sdk/hong-kong-csdi-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Dataset():list()
 ### TypeScript
 
 ```ts
-import { HongKongCsdiSDK } from '@voxgig-sdk/hong-kong-csdi'
+import { HongKongCsdiSDK } from '@voxgig-sdk/hong-kong-csdi-sdk'
 
 const client = new HongKongCsdiSDK({
   apikey: process.env.HONG_KONG_CSDI_APIKEY,
