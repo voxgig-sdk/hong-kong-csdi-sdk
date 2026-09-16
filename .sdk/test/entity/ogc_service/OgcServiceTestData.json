@@ -16,5 +16,338 @@
     "ogc_service": {
       "ogc_service_ref01": {}
     }
+  },
+  "requests": {
+    "GET /map/wms": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getWMSMap",
+        "parameters": [
+          {
+            "description": "Service type (WMS)",
+            "in": "query",
+            "name": "SERVICE",
+            "required": true,
+            "schema": {
+              "default": "WMS",
+              "enum": [
+                "WMS"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "WMS version",
+            "in": "query",
+            "name": "VERSION",
+            "required": true,
+            "schema": {
+              "default": "1.3.0",
+              "enum": [
+                "1.1.0",
+                "1.3.0"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Type of WMS request",
+            "in": "query",
+            "name": "REQUEST",
+            "required": true,
+            "schema": {
+              "enum": [
+                "GetCapabilities",
+                "GetMap",
+                "GetFeatureInfo"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated list of layer names",
+            "in": "query",
+            "name": "LAYERS",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Bounding box for map extent",
+            "in": "query",
+            "name": "BBOX",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Width of the output map in pixels",
+            "in": "query",
+            "name": "WIDTH",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Height of the output map in pixels",
+            "in": "query",
+            "name": "HEIGHT",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Output format for the map",
+            "in": "query",
+            "name": "FORMAT",
+            "required": false,
+            "schema": {
+              "enum": [
+                "image/png",
+                "image/jpeg",
+                "image/gif"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Coordinate Reference System",
+            "in": "query",
+            "name": "CRS",
+            "required": false,
+            "schema": {
+              "default": "EPSG:4326",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful WMS response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error type or code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Detailed error message",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "description": "Timestamp when the error occurred",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request"
+          }
+        },
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key for authentication (if required)",
+            "in": "header",
+            "name": "X-API-Key",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /map/wfs": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getWFSFeatures",
+        "parameters": [
+          {
+            "description": "Service type (WFS)",
+            "in": "query",
+            "name": "SERVICE",
+            "required": true,
+            "schema": {
+              "default": "WFS",
+              "enum": [
+                "WFS"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "WFS version",
+            "in": "query",
+            "name": "VERSION",
+            "required": true,
+            "schema": {
+              "default": "2.0.0",
+              "enum": [
+                "1.0.0",
+                "1.1.0",
+                "2.0.0"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Type of WFS request",
+            "in": "query",
+            "name": "REQUEST",
+            "required": true,
+            "schema": {
+              "enum": [
+                "GetCapabilities",
+                "GetFeature",
+                "DescribeFeatureType"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Feature type name",
+            "in": "query",
+            "name": "TYPENAME",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Output format for features",
+            "in": "query",
+            "name": "OUTPUTFORMAT",
+            "required": false,
+            "schema": {
+              "default": "application/json",
+              "enum": [
+                "application/json",
+                "text/xml",
+                "gml3"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Maximum number of features to return",
+            "in": "query",
+            "name": "COUNT",
+            "required": false,
+            "schema": {
+              "default": 100,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Bounding box filter",
+            "in": "query",
+            "name": "BBOX",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Spatial Reference System name",
+            "in": "query",
+            "name": "SRSNAME",
+            "required": false,
+            "schema": {
+              "default": "EPSG:4326",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful WFS response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error type or code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Detailed error message",
+                      "type": "string"
+                    },
+                    "timestamp": {
+                      "description": "Timestamp when the error occurred",
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "error",
+                    "message"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request"
+          }
+        },
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key for authentication (if required)",
+            "in": "header",
+            "name": "X-API-Key",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -1,12 +1,18 @@
 # HongKongCsdi SDK feature factory
 
 from hongkongcsdi_sdk.feature.base_feature import HongKongCsdiBaseFeature
+from hongkongcsdi_sdk.feature.ratelimit_feature import HongKongCsdiRatelimitFeature
+from hongkongcsdi_sdk.feature.retry_feature import HongKongCsdiRetryFeature
 from hongkongcsdi_sdk.feature.test_feature import HongKongCsdiTestFeature
+from hongkongcsdi_sdk.feature.timeout_feature import HongKongCsdiTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: HongKongCsdiBaseFeature(),
+    "ratelimit": lambda: HongKongCsdiRatelimitFeature(),
+    "retry": lambda: HongKongCsdiRetryFeature(),
     "test": lambda: HongKongCsdiTestFeature(),
+    "timeout": lambda: HongKongCsdiTimeoutFeature(),
 }
 
 
