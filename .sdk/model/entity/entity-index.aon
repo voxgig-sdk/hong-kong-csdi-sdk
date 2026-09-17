@@ -1,4 +1,4 @@
 # Entity Models
 
-@"dataset.aon"
-@"ogc_service.aon"
+@"./dataset.aon"
+@"./ogc_service.aon"

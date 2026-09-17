@@ -105,12 +105,12 @@ local results, err = client:Dataset():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/hong-kong-csdi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases) |
-| Python | `voxgig-sdk-hong-kong-csdi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases) |
-| PHP | `voxgig-sdk/hong-kong-csdi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases) |
+| TypeScript | `@voxgig-sdk/hong-kong-csdi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/tags) |
+| Python | `voxgig-sdk-hong-kong-csdi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/tags) |
+| PHP | `voxgig-sdk/hong-kong-csdi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/hong-kong-csdi-sdk/go` | `go get github.com/voxgig-sdk/hong-kong-csdi-sdk/go@latest` |
-| Ruby | `voxgig-sdk-hong-kong-csdi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases) |
-| Lua | `voxgig-sdk-hong-kong-csdi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/releases) |
+| Ruby | `voxgig-sdk-hong-kong-csdi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/tags) |
+| Lua | `voxgig-sdk-hong-kong-csdi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/hong-kong-csdi-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/hong-kong-csdi-sdk/go-cli` | `go install github.com/voxgig-sdk/hong-kong-csdi-sdk/go-cli/cmd/hong-kong-csdi@latest` |
 | Go MCP server | `github.com/voxgig-sdk/hong-kong-csdi-sdk/go-mcp` | `go get github.com/voxgig-sdk/hong-kong-csdi-sdk/go-mcp@latest` |
 

@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicDatasetFlow.aon"
-@"BasicOgcServiceFlow.aon"
+@"./BasicDatasetFlow.aon"
+@"./BasicOgcServiceFlow.aon"

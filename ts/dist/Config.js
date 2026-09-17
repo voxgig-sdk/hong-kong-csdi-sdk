@@ -104,6 +104,7 @@ class Config {
         base: "https://portal.csdi.gov.hk/api",
         auth: {
             prefix: '',
+            name: 'X-API-Key',
         },
         headers: {
             "content-type": "application/json"
