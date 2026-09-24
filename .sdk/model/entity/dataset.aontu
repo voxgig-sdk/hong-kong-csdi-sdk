@@ -1,0 +1,383 @@
+# Entity: dataset
+
+main: kit: entity: dataset: {
+
+  alias: field: {}
+
+  fields: {
+    apiCallCount: {
+      h: "Api Call Count"
+      n: "apiCallCount"
+      r: false
+      sh: "Number of API calls made for this dataset"
+      t: "`$INTEGER`"
+    }
+    apiEndpoints: {
+      h: "Api Endpoints"
+      n: "apiEndpoints"
+      r: false
+      sh: "Available API endpoints for this dataset"
+      t: "`$OBJECT`"
+    }
+    apiServiceCalls: {
+      h: "Api Service Calls"
+      n: "apiServiceCalls"
+      r: false
+      sh: "Total API service calls in the specified year"
+      t: "`$NUMBER`"
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      sh: "Category of the dataset"
+      t: "`$STRING`"
+    }
+    datasetDownloads: {
+      h: "Dataset Downloads"
+      n: "datasetDownloads"
+      r: false
+      sh: "Total dataset downloads in the specified year"
+      t: "`$NUMBER`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      sh: "Detailed description of the dataset"
+      t: "`$STRING`"
+    }
+    downloadCount: {
+      h: "Download Count"
+      n: "downloadCount"
+      r: false
+      sh: "Number of times the dataset has been downloaded"
+      t: "`$INTEGER`"
+    }
+    formats: {
+      h: "Formats"
+      n: "formats"
+      r: false
+      sh: "Available formats for the dataset"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for the dataset"
+      t: "`$STRING`"
+    }
+    keywords: {
+      h: "Keywords"
+      n: "keywords"
+      r: false
+      sh: "Keywords associated with the dataset"
+      t: "`$ARRAY`"
+    }
+    lastUpdated: {
+      fo: "date-time"
+      h: "Last Updated"
+      n: "lastUpdated"
+      r: false
+      sh: "Date when the dataset was last updated"
+      t: "`$STRING`"
+    }
+    license: {
+      h: "License"
+      n: "license"
+      r: false
+      sh: "License information for the dataset"
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: false
+      sh: "Data provider organization"
+      t: "`$STRING`"
+    }
+    publishedDate: {
+      fo: "date-time"
+      h: "Published Date"
+      n: "publishedDate"
+      r: false
+      sh: "Date when the dataset was published"
+      t: "`$STRING`"
+    }
+    spatialExtent: {
+      h: "Spatial Extent"
+      n: "spatialExtent"
+      r: false
+      sh: "Spatial extent of the dataset"
+      t: "`$OBJECT`"
+    }
+    theme: {
+      h: "Theme"
+      n: "theme"
+      r: false
+      sh: "Framework Spatial Data Theme"
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      sh: "Title of the dataset"
+      t: "`$STRING`"
+    }
+    totalDatasets: {
+      h: "Total Datasets"
+      n: "totalDatasets"
+      r: false
+      sh: "Total number of datasets available"
+      t: "`$INTEGER`"
+    }
+    viewCount: {
+      h: "View Count"
+      n: "viewCount"
+      r: false
+      sh: "Number of times the dataset has been viewed"
+      t: "`$INTEGER`"
+    }
+    year: {
+      h: "Year"
+      n: "year"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "dataset"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /datasets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "category"
+                or: "category"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 50
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "offset"
+                or: "offset"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "new"
+                k: "query"
+                n: "sort_by"
+                or: "sort_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "theme"
+                or: "theme"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/datasets"
+          q: {
+            exist: [
+              "category"
+              "limit"
+              "offset"
+              "search"
+              "sort_by"
+              "theme"
+            ]
+          }
+          s: [
+            {
+              lit: "datasets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.datasets`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /datasets/{datasetId}/download"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "dataset_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "json"
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/datasets/{datasetId}/download"
+          q: {
+            "$action": "download"
+            exist: [
+              "format"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              datasetId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "datasets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "download"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /datasets/{datasetId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "dataset_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/datasets/{datasetId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              datasetId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "datasets"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /statistics"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 2025
+                k: "query"
+                n: "year"
+                or: "year"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/statistics"
+          q: {
+            exist: [
+              "year"
+            ]
+          }
+          s: [
+            {
+              lit: "statistics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

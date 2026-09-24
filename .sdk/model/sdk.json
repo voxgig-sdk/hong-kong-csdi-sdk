@@ -24,155 +24,241 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "dataset": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "apiCallCount",
-              "req": false,
-              "short": "Number of API calls made for this dataset",
-              "type": "`$INTEGER`"
+          "fields": {
+            "apiCallCount": {
+              "a": true,
+              "h": "Api Call Count",
+              "n": "apiCallCount",
+              "r": false,
+              "sh": "Number of API calls made for this dataset",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "apiEndpoints",
-              "req": false,
-              "short": "Available API endpoints for this dataset",
-              "type": "`$OBJECT`"
+            "apiEndpoints": {
+              "a": true,
+              "h": "Api Endpoints",
+              "n": "apiEndpoints",
+              "r": false,
+              "sh": "Available API endpoints for this dataset",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "apiServiceCalls",
-              "req": false,
-              "short": "Total API service calls in the specified year",
-              "type": "`$NUMBER`"
+            "apiServiceCalls": {
+              "a": true,
+              "h": "Api Service Calls",
+              "n": "apiServiceCalls",
+              "r": false,
+              "sh": "Total API service calls in the specified year",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "short": "Category of the dataset",
-              "type": "`$STRING`"
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": false,
+              "sh": "Category of the dataset",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "datasetDownloads",
-              "req": false,
-              "short": "Total dataset downloads in the specified year",
-              "type": "`$NUMBER`"
+            "datasetDownloads": {
+              "a": true,
+              "h": "Dataset Downloads",
+              "n": "datasetDownloads",
+              "r": false,
+              "sh": "Total dataset downloads in the specified year",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": true,
-              "short": "Detailed description of the dataset",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": true,
+              "sh": "Detailed description of the dataset",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "downloadCount",
-              "req": false,
-              "short": "Number of times the dataset has been downloaded",
-              "type": "`$INTEGER`"
+            "downloadCount": {
+              "a": true,
+              "h": "Download Count",
+              "n": "downloadCount",
+              "r": false,
+              "sh": "Number of times the dataset has been downloaded",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "formats",
-              "req": false,
-              "short": "Available formats for the dataset",
-              "type": "`$ARRAY`"
+            "formats": {
+              "a": true,
+              "h": "Formats",
+              "n": "formats",
+              "r": false,
+              "sh": "Available formats for the dataset",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": true,
-              "short": "Unique identifier for the dataset",
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": true,
+              "sh": "Unique identifier for the dataset",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "keywords",
-              "req": false,
-              "short": "Keywords associated with the dataset",
-              "type": "`$ARRAY`"
+            "keywords": {
+              "a": true,
+              "h": "Keywords",
+              "n": "keywords",
+              "r": false,
+              "sh": "Keywords associated with the dataset",
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "lastUpdated",
-              "req": false,
-              "short": "Date when the dataset was last updated",
-              "type": "`$STRING`"
+            "lastUpdated": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Last Updated",
+              "n": "lastUpdated",
+              "r": false,
+              "sh": "Date when the dataset was last updated",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "license",
-              "req": false,
-              "short": "License information for the dataset",
-              "type": "`$STRING`"
+            "license": {
+              "a": true,
+              "h": "License",
+              "n": "license",
+              "r": false,
+              "sh": "License information for the dataset",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "provider",
-              "req": false,
-              "short": "Data provider organization",
-              "type": "`$STRING`"
+            "provider": {
+              "a": true,
+              "h": "Provider",
+              "n": "provider",
+              "r": false,
+              "sh": "Data provider organization",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "publishedDate",
-              "req": false,
-              "short": "Date when the dataset was published",
-              "type": "`$STRING`"
+            "publishedDate": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Published Date",
+              "n": "publishedDate",
+              "r": false,
+              "sh": "Date when the dataset was published",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "spatialExtent",
-              "req": false,
-              "short": "Spatial extent of the dataset",
-              "type": "`$OBJECT`"
+            "spatialExtent": {
+              "a": true,
+              "h": "Spatial Extent",
+              "n": "spatialExtent",
+              "r": false,
+              "sh": "Spatial extent of the dataset",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "theme",
-              "req": false,
-              "short": "Framework Spatial Data Theme",
-              "type": "`$STRING`"
+            "theme": {
+              "a": true,
+              "h": "Theme",
+              "n": "theme",
+              "r": false,
+              "sh": "Framework Spatial Data Theme",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": true,
-              "short": "Title of the dataset",
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": true,
+              "sh": "Title of the dataset",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "totalDatasets",
-              "req": false,
-              "short": "Total number of datasets available",
-              "type": "`$INTEGER`"
+            "totalDatasets": {
+              "a": true,
+              "h": "Total Datasets",
+              "n": "totalDatasets",
+              "r": false,
+              "sh": "Total number of datasets available",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "viewCount",
-              "req": false,
-              "short": "Number of times the dataset has been viewed",
-              "type": "`$INTEGER`"
+            "viewCount": {
+              "a": true,
+              "h": "View Count",
+              "n": "viewCount",
+              "r": false,
+              "sh": "Number of times the dataset has been viewed",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "year",
-              "req": false,
-              "type": "`$INTEGER`"
+            "year": {
+              "a": true,
+              "h": "Year",
+              "n": "year",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -184,77 +270,71 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /datasets",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "category",
-                        "orig": "category",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "category",
+                        "or": "category",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 50,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 50,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": 0,
-                        "kind": "query",
-                        "name": "offset",
-                        "orig": "offset",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 0,
+                        "k": "query",
+                        "n": "offset",
+                        "or": "offset",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "search",
-                        "orig": "search",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "search",
+                        "or": "search",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "new",
-                        "kind": "query",
-                        "name": "sort_by",
-                        "orig": "sort_by",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "new",
+                        "k": "query",
+                        "n": "sort_by",
+                        "or": "sort_by",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "theme",
-                        "orig": "theme",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "theme",
+                        "or": "theme",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /datasets",
-                    "json": "{\"operationId\":\"getDatasets\",\"parameters\":[{\"description\":\"Filter datasets by category (e.g., Climate and Weather, Commerce and Industry, Development, Education, Election, Environment, Geography, Health, Housing, Labour Community and Social Welfare, Land Information, Law and Security, Population, Recreation and Culture, Sports, Technology, Transportation, Utilities)\",\"in\":\"query\",\"name\":\"category\",\"required\":false,\"schema\":{\"enum\":[\"Climate and Weather\",\"Commerce and Industry\",\"Development\",\"Education\",\"Election\",\"Environment\",\"Geography\",\"Health\",\"Housing\",\"Labour, Community and Social Welfare\",\"Land Information\",\"Law and Security\",\"Population\",\"Recreation and Culture\",\"Sports\",\"Technology\",\"Transportation\",\"Utilities\"],\"type\":\"string\"}},{\"description\":\"Filter datasets by Framework Spatial Data Theme\",\"in\":\"query\",\"name\":\"theme\",\"required\":false,\"schema\":{\"enum\":[\"Address\",\"Building\",\"Coordinate Reference System\",\"Elevation and Depth\",\"Functional Area\",\"Geographic Name\",\"Land Parcel\",\"Orthoimagery\",\"Population Distribution\",\"Slope and Geology\",\"Transportation\",\"Water\"],\"type\":\"string\"}},{\"description\":\"Sort datasets by specified criteria\",\"in\":\"query\",\"name\":\"sortBy\",\"required\":false,\"schema\":{\"default\":\"new\",\"enum\":[\"new\",\"most_viewed\",\"most_downloaded\",\"most_popular_api\"],\"type\":\"string\"}},{\"description\":\"Search query for datasets\",\"in\":\"query\",\"name\":\"search\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Maximum number of results to return\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":50,\"maximum\":1000,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Number of results to skip for pagination\",\"in\":\"query\",\"name\":\"offset\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of datasets returned in this response\",\"type\":\"integer\"},\"datasets\":{\"items\":{\"properties\":{\"apiCallCount\":{\"description\":\"Number of API calls made for this dataset\",\"type\":\"integer\"},\"apiEndpoints\":{\"description\":\"Available API endpoints for this dataset\",\"properties\":{\"rest\":{\"description\":\"ArcGIS REST API endpoint URL\",\"format\":\"uri\",\"type\":\"string\"},\"wfs\":{\"description\":\"WFS endpoint URL\",\"format\":\"uri\",\"type\":\"string\"},\"wms\":{\"description\":\"WMS endpoint URL\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"category\":{\"description\":\"Category of the dataset\",\"enum\":[\"Climate and Weather\",\"Commerce and Industry\",\"Development\",\"Education\",\"Election\",\"Environment\",\"Geography\",\"Health\",\"Housing\",\"Labour, Community and Social Welfare\",\"Land Information\",\"Law and Security\",\"Population\",\"Recreation and Culture\",\"Sports\",\"Technology\",\"Transportation\",\"Utilities\"],\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the dataset\",\"type\":\"string\"},\"downloadCount\":{\"description\":\"Number of times the dataset has been downloaded\",\"type\":\"integer\"},\"formats\":{\"description\":\"Available formats for the dataset\",\"items\":{\"enum\":[\"json\",\"geojson\",\"shapefile\",\"kml\",\"csv\",\"gml\",\"wms\",\"wfs\",\"rest\"],\"type\":\"string\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the dataset\",\"type\":\"string\"},\"keywords\":{\"description\":\"Keywords associated with the dataset\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"lastUpdated\":{\"description\":\"Date when the dataset was last updated\",\"format\":\"date-time\",\"type\":\"string\"},\"license\":{\"description\":\"License information for the dataset\",\"type\":\"string\"},\"provider\":{\"description\":\"Data provider organization\",\"type\":\"string\"},\"publishedDate\":{\"description\":\"Date when the dataset was published\",\"format\":\"date-time\",\"type\":\"string\"},\"spatialExtent\":{\"description\":\"Spatial extent of the dataset\",\"properties\":{\"bbox\":{\"description\":\"Bounding box coordinates [minLon, minLat, maxLon, maxLat]\",\"items\":{\"type\":\"number\"},\"maxItems\":4,\"minItems\":4,\"type\":\"array\"},\"crs\":{\"default\":\"EPSG:4326\",\"description\":\"Coordinate Reference System\",\"type\":\"string\"}},\"type\":\"object\"},\"theme\":{\"description\":\"Framework Spatial Data Theme\",\"enum\":[\"Address\",\"Building\",\"Coordinate Reference System\",\"Elevation and Depth\",\"Functional Area\",\"Geographic Name\",\"Land Parcel\",\"Orthoimagery\",\"Population Distribution\",\"Slope and Geology\",\"Transportation\",\"Water\"],\"type\":\"string\"},\"title\":{\"description\":\"Title of the dataset\",\"type\":\"string\"},\"viewCount\":{\"description\":\"Number of times the dataset has been viewed\",\"type\":\"integer\"}},\"required\":[\"id\",\"title\",\"description\"],\"type\":\"object\"},\"type\":\"array\"},\"offset\":{\"description\":\"Current offset for pagination\",\"type\":\"integer\"},\"total\":{\"description\":\"Total number of datasets available\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of datasets\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error type or code\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp when the error occurred\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request - invalid parameters\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error type or code\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp when the error occurred\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication (if required)\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/datasets",
-                  "segments": [
-                    {
-                      "lit": "datasets"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/datasets",
+                  "q": {
                     "exist": [
                       "category",
                       "limit",
@@ -264,7 +344,13 @@
                       "theme"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "datasets"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.datasets`"
                   }
@@ -276,45 +362,51 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /datasets/{datasetId}/download",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "dataset_id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "dataset_id",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "example": "json",
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "json",
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /datasets/{datasetId}/download",
-                    "json": "{\"operationId\":\"downloadDataset\",\"parameters\":[{\"description\":\"Unique identifier of the dataset\",\"in\":\"path\",\"name\":\"datasetId\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"description\":\"Desired format for the dataset download\",\"in\":\"query\",\"name\":\"format\",\"required\":false,\"schema\":{\"default\":\"json\",\"enum\":[\"json\",\"geojson\",\"shapefile\",\"kml\",\"csv\",\"gml\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/geo+json\":{\"schema\":{\"type\":\"object\"}},\"application/json\":{\"schema\":{\"type\":\"object\"}},\"application/zip\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful dataset download\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error type or code\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp when the error occurred\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Dataset not found\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error type or code\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp when the error occurred\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication (if required)\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/datasets/{datasetId}/download",
+                  "q": {
+                    "$action": "download",
+                    "exist": [
+                      "format",
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/datasets/{datasetId}/download",
-                  "rename": {
+                  "r": {
                     "param": {
                       "datasetId": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "datasets"
                     },
@@ -325,47 +417,44 @@
                       "lit": "download"
                     }
                   ],
-                  "select": {
-                    "$action": "download",
-                    "exist": [
-                      "format",
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /datasets/{datasetId}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "dataset_id",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "dataset_id",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /datasets/{datasetId}",
-                    "json": "{\"operationId\":\"getDatasetById\",\"parameters\":[{\"description\":\"Unique identifier of the dataset\",\"in\":\"path\",\"name\":\"datasetId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"apiCallCount\":{\"description\":\"Number of API calls made for this dataset\",\"type\":\"integer\"},\"apiEndpoints\":{\"description\":\"Available API endpoints for this dataset\",\"properties\":{\"rest\":{\"description\":\"ArcGIS REST API endpoint URL\",\"format\":\"uri\",\"type\":\"string\"},\"wfs\":{\"description\":\"WFS endpoint URL\",\"format\":\"uri\",\"type\":\"string\"},\"wms\":{\"description\":\"WMS endpoint URL\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"category\":{\"description\":\"Category of the dataset\",\"enum\":[\"Climate and Weather\",\"Commerce and Industry\",\"Development\",\"Education\",\"Election\",\"Environment\",\"Geography\",\"Health\",\"Housing\",\"Labour, Community and Social Welfare\",\"Land Information\",\"Law and Security\",\"Population\",\"Recreation and Culture\",\"Sports\",\"Technology\",\"Transportation\",\"Utilities\"],\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the dataset\",\"type\":\"string\"},\"downloadCount\":{\"description\":\"Number of times the dataset has been downloaded\",\"type\":\"integer\"},\"formats\":{\"description\":\"Available formats for the dataset\",\"items\":{\"enum\":[\"json\",\"geojson\",\"shapefile\",\"kml\",\"csv\",\"gml\",\"wms\",\"wfs\",\"rest\"],\"type\":\"string\"},\"type\":\"array\"},\"id\":{\"description\":\"Unique identifier for the dataset\",\"type\":\"string\"},\"keywords\":{\"description\":\"Keywords associated with the dataset\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"lastUpdated\":{\"description\":\"Date when the dataset was last updated\",\"format\":\"date-time\",\"type\":\"string\"},\"license\":{\"description\":\"License information for the dataset\",\"type\":\"string\"},\"provider\":{\"description\":\"Data provider organization\",\"type\":\"string\"},\"publishedDate\":{\"description\":\"Date when the dataset was published\",\"format\":\"date-time\",\"type\":\"string\"},\"spatialExtent\":{\"description\":\"Spatial extent of the dataset\",\"properties\":{\"bbox\":{\"description\":\"Bounding box coordinates [minLon, minLat, maxLon, maxLat]\",\"items\":{\"type\":\"number\"},\"maxItems\":4,\"minItems\":4,\"type\":\"array\"},\"crs\":{\"default\":\"EPSG:4326\",\"description\":\"Coordinate Reference System\",\"type\":\"string\"}},\"type\":\"object\"},\"theme\":{\"description\":\"Framework Spatial Data Theme\",\"enum\":[\"Address\",\"Building\",\"Coordinate Reference System\",\"Elevation and Depth\",\"Functional Area\",\"Geographic Name\",\"Land Parcel\",\"Orthoimagery\",\"Population Distribution\",\"Slope and Geology\",\"Transportation\",\"Water\"],\"type\":\"string\"},\"title\":{\"description\":\"Title of the dataset\",\"type\":\"string\"},\"viewCount\":{\"description\":\"Number of times the dataset has been viewed\",\"type\":\"integer\"}},\"required\":[\"id\",\"title\",\"description\"],\"type\":\"object\"}}},\"description\":\"Successful response with dataset details\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error type or code\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp when the error occurred\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Dataset not found\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error type or code\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp when the error occurred\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication (if required)\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/datasets/{datasetId}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/datasets/{datasetId}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "datasetId": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "datasets"
                     },
@@ -373,51 +462,46 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /statistics",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": 2025,
-                        "kind": "query",
-                        "name": "year",
-                        "orig": "year",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 2025,
+                        "k": "query",
+                        "n": "year",
+                        "or": "year",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /statistics",
-                    "json": "{\"operationId\":\"getStatistics\",\"parameters\":[{\"description\":\"Year for statistics\",\"in\":\"query\",\"name\":\"year\",\"required\":false,\"schema\":{\"default\":2025,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"apiServiceCalls\":{\"description\":\"Total API service calls in the specified year\",\"example\":9500000000,\"type\":\"number\"},\"datasetDownloads\":{\"description\":\"Total dataset downloads in the specified year\",\"example\":2050000,\"type\":\"number\"},\"totalDatasets\":{\"description\":\"Total number of datasets available\",\"example\":1100,\"type\":\"integer\"},\"year\":{\"example\":2025,\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with statistics\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error type or code\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp when the error occurred\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error type or code\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp when the error occurred\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication (if required)\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/statistics",
-                  "segments": [
-                    {
-                      "lit": "statistics"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/statistics",
+                  "q": {
                     "exist": [
                       "year"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "statistics"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -434,7 +518,7 @@
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "ogc_service",
           "op": {
             "load": {
@@ -442,104 +526,95 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /map/wms",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "bbox",
-                        "orig": "bbox",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "bbox",
+                        "or": "bbox",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "EPSG:4326",
-                        "kind": "query",
-                        "name": "crs",
-                        "orig": "crs",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "EPSG:4326",
+                        "k": "query",
+                        "n": "crs",
+                        "or": "crs",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "format",
-                        "orig": "format",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "format",
+                        "or": "format",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "height",
-                        "orig": "height",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "height",
+                        "or": "height",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "layer",
-                        "orig": "layer",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "layer",
+                        "or": "layer",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "request",
-                        "orig": "request",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "request",
+                        "or": "request",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "WMS",
-                        "kind": "query",
-                        "name": "service",
-                        "orig": "service",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "WMS",
+                        "k": "query",
+                        "n": "service",
+                        "or": "service",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "1.3.0",
-                        "kind": "query",
-                        "name": "version",
-                        "orig": "version",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "1.3.0",
+                        "k": "query",
+                        "n": "version",
+                        "or": "version",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "width",
-                        "orig": "width",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "width",
+                        "or": "width",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /map/wms",
-                    "json": "{\"operationId\":\"getWMSMap\",\"parameters\":[{\"description\":\"Service type (WMS)\",\"in\":\"query\",\"name\":\"SERVICE\",\"required\":true,\"schema\":{\"default\":\"WMS\",\"enum\":[\"WMS\"],\"type\":\"string\"}},{\"description\":\"WMS version\",\"in\":\"query\",\"name\":\"VERSION\",\"required\":true,\"schema\":{\"default\":\"1.3.0\",\"enum\":[\"1.1.0\",\"1.3.0\"],\"type\":\"string\"}},{\"description\":\"Type of WMS request\",\"in\":\"query\",\"name\":\"REQUEST\",\"required\":true,\"schema\":{\"enum\":[\"GetCapabilities\",\"GetMap\",\"GetFeatureInfo\"],\"type\":\"string\"}},{\"description\":\"Comma-separated list of layer names\",\"in\":\"query\",\"name\":\"LAYERS\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Bounding box for map extent\",\"in\":\"query\",\"name\":\"BBOX\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Width of the output map in pixels\",\"in\":\"query\",\"name\":\"WIDTH\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Height of the output map in pixels\",\"in\":\"query\",\"name\":\"HEIGHT\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Output format for the map\",\"in\":\"query\",\"name\":\"FORMAT\",\"required\":false,\"schema\":{\"enum\":[\"image/png\",\"image/jpeg\",\"image/gif\"],\"type\":\"string\"}},{\"description\":\"Coordinate Reference System\",\"in\":\"query\",\"name\":\"CRS\",\"required\":false,\"schema\":{\"default\":\"EPSG:4326\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/jpeg\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}},\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}},\"text/xml\":{\"schema\":{\"type\":\"string\"}}},\"description\":\"Successful WMS response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error type or code\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp when the error occurred\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request\"}},\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication (if required)\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/map/wms",
-                  "segments": [
-                    {
-                      "lit": "map"
-                    },
-                    {
-                      "lit": "wms"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/map/wms",
+                  "q": {
                     "exist": [
                       "bbox",
                       "crs",
@@ -552,104 +627,104 @@
                       "width"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "map"
+                    },
+                    {
+                      "lit": "wms"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /map/wfs",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "bbox",
-                        "orig": "bbox",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "bbox",
+                        "or": "bbox",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": 100,
-                        "kind": "query",
-                        "name": "count",
-                        "orig": "count",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 100,
+                        "k": "query",
+                        "n": "count",
+                        "or": "count",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": "application/json",
-                        "kind": "query",
-                        "name": "outputformat",
-                        "orig": "outputformat",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "application/json",
+                        "k": "query",
+                        "n": "outputformat",
+                        "or": "outputformat",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "request",
-                        "orig": "request",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "request",
+                        "or": "request",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "WFS",
-                        "kind": "query",
-                        "name": "service",
-                        "orig": "service",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "WFS",
+                        "k": "query",
+                        "n": "service",
+                        "or": "service",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "EPSG:4326",
-                        "kind": "query",
-                        "name": "srsname",
-                        "orig": "srsname",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "EPSG:4326",
+                        "k": "query",
+                        "n": "srsname",
+                        "or": "srsname",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "typename",
-                        "orig": "typename",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "typename",
+                        "or": "typename",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "2.0.0",
-                        "kind": "query",
-                        "name": "version",
-                        "orig": "version",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "2.0.0",
+                        "k": "query",
+                        "n": "version",
+                        "or": "version",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /map/wfs",
-                    "json": "{\"operationId\":\"getWFSFeatures\",\"parameters\":[{\"description\":\"Service type (WFS)\",\"in\":\"query\",\"name\":\"SERVICE\",\"required\":true,\"schema\":{\"default\":\"WFS\",\"enum\":[\"WFS\"],\"type\":\"string\"}},{\"description\":\"WFS version\",\"in\":\"query\",\"name\":\"VERSION\",\"required\":true,\"schema\":{\"default\":\"2.0.0\",\"enum\":[\"1.0.0\",\"1.1.0\",\"2.0.0\"],\"type\":\"string\"}},{\"description\":\"Type of WFS request\",\"in\":\"query\",\"name\":\"REQUEST\",\"required\":true,\"schema\":{\"enum\":[\"GetCapabilities\",\"GetFeature\",\"DescribeFeatureType\"],\"type\":\"string\"}},{\"description\":\"Feature type name\",\"in\":\"query\",\"name\":\"TYPENAME\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Output format for features\",\"in\":\"query\",\"name\":\"OUTPUTFORMAT\",\"required\":false,\"schema\":{\"default\":\"application/json\",\"enum\":[\"application/json\",\"text/xml\",\"gml3\"],\"type\":\"string\"}},{\"description\":\"Maximum number of features to return\",\"in\":\"query\",\"name\":\"COUNT\",\"required\":false,\"schema\":{\"default\":100,\"type\":\"integer\"}},{\"description\":\"Bounding box filter\",\"in\":\"query\",\"name\":\"BBOX\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Spatial Reference System name\",\"in\":\"query\",\"name\":\"SRSNAME\",\"required\":false,\"schema\":{\"default\":\"EPSG:4326\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}},\"text/xml\":{\"schema\":{\"type\":\"string\"}}},\"description\":\"Successful WFS response\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error type or code\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"type\":\"string\"},\"timestamp\":{\"description\":\"Timestamp when the error occurred\",\"format\":\"date-time\",\"type\":\"string\"}},\"required\":[\"error\",\"message\"],\"type\":\"object\"}}},\"description\":\"Bad request\"}},\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication (if required)\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/map/wfs",
-                  "segments": [
-                    {
-                      "lit": "map"
-                    },
-                    {
-                      "lit": "wfs"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/map/wfs",
+                  "q": {
                     "exist": [
                       "bbox",
                       "count",
@@ -661,7 +736,16 @@
                       "version"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "map"
+                    },
+                    {
+                      "lit": "wfs"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1090,13 +1174,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1106,17 +1190,17 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "dataset_ref01",
                 "srcdatavar": "dataset_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1136,17 +1220,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "ogc_service_ref01",
                 "srcdatavar": "ogc_service_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {

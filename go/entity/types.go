@@ -1,7 +1,7 @@
 // Typed models for the HongKongCsdi SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,26 +14,6 @@ import (
 
 // Dataset is the typed data model for the dataset entity.
 type Dataset struct {
-	ApiCallCount *int `json:"apiCallCount,omitempty"`
-	ApiEndpoints *map[string]any `json:"apiEndpoints,omitempty"`
-	ApiServiceCalls *float64 `json:"apiServiceCalls,omitempty"`
-	Category *string `json:"category,omitempty"`
-	DatasetDownloads *float64 `json:"datasetDownloads,omitempty"`
-	Description string `json:"description"`
-	DownloadCount *int `json:"downloadCount,omitempty"`
-	Formats *[]any `json:"formats,omitempty"`
-	Id string `json:"id"`
-	Keywords *[]any `json:"keywords,omitempty"`
-	LastUpdated *string `json:"lastUpdated,omitempty"`
-	License *string `json:"license,omitempty"`
-	Provider *string `json:"provider,omitempty"`
-	PublishedDate *string `json:"publishedDate,omitempty"`
-	SpatialExtent *map[string]any `json:"spatialExtent,omitempty"`
-	Theme *string `json:"theme,omitempty"`
-	Title string `json:"title"`
-	TotalDatasets *int `json:"totalDatasets,omitempty"`
-	ViewCount *int `json:"viewCount,omitempty"`
-	Year *int `json:"year,omitempty"`
 }
 
 // DatasetLoadMatch is the typed request payload for Dataset.LoadTyped.

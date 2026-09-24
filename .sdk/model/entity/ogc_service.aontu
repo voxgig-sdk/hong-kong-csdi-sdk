@@ -1,0 +1,223 @@
+# Entity: ogc_service
+
+main: kit: entity: ogc_service: {
+
+  alias: field: {}
+
+  name: "ogc_service"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /map/wms"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "bbox"
+                or: "bbox"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "EPSG:4326"
+                k: "query"
+                n: "crs"
+                or: "crs"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "format"
+                or: "format"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "height"
+                or: "height"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "layer"
+                or: "layer"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "request"
+                or: "request"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "WMS"
+                k: "query"
+                n: "service"
+                or: "service"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1.3.0"
+                k: "query"
+                n: "version"
+                or: "version"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "width"
+                or: "width"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/map/wms"
+          q: {
+            exist: [
+              "bbox"
+              "crs"
+              "format"
+              "height"
+              "layer"
+              "request"
+              "service"
+              "version"
+              "width"
+            ]
+          }
+          s: [
+            {
+              lit: "map"
+            }
+            {
+              lit: "wms"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /map/wfs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "bbox"
+                or: "bbox"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "count"
+                or: "count"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "application/json"
+                k: "query"
+                n: "outputformat"
+                or: "outputformat"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "request"
+                or: "request"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "WFS"
+                k: "query"
+                n: "service"
+                or: "service"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "EPSG:4326"
+                k: "query"
+                n: "srsname"
+                or: "srsname"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "typename"
+                or: "typename"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2.0.0"
+                k: "query"
+                n: "version"
+                or: "version"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/map/wfs"
+          q: {
+            exist: [
+              "bbox"
+              "count"
+              "outputformat"
+              "request"
+              "service"
+              "srsname"
+              "typename"
+              "version"
+            ]
+          }
+          s: [
+            {
+              lit: "map"
+            }
+            {
+              lit: "wfs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

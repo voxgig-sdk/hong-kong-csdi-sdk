@@ -1,0 +1,28 @@
+# BasicOgcServiceFlow
+
+main: kit: flow: BasicOgcServiceFlow:
+{
+  entity: "ogc_service",
+  kind: "basic",
+  name: "BasicOgcServiceFlow",
+  step: [
+    {
+      i: {
+        ref: "ogc_service_ref01",
+        srcdatavar: "ogc_service_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ogc_service_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOgcServiceFlow"
+}

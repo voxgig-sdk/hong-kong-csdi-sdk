@@ -96,106 +96,126 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "apiCallCount",
-						"short": "Number of API calls made for this dataset",
+						"title": "Api Call Count",
 						"type": "`$INTEGER`",
+						"short": "Number of API calls made for this dataset",
 					},
 					map[string]any{
 						"name": "apiEndpoints",
-						"short": "Available API endpoints for this dataset",
+						"title": "Api Endpoints",
 						"type": "`$OBJECT`",
+						"short": "Available API endpoints for this dataset",
 					},
 					map[string]any{
 						"name": "apiServiceCalls",
-						"short": "Total API service calls in the specified year",
+						"title": "Api Service Calls",
 						"type": "`$NUMBER`",
+						"short": "Total API service calls in the specified year",
 					},
 					map[string]any{
 						"name": "category",
-						"short": "Category of the dataset",
+						"title": "Category",
 						"type": "`$STRING`",
+						"short": "Category of the dataset",
 					},
 					map[string]any{
 						"name": "datasetDownloads",
-						"short": "Total dataset downloads in the specified year",
+						"title": "Dataset Downloads",
 						"type": "`$NUMBER`",
+						"short": "Total dataset downloads in the specified year",
 					},
 					map[string]any{
 						"name": "description",
+						"title": "Description",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Detailed description of the dataset",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "downloadCount",
-						"short": "Number of times the dataset has been downloaded",
+						"title": "Download Count",
 						"type": "`$INTEGER`",
+						"short": "Number of times the dataset has been downloaded",
 					},
 					map[string]any{
 						"name": "formats",
-						"short": "Available formats for the dataset",
+						"title": "Formats",
 						"type": "`$ARRAY`",
+						"short": "Available formats for the dataset",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Unique identifier for the dataset",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "keywords",
-						"short": "Keywords associated with the dataset",
+						"title": "Keywords",
 						"type": "`$ARRAY`",
+						"short": "Keywords associated with the dataset",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "lastUpdated",
-						"short": "Date when the dataset was last updated",
+						"title": "Last Updated",
 						"type": "`$STRING`",
+						"short": "Date when the dataset was last updated",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "license",
-						"short": "License information for the dataset",
+						"title": "License",
 						"type": "`$STRING`",
+						"short": "License information for the dataset",
 					},
 					map[string]any{
 						"name": "provider",
-						"short": "Data provider organization",
+						"title": "Provider",
 						"type": "`$STRING`",
+						"short": "Data provider organization",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "publishedDate",
-						"short": "Date when the dataset was published",
+						"title": "Published Date",
 						"type": "`$STRING`",
+						"short": "Date when the dataset was published",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "spatialExtent",
-						"short": "Spatial extent of the dataset",
+						"title": "Spatial Extent",
 						"type": "`$OBJECT`",
+						"short": "Spatial extent of the dataset",
 					},
 					map[string]any{
 						"name": "theme",
-						"short": "Framework Spatial Data Theme",
+						"title": "Theme",
 						"type": "`$STRING`",
+						"short": "Framework Spatial Data Theme",
 					},
 					map[string]any{
 						"name": "title",
+						"title": "Title",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Title of the dataset",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "totalDatasets",
-						"short": "Total number of datasets available",
+						"title": "Total Datasets",
 						"type": "`$INTEGER`",
+						"short": "Total number of datasets available",
 					},
 					map[string]any{
 						"name": "viewCount",
-						"short": "Number of times the dataset has been viewed",
+						"title": "View Count",
 						"type": "`$INTEGER`",
+						"short": "Number of times the dataset has been viewed",
 					},
 					map[string]any{
 						"name": "year",
+						"title": "Year",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -210,55 +230,63 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "category",
-											"orig": "category",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 50,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "search",
-											"orig": "search",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "new",
-											"kind": "query",
-											"name": "sort_by",
-											"orig": "sort_by",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "theme",
-											"orig": "theme",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/datasets",
 								"segments": []any{
 									map[string]any{
 										"lit": "datasets",
+									},
+								},
+								"parts": []any{
+									"datasets",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.datasets`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "category",
+											"orig": "category",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 50,
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+										map[string]any{
+											"name": "search",
+											"orig": "search",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "sort_by",
+											"orig": "sort_by",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "new",
+										},
+										map[string]any{
+											"name": "theme",
+											"orig": "theme",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -271,13 +299,6 @@ func MakeConfig() map[string]any {
 										"theme",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.datasets`",
-								},
-								"parts": []any{
-									"datasets",
-								},
 							},
 						},
 					},
@@ -286,34 +307,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "dataset_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": "json",
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/datasets/{datasetId}/download",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"datasetId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "datasets",
@@ -325,6 +321,40 @@ func MakeConfig() map[string]any {
 										"lit": "download",
 									},
 								},
+								"parts": []any{
+									"datasets",
+									"{id}",
+									"download",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"datasetId": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "dataset_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "json",
+										},
+									},
+								},
 								"select": map[string]any{
 									"$action": "download",
 									"exist": []any{
@@ -332,36 +362,11 @@ func MakeConfig() map[string]any {
 										"id",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"datasets",
-									"{id}",
-									"download",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "dataset_id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/datasets/{datasetId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"datasetId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "datasets",
@@ -370,32 +375,37 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"datasets",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"datasetId": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"datasets",
-									"{id}",
-								},
-							},
-							map[string]any{
 								"args": map[string]any{
-									"query": []any{
+									"params": []any{
 										map[string]any{
-											"example": 2025,
-											"kind": "query",
-											"name": "year",
-											"orig": "year",
-											"type": "`$INTEGER`",
+											"name": "id",
+											"orig": "dataset_id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/statistics",
@@ -404,17 +414,29 @@ func MakeConfig() map[string]any {
 										"lit": "statistics",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"year",
-									},
+								"parts": []any{
+									"statistics",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"statistics",
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "year",
+											"orig": "year",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 2025,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"year",
+									},
 								},
 							},
 						},
@@ -433,70 +455,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "bbox",
-											"orig": "bbox",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "EPSG:4326",
-											"kind": "query",
-											"name": "crs",
-											"orig": "crs",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "format",
-											"orig": "format",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "height",
-											"orig": "height",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "layer",
-											"orig": "layer",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "request",
-											"orig": "request",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "WMS",
-											"kind": "query",
-											"name": "service",
-											"orig": "service",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "1.3.0",
-											"kind": "query",
-											"name": "version",
-											"orig": "version",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "width",
-											"orig": "width",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/map/wms",
@@ -506,6 +464,79 @@ func MakeConfig() map[string]any {
 									},
 									map[string]any{
 										"lit": "wms",
+									},
+								},
+								"parts": []any{
+									"map",
+									"wms",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "bbox",
+											"orig": "bbox",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "crs",
+											"orig": "crs",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "EPSG:4326",
+										},
+										map[string]any{
+											"name": "format",
+											"orig": "format",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "height",
+											"orig": "height",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "layer",
+											"orig": "layer",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "request",
+											"orig": "request",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "service",
+											"orig": "service",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "WMS",
+										},
+										map[string]any{
+											"name": "version",
+											"orig": "version",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "1.3.0",
+										},
+										map[string]any{
+											"name": "width",
+											"orig": "width",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -521,76 +552,8 @@ func MakeConfig() map[string]any {
 										"width",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"map",
-									"wms",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"kind": "query",
-											"name": "bbox",
-											"orig": "bbox",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": 100,
-											"kind": "query",
-											"name": "count",
-											"orig": "count",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": "application/json",
-											"kind": "query",
-											"name": "outputformat",
-											"orig": "outputformat",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "request",
-											"orig": "request",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "WFS",
-											"kind": "query",
-											"name": "service",
-											"orig": "service",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "EPSG:4326",
-											"kind": "query",
-											"name": "srsname",
-											"orig": "srsname",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "typename",
-											"orig": "typename",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "2.0.0",
-											"kind": "query",
-											"name": "version",
-											"orig": "version",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/map/wfs",
@@ -600,6 +563,75 @@ func MakeConfig() map[string]any {
 									},
 									map[string]any{
 										"lit": "wfs",
+									},
+								},
+								"parts": []any{
+									"map",
+									"wfs",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "bbox",
+											"orig": "bbox",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "count",
+											"orig": "count",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 100,
+										},
+										map[string]any{
+											"name": "outputformat",
+											"orig": "outputformat",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "application/json",
+										},
+										map[string]any{
+											"name": "request",
+											"orig": "request",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+										},
+										map[string]any{
+											"name": "service",
+											"orig": "service",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "WFS",
+										},
+										map[string]any{
+											"name": "srsname",
+											"orig": "srsname",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "EPSG:4326",
+										},
+										map[string]any{
+											"name": "typename",
+											"orig": "typename",
+											"type": "`$STRING`",
+											"kind": "query",
+										},
+										map[string]any{
+											"name": "version",
+											"orig": "version",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "2.0.0",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -613,14 +645,6 @@ func MakeConfig() map[string]any {
 										"typename",
 										"version",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"map",
-									"wfs",
 								},
 							},
 						},

@@ -92,106 +92,126 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "apiCallCount",
-            ["short"] = "Number of API calls made for this dataset",
+            ["title"] = "Api Call Count",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Number of API calls made for this dataset",
           },
           {
             ["name"] = "apiEndpoints",
-            ["short"] = "Available API endpoints for this dataset",
+            ["title"] = "Api Endpoints",
             ["type"] = "`$OBJECT`",
+            ["short"] = "Available API endpoints for this dataset",
           },
           {
             ["name"] = "apiServiceCalls",
-            ["short"] = "Total API service calls in the specified year",
+            ["title"] = "Api Service Calls",
             ["type"] = "`$NUMBER`",
+            ["short"] = "Total API service calls in the specified year",
           },
           {
             ["name"] = "category",
-            ["short"] = "Category of the dataset",
+            ["title"] = "Category",
             ["type"] = "`$STRING`",
+            ["short"] = "Category of the dataset",
           },
           {
             ["name"] = "datasetDownloads",
-            ["short"] = "Total dataset downloads in the specified year",
+            ["title"] = "Dataset Downloads",
             ["type"] = "`$NUMBER`",
+            ["short"] = "Total dataset downloads in the specified year",
           },
           {
             ["name"] = "description",
+            ["title"] = "Description",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Detailed description of the dataset",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "downloadCount",
-            ["short"] = "Number of times the dataset has been downloaded",
+            ["title"] = "Download Count",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Number of times the dataset has been downloaded",
           },
           {
             ["name"] = "formats",
-            ["short"] = "Available formats for the dataset",
+            ["title"] = "Formats",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Available formats for the dataset",
           },
           {
             ["name"] = "id",
+            ["title"] = "Id",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Unique identifier for the dataset",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "keywords",
-            ["short"] = "Keywords associated with the dataset",
+            ["title"] = "Keywords",
             ["type"] = "`$ARRAY`",
+            ["short"] = "Keywords associated with the dataset",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "lastUpdated",
-            ["short"] = "Date when the dataset was last updated",
+            ["title"] = "Last Updated",
             ["type"] = "`$STRING`",
+            ["short"] = "Date when the dataset was last updated",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "license",
-            ["short"] = "License information for the dataset",
+            ["title"] = "License",
             ["type"] = "`$STRING`",
+            ["short"] = "License information for the dataset",
           },
           {
             ["name"] = "provider",
-            ["short"] = "Data provider organization",
+            ["title"] = "Provider",
             ["type"] = "`$STRING`",
+            ["short"] = "Data provider organization",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "publishedDate",
-            ["short"] = "Date when the dataset was published",
+            ["title"] = "Published Date",
             ["type"] = "`$STRING`",
+            ["short"] = "Date when the dataset was published",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "spatialExtent",
-            ["short"] = "Spatial extent of the dataset",
+            ["title"] = "Spatial Extent",
             ["type"] = "`$OBJECT`",
+            ["short"] = "Spatial extent of the dataset",
           },
           {
             ["name"] = "theme",
-            ["short"] = "Framework Spatial Data Theme",
+            ["title"] = "Theme",
             ["type"] = "`$STRING`",
+            ["short"] = "Framework Spatial Data Theme",
           },
           {
             ["name"] = "title",
+            ["title"] = "Title",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Title of the dataset",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "totalDatasets",
-            ["short"] = "Total number of datasets available",
+            ["title"] = "Total Datasets",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Total number of datasets available",
           },
           {
             ["name"] = "viewCount",
-            ["short"] = "Number of times the dataset has been viewed",
+            ["title"] = "View Count",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Number of times the dataset has been viewed",
           },
           {
             ["name"] = "year",
+            ["title"] = "Year",
             ["type"] = "`$INTEGER`",
           },
         },
@@ -206,55 +226,63 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "category",
-                      ["orig"] = "category",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = 50,
-                      ["kind"] = "query",
-                      ["name"] = "limit",
-                      ["orig"] = "limit",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["example"] = 0,
-                      ["kind"] = "query",
-                      ["name"] = "offset",
-                      ["orig"] = "offset",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "search",
-                      ["orig"] = "search",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "new",
-                      ["kind"] = "query",
-                      ["name"] = "sort_by",
-                      ["orig"] = "sort_by",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "theme",
-                      ["orig"] = "theme",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/datasets",
                 ["segments"] = {
                   {
                     ["lit"] = "datasets",
+                  },
+                },
+                ["parts"] = {
+                  "datasets",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body.datasets`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "category",
+                      ["orig"] = "category",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "limit",
+                      ["orig"] = "limit",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 50,
+                    },
+                    {
+                      ["name"] = "offset",
+                      ["orig"] = "offset",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 0,
+                    },
+                    {
+                      ["name"] = "search",
+                      ["orig"] = "search",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "sort_by",
+                      ["orig"] = "sort_by",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "new",
+                    },
+                    {
+                      ["name"] = "theme",
+                      ["orig"] = "theme",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
                   },
                 },
                 ["select"] = {
@@ -267,13 +295,6 @@ local function make_config()
                     "theme",
                   },
                 },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body.datasets`",
-                },
-                ["parts"] = {
-                  "datasets",
-                },
               },
             },
           },
@@ -282,34 +303,9 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "dataset_id",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["example"] = "json",
-                      ["kind"] = "query",
-                      ["name"] = "format",
-                      ["orig"] = "format",
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/datasets/{datasetId}/download",
-                ["rename"] = {
-                  ["param"] = {
-                    ["datasetId"] = "id",
-                  },
-                },
                 ["segments"] = {
                   {
                     ["lit"] = "datasets",
@@ -321,6 +317,40 @@ local function make_config()
                     ["lit"] = "download",
                   },
                 },
+                ["parts"] = {
+                  "datasets",
+                  "{id}",
+                  "download",
+                },
+                ["rename"] = {
+                  ["param"] = {
+                    ["datasetId"] = "id",
+                  },
+                },
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "dataset_id",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "format",
+                      ["orig"] = "format",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "json",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["$action"] = "download",
                   ["exist"] = {
@@ -328,36 +358,11 @@ local function make_config()
                     "id",
                   },
                 },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "datasets",
-                  "{id}",
-                  "download",
-                },
               },
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "dataset_id",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/datasets/{datasetId}",
-                ["rename"] = {
-                  ["param"] = {
-                    ["datasetId"] = "id",
-                  },
-                },
                 ["segments"] = {
                   {
                     ["lit"] = "datasets",
@@ -366,32 +371,37 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "id",
+                ["parts"] = {
+                  "datasets",
+                  "{id}",
+                },
+                ["rename"] = {
+                  ["param"] = {
+                    ["datasetId"] = "id",
                   },
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "datasets",
-                  "{id}",
-                },
-              },
-              {
                 ["args"] = {
-                  ["query"] = {
+                  ["params"] = {
                     {
-                      ["example"] = 2025,
-                      ["kind"] = "query",
-                      ["name"] = "year",
-                      ["orig"] = "year",
-                      ["type"] = "`$INTEGER`",
+                      ["name"] = "id",
+                      ["orig"] = "dataset_id",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
                     },
                   },
                 },
+                ["select"] = {
+                  ["exist"] = {
+                    "id",
+                  },
+                },
+              },
+              {
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/statistics",
@@ -400,17 +410,29 @@ local function make_config()
                     ["lit"] = "statistics",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "year",
-                  },
+                ["parts"] = {
+                  "statistics",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "statistics",
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "year",
+                      ["orig"] = "year",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 2025,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "year",
+                  },
                 },
               },
             },
@@ -429,70 +451,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "bbox",
-                      ["orig"] = "bbox",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "EPSG:4326",
-                      ["kind"] = "query",
-                      ["name"] = "crs",
-                      ["orig"] = "crs",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "format",
-                      ["orig"] = "format",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "height",
-                      ["orig"] = "height",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "layer",
-                      ["orig"] = "layer",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "request",
-                      ["orig"] = "request",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "WMS",
-                      ["kind"] = "query",
-                      ["name"] = "service",
-                      ["orig"] = "service",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "1.3.0",
-                      ["kind"] = "query",
-                      ["name"] = "version",
-                      ["orig"] = "version",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "width",
-                      ["orig"] = "width",
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/map/wms",
@@ -502,6 +460,79 @@ local function make_config()
                   },
                   {
                     ["lit"] = "wms",
+                  },
+                },
+                ["parts"] = {
+                  "map",
+                  "wms",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "bbox",
+                      ["orig"] = "bbox",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "crs",
+                      ["orig"] = "crs",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "EPSG:4326",
+                    },
+                    {
+                      ["name"] = "format",
+                      ["orig"] = "format",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "height",
+                      ["orig"] = "height",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "layer",
+                      ["orig"] = "layer",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "request",
+                      ["orig"] = "request",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                    },
+                    {
+                      ["name"] = "service",
+                      ["orig"] = "service",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = "WMS",
+                    },
+                    {
+                      ["name"] = "version",
+                      ["orig"] = "version",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = "1.3.0",
+                    },
+                    {
+                      ["name"] = "width",
+                      ["orig"] = "width",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                    },
                   },
                 },
                 ["select"] = {
@@ -517,76 +548,8 @@ local function make_config()
                     "width",
                   },
                 },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "map",
-                  "wms",
-                },
               },
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "bbox",
-                      ["orig"] = "bbox",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = 100,
-                      ["kind"] = "query",
-                      ["name"] = "count",
-                      ["orig"] = "count",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["example"] = "application/json",
-                      ["kind"] = "query",
-                      ["name"] = "outputformat",
-                      ["orig"] = "outputformat",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "request",
-                      ["orig"] = "request",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "WFS",
-                      ["kind"] = "query",
-                      ["name"] = "service",
-                      ["orig"] = "service",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "EPSG:4326",
-                      ["kind"] = "query",
-                      ["name"] = "srsname",
-                      ["orig"] = "srsname",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "typename",
-                      ["orig"] = "typename",
-                      ["type"] = "`$STRING`",
-                    },
-                    {
-                      ["example"] = "2.0.0",
-                      ["kind"] = "query",
-                      ["name"] = "version",
-                      ["orig"] = "version",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/map/wfs",
@@ -596,6 +559,75 @@ local function make_config()
                   },
                   {
                     ["lit"] = "wfs",
+                  },
+                },
+                ["parts"] = {
+                  "map",
+                  "wfs",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "bbox",
+                      ["orig"] = "bbox",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "count",
+                      ["orig"] = "count",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 100,
+                    },
+                    {
+                      ["name"] = "outputformat",
+                      ["orig"] = "outputformat",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "application/json",
+                    },
+                    {
+                      ["name"] = "request",
+                      ["orig"] = "request",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                    },
+                    {
+                      ["name"] = "service",
+                      ["orig"] = "service",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = "WFS",
+                    },
+                    {
+                      ["name"] = "srsname",
+                      ["orig"] = "srsname",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["example"] = "EPSG:4326",
+                    },
+                    {
+                      ["name"] = "typename",
+                      ["orig"] = "typename",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                    },
+                    {
+                      ["name"] = "version",
+                      ["orig"] = "version",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = "2.0.0",
+                    },
                   },
                 },
                 ["select"] = {
@@ -609,14 +641,6 @@ local function make_config()
                     "typename",
                     "version",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
-                ["parts"] = {
-                  "map",
-                  "wfs",
                 },
               },
             },
